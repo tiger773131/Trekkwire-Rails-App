@@ -199,6 +199,30 @@ en:
 
     about:
       title: "About Us"
+      title_subhead:
+        "Adventure is Out There - Trekkwire Will Help You Find It"
+      what_we_do_heading:
+        "What we do"
+      what_we_do_overview:
+        "At Trekkwire, we believe that traveling should be easy, fun, and enriching. We are a team of passionate travel enthusiasts who understand the challenges of planning a trip, missing out on travel opportunities when your friends can't join, the wasting of hours in an airport during long layovers and the hassle of finding local connections online. That's why we created our on-demand travel application, to make it easier for everyone to travel and explore more freely."
+      our_mission:
+        "Our Mission"
+      mission_overview:
+        "We strive to help travelers discover authentic and unforgettable experiences by connecting them with passionate local guides. We believe that travel should be more than just visiting popular tourist destinations and checking off items on a list. It should be about immersing oneself in local cultures, trying new things, and creating lifelong memories. By providing a platform for travelers to connect with knowledgeable and enthusiastic local guides, we aim to make travel more meaningful, enjoyable, and memorable for everyone."
+      for_travelers:
+        "For Travelers"
+      for_travelers_overview:
+        "We are your ultimate travel companion, providing you with on-demand access to knowledgeable guides who will show you the best of your destination. Whether you're a solo traveler or part of a group, our platform connects you with local experts who will help you get off the beaten path and experience the culture, history, and natural beauty of the place you're visiting."
+      for_companies_and_agencies:
+        "For Companies and Agencies"
+      for_companies_and_agencies_overview:
+        "We are a technology-driven platform that connects travelers with local guides. By partnering with Trekkwire, you can expand your reach and attract new customers who are looking for authentic and unique travel experiences. Our platform streamlines the booking process and enables you to deliver a high-quality service to your clients."
+      for_locals:
+        "For Locals"
+      for_locals_overview:
+        "We are the go-to platform for locals who love to explore their own cities and share their passion with others. Whether you're a history buff, a foodie, or an outdoor enthusiast, our on-demand tour guide and travel companion application offers you the opportunity to showcase your favorite spots and create unforgettable experiences for visitors.
+         As a local, you can earn extra income while doing what you love. Or, if you prefer, you can guide for free and share your knowledge and passion with travelers who are eager to learn. You have the flexibility to choose your own schedule, set your own rates and connect with people from all over the world.
+         Whether you're a student, a retiree or a working professional, you can join our community of passionate travel enthusiasts and we will empower you to share your unique perspective, insider knowledge and make a difference in the lives of others."
     privacy:
       title: "Privacy Policy"
     terms:
