@@ -25,7 +25,7 @@
 @import "components/trix";
 @import "components/typography";
 @import "components/util";
-@import "components/marketing.css";
+@import "components/marketing";
 
 @import "tailwindcss/utilities";
 
