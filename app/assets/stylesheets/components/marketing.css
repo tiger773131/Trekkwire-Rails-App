@@ -1,0 +1,17 @@
+.span1 {
+  background-image: url('bg_images/yellow_luggage.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.span2 {
+
+}
+
+.top-left-text {
+  position: relative;
+  top: 20px;
+  left: 24px;
+  font-size: 20px;
+}

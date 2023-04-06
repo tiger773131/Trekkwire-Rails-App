@@ -1,0 +1,15 @@
+--- !ruby/object:Jumpstart::Configuration
+application_name: Trekkwire
+business_name: Trekkwire
+business_address: 286 Forbes Ave Tonawanda, NY 14150
+domain: trekkwire.com
+default_from_email: Trekkwire <support@trekkwire.com>
+support_email: jdpahl122@gmail.com
+background_job_processor: async
+email_provider: sendgrid
+personal_accounts: true
+solargraph: true
+register_with_account: true
+apns: false
+fcm: false
+collect_billing_address: false
