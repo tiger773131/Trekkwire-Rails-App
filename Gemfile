@@ -42,6 +42,9 @@ gem "image_processing", "~> 1.12"
 # Security update
 gem "nokogiri", ">= 1.12.5"
 
+# Onboarding workflow support
+gem "wicked", "~> 2.0"
+
 group :development, :test do
   # Optional debugging tools
   # gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -118,3 +121,4 @@ end
 
 # We recommend using strong migrations when your app is in production
 # gem "strong_migrations", "~> 0.7.6"
+
