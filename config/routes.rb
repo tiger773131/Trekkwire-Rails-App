@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "session/otp", to: "sessions#otp"
   end
+  resources :after_signup
 
   resources :announcements, only: [:index, :show]
   resources :api_tokens

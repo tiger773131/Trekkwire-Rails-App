@@ -39,4 +39,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       stored_location_for(:user)
     end
   end
+
+  def after_sign_up_path_for(_resource)
+    # super(resource)
+    after_signup_path('user_type')
+  end
 end
