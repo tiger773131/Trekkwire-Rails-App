@@ -5,6 +5,7 @@
 #  id                  :bigint           not null, primary key
 #  account_users_count :integer          default(0)
 #  billing_email       :string
+#  customer_type       :integer          default("traveler")
 #  domain              :string
 #  extra_billing_info  :text
 #  name                :string           not null
@@ -27,6 +28,7 @@ class Account < ApplicationRecord
   RESERVED_DOMAINS = [Jumpstart.config.domain]
   RESERVED_SUBDOMAINS = %w[app help support]
 
+  enum customer_type: { traveler: 0, guide: 1 }
   belongs_to :owner, class_name: "User"
   has_many :account_invitations, dependent: :destroy
   has_many :account_users, dependent: :destroy

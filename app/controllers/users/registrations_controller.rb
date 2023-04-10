@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # Build and display account fields in registration form if enabled
     elsif Jumpstart.config.register_with_account?
       account = resource.owned_accounts.first
-      account ||= resource.owned_accounts.new
+      account ||= resource.owned_accounts.new(name: resource.name)
       account.account_users.new(user: resource, admin: true)
     end
   end
@@ -39,4 +39,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       stored_location_for(:user)
     end
   end
+
+  # def after_sign_up_path_for(_resource)
+  #   # super(resource)
+  #   after_signup_path('user_type')
+  # end
 end

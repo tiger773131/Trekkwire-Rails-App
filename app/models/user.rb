@@ -81,6 +81,15 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :avatar, resizable_image: true
 
+  cattr_accessor :form_steps do
+    %w[sign_up account_type user_name user_info]
+  end
+
+  attr_accessor :form_step
+
+  def form_step
+    @form_step || form_steps.first
+  end
   # When ActionText rendering mentions in plain text
   def attachable_plain_text_representation(caption = nil)
     caption || name

@@ -5,6 +5,7 @@
 #  id                  :bigint           not null, primary key
 #  account_users_count :integer          default(0)
 #  billing_email       :string
+#  customer_type       :integer          default("traveler")
 #  domain              :string
 #  extra_billing_info  :text
 #  name                :string           not null
