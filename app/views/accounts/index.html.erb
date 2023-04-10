@@ -24,8 +24,10 @@
                 <%= link_to account, class: "flex items-center" do %>
                   <%= account_avatar account, class: "rounded-full h-8 w-8 mr-3" %>
                   <%= tag.span account.name, class: "text-gray-900 font-semibold text-sm no-underline hover:text-primary" %>
-                  <%= badge "Personal", class: "ml-3" if account.personal_account_for?(current_user) %>
-                <% end %>
+                  <%= badge "Personal", class: "bg-primary-500 text-xs inline-block text-white font-medium ml-3" if account.personal_account_for?(current_user) %>
+                  <%= badge "Guide", class: "bg-orange-400 text-xs inline-block text-orange-800 font-bold leading-normal ml-3" if account.customer_type == "guide" %>
+                  <%= badge "Traveler", class: "bg-red-100 text-red-800 text-xs font-medium ml-3" if account.customer_type == "traveler" %>
+              <% end %>
 
               </td>
 

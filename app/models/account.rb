@@ -5,12 +5,12 @@
 #  id                  :bigint           not null, primary key
 #  account_users_count :integer          default(0)
 #  billing_email       :string
+#  customer_type       :integer          default("traveler")
 #  domain              :string
 #  extra_billing_info  :text
 #  name                :string           not null
 #  personal            :boolean          default(FALSE)
 #  subdomain           :string
-#  type                :integer          default("traveler")
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  owner_id            :bigint
@@ -28,7 +28,7 @@ class Account < ApplicationRecord
   RESERVED_DOMAINS = [Jumpstart.config.domain]
   RESERVED_SUBDOMAINS = %w[app help support]
 
-  enum type: { traveler: 0, guide: 1 }
+  enum customer_type: { traveler: 0, guide: 1 }
   belongs_to :owner, class_name: "User"
   has_many :account_invitations, dependent: :destroy
   has_many :account_users, dependent: :destroy

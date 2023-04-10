@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_161057) do
     t.string "subdomain"
     t.string "billing_email"
     t.integer "account_users_count", default: 0
-    t.integer "type", default: 0
+    t.integer "customer_type", default: 0
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
   end
 

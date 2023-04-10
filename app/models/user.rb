@@ -82,7 +82,7 @@ class User < ApplicationRecord
   validates :avatar, resizable_image: true
 
   cattr_accessor :form_steps do
-    %w[sign_up user_type user_name user_info]
+    %w[sign_up account_type user_name user_info]
   end
 
   attr_accessor :form_step
