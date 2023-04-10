@@ -19,19 +19,19 @@ class AfterSignupController < ApplicationController
   def update
     @user = current_user
     case step
-    when 'user_type'
+    when "user_type"
       if @user.update(onboarding_params(step))
         render_wizard @user
       else
         render_wizard @user, status: :unprocessable_entity
       end
-    when 'user_name'
+    when "user_name"
       if @user.update(onboarding_params(step))
         render_wizard @user
       else
         render_wizard @user, status: :unprocessable_entity
       end
-    when 'user_info'
+    when "user_info"
       if @user.update(onboarding_params(step))
         render_wizard @user
       else
@@ -46,18 +46,18 @@ class AfterSignupController < ApplicationController
     root_path
   end
 
-  def onboarding_params(step = 'sign_up')
+  def onboarding_params(step = "sign_up")
     permitted_params = case step
-                       when 'user_type'
-                         required_params = :user
-                         %i[user_type]
-                       when 'user_name'
-                         required_params = :user
-                          %i[user_name]
-                       when 'user_info'
-                         required_params = :user
-                          %i[user_info]
-                       end
+    when "user_type"
+      required_params = :user
+      %i[user_type]
+    when "user_name"
+      required_params = :user
+      %i[user_name]
+    when "user_info"
+      required_params = :user
+      %i[user_info]
+    end
     params.require(required_params).permit(permitted_params).merge(form_step: step)
   end
 end

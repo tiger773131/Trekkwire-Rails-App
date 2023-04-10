@@ -90,6 +90,7 @@ class User < ApplicationRecord
   def form_step
     @form_step || form_steps.first
   end
+
   # When ActionText rendering mentions in plain text
   def attachable_plain_text_representation(caption = nil)
     caption || name

@@ -28,7 +28,7 @@ class Account < ApplicationRecord
   RESERVED_DOMAINS = [Jumpstart.config.domain]
   RESERVED_SUBDOMAINS = %w[app help support]
 
-  enum customer_type: { traveler: 0, guide: 1 }
+  enum customer_type: {traveler: 0, guide: 1}
   belongs_to :owner, class_name: "User"
   has_many :account_invitations, dependent: :destroy
   has_many :account_users, dependent: :destroy
