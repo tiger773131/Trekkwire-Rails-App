@@ -10,6 +10,7 @@
 #  name                :string           not null
 #  personal            :boolean          default(FALSE)
 #  subdomain           :string
+#  type                :integer          default("traveler")
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  owner_id            :bigint
