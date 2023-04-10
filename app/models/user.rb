@@ -85,11 +85,11 @@ class User < ApplicationRecord
     %w[sign_up account_type user_name user_info]
   end
 
-  attr_accessor :form_step
-
-  def form_step
-    @form_step || form_steps.first
-  end
+  # attr_accessor :form_step
+  #
+  # def form_step
+  #   @form_step || form_steps.first
+  # end
 
   # When ActionText rendering mentions in plain text
   def attachable_plain_text_representation(caption = nil)
