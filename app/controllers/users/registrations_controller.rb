@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # Build and display account fields in registration form if enabled
     elsif Jumpstart.config.register_with_account?
       account = resource.owned_accounts.first
-      account ||= resource.owned_accounts.new
+      account ||= resource.owned_accounts.new(name: resource.name)
       account.account_users.new(user: resource, admin: true)
     end
   end
@@ -29,7 +29,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up(resource_name, resource)
-
     sign_in(resource_name, resource)
 
     # If user registered through an invitation, automatically accept it after signing in
