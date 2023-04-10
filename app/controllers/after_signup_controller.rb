@@ -5,39 +5,39 @@ class AfterSignupController < ApplicationController
   def show
     @user = current_user
 
-    case step
-    when :sign_up
-      skip_step if @user.persisted?
-    when :user_type
-      @user_account = @user.account.new
-    when :user_name
-    when :user_info
-    end
-    render_wizard
+    # case step
+    # when :sign_up
+    #   skip_step if @user.persisted?
+    # when :user_type
+    #   @user_account = @user.account.new
+    # when :user_name
+    # when :user_info
+    # end
+    # render_wizard
   end
 
   def update
     @user = current_user
-    case step
-    when "user_type"
-      if @user.update(onboarding_params(step))
-        render_wizard @user
-      else
-        render_wizard @user, status: :unprocessable_entity
-      end
-    when "user_name"
-      if @user.update(onboarding_params(step))
-        render_wizard @user
-      else
-        render_wizard @user, status: :unprocessable_entity
-      end
-    when "user_info"
-      if @user.update(onboarding_params(step))
-        render_wizard @user
-      else
-        render_wizard @user, status: :unprocessable_entity
-      end
-    end
+    # case step
+    # when "user_type"
+    #   if @user.update(onboarding_params(step))
+    #     render_wizard @user
+    #   else
+    #     render_wizard @user, status: :unprocessable_entity
+    #   end
+    # when "user_name"
+    #   if @user.update(onboarding_params(step))
+    #     render_wizard @user
+    #   else
+    #     render_wizard @user, status: :unprocessable_entity
+    #   end
+    # when "user_info"
+    #   if @user.update(onboarding_params(step))
+    #     render_wizard @user
+    #   else
+    #     render_wizard @user, status: :unprocessable_entity
+    #   end
+    # end
   end
 
   private
