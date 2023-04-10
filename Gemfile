@@ -48,7 +48,7 @@ gem "wicked", "~> 2.0"
 group :development, :test do
   # Optional debugging tools
   # gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  # gem "pry-rails"
+  gem "pry-rails"
 
   gem "annotate", github: "excid3/annotate_models", branch: "rails7"
   gem "letter_opener_web", "~> 2.0"

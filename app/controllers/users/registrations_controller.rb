@@ -29,6 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up(resource_name, resource)
+
     sign_in(resource_name, resource)
 
     # If user registered through an invitation, automatically accept it after signing in
@@ -40,8 +41,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def after_sign_up_path_for(_resource)
-    # super(resource)
-    after_signup_path('user_type')
-  end
+  # def after_sign_up_path_for(_resource)
+  #   # super(resource)
+  #   after_signup_path('user_type')
+  # end
 end
