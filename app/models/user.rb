@@ -55,8 +55,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, andle :trackable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable,
-    :omniauthable, omniauth_providers: [:google_oauth2, :facebook]
-
+    :omniauthable
   has_noticed_notifications
   has_person_name
 
