@@ -99,6 +99,7 @@ gem "local_time", "~> 2.1"
 gem "name_of_person", "~> 1.0"
 gem "noticed", "~> 1.5"
 gem "oj", "~> 3.8", ">= 3.8.1"
+gem 'omniauth-google-oauth2'
 gem "omniauth", "~> 2.0", ">= 2.0.4"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "pagy", "~> 6.0"

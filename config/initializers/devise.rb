@@ -272,6 +272,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :google_oauth2, Rails.application.credentials[:omniauth][:google_oauth2][:public_key], Rails.application.credentials[:omniauth][:google_oauth2][:private_key]
 
   # Jumpmstart comes with several OmniAuth providers already configured for you
   # To customize the provider options, add the extra configuration to config/jumpstart.yml
