@@ -24,19 +24,24 @@ class StaticController < ApplicationController
   end
 
   def add_email_contact
-    sg = SendGrid::API.new(api_key: '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')
+    sg = SendGrid::API.new(api_key: Rails.application.credentials[:sendgrid_contact_list][:api_key])
     data = JSON.parse('{
                                 "list_ids": ["b00867d7-b423-4939-9b0c-fb0b225dc77a"],
                                 "contacts": [
                                   {
-                                    "email": "annahamilton@example.org",
+                                    "email": "annahamilton@example.org"
                                   }
                                 ]
                               }')
-    response = sg.client.marketing.contacts.put(request_body: data)
-    puts response.status_code
-    puts response.headers
-    puts response.body
-    render root_path
+    begin
+      response = sg.client.marketing.contacts.put(request_body: data)
+    rescue Exception => e
+    else
+      puts response.status_code
+      puts response.headers
+      puts response.body
+      flash[:notice] = "Thank you for your interest. We will be in touch soon."
+      redirect_to root_path
+    end
   end
 end

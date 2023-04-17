@@ -137,6 +137,7 @@ Rails.application.routes.draw do
     get :terms
     get :privacy
     get :pricing
+    post 'add_email_contact', to: 'add_email_contact'
   end
 
   post :sudo, to: "users/sudo#create"
