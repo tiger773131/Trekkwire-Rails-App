@@ -1,4 +1,6 @@
 class StaticController < ApplicationController
+  require 'sendgrid-ruby'
+  include SendGrid
   def index
   end
 
@@ -19,5 +21,22 @@ class StaticController < ApplicationController
 
   def privacy
     @agreement = Rails.application.config.agreements.find { _1.id == :privacy_policy }
+  end
+
+  def add_email_contact
+    sg = SendGrid::API.new(api_key: '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')
+    data = JSON.parse('{
+                                "list_ids": ["b00867d7-b423-4939-9b0c-fb0b225dc77a"],
+                                "contacts": [
+                                  {
+                                    "email": "annahamilton@example.org",
+                                  }
+                                ]
+                              }')
+    response = sg.client.marketing.contacts.put(request_body: data)
+    puts response.status_code
+    puts response.headers
+    puts response.body
+    render root_path
   end
 end
