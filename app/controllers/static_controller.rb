@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  require 'sendgrid-ruby'
+  require "sendgrid-ruby"
   include SendGrid
   def index
   end
@@ -27,7 +27,7 @@ class StaticController < ApplicationController
     sg = SendGrid::API.new(api_key: Rails.application.credentials[:sendgrid_contact_list][:api_key])
     list_id = Rails.application.credentials[:sendgrid_contact_list][:list_id]
     email = params[:email]
-    data = { list_ids: [list_id], contacts: [{ email: email }] }.to_json
+    data = {list_ids: [list_id], contacts: [{email: email}]}.to_json
     begin
       response = sg.client.marketing.contacts.put(request_body: data)
     rescue Exception => e
