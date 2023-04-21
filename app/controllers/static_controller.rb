@@ -30,7 +30,8 @@ class StaticController < ApplicationController
     data = {list_ids: [list_id], contacts: [{email: email}]}.to_json
     begin
       response = sg.client.marketing.contacts.put(request_body: data)
-    rescue Exception => e
+    rescue => e
+      puts e.message
     else
       puts response.status_code
       puts response.headers
