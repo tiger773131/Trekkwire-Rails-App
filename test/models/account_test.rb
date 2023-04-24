@@ -6,6 +6,7 @@
 #  account_users_count :integer          default(0)
 #  billing_email       :string
 #  customer_type       :integer          default("traveler")
+#  description         :text
 #  domain              :string
 #  extra_billing_info  :text
 #  name                :string           not null
@@ -163,5 +164,11 @@ class AccountTest < ActiveSupport::TestCase
 
     mail = Pay::UserMailer.with(pay_customer: pay_customer, pay_charge: pay_charge).receipt
     assert_equal [account.email, "accounting@example.com"], mail.to
+  end
+
+  test "can add a description to an account" do
+    account = accounts(:company)
+    account.update!(description: "This is a description")
+    assert_equal "This is a description", account.description
   end
 end

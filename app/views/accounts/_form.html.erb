@@ -11,6 +11,11 @@
     <%= form.select :customer_type, options_for_select(Account.customer_types.map {|key, value| [key.titleize, Account.customer_types.key(value)]}, @account.customer_type) %>
   </div>
 
+  <div class="form-group">
+    <%= form.label "Bio" %>
+    <%= form.text_area :description, placeholder: "Tell everybody a bit about who you are!", class: "form-control" %>
+  </div>
+
   <% if Jumpstart::Multitenancy.domain? %>
     <div class="form-group">
       <%= form.label :domain %>

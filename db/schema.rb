@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_10_161057) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_24_193441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_161057) do
     t.string "billing_email"
     t.integer "account_users_count", default: 0
     t.integer "customer_type", default: 0
+    t.text "description"
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
   end
 
