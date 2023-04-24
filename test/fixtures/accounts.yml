@@ -6,6 +6,7 @@
 #  account_users_count :integer          default(0)
 #  billing_email       :string
 #  customer_type       :integer          default("traveler")
+#  description         :text
 #  domain              :string
 #  extra_billing_info  :text
 #  name                :string           not null
