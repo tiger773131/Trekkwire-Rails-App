@@ -16,7 +16,17 @@
           <%= switch_account_button @account, label: t(".switch"), class: "btn btn-light-gray", form_class: "inline-block" unless current_account == @account %>
           <%= link_to t(".edit_account"), edit_account_path(@account), class: "btn btn-light-gray" if !@account.personal? && account_admin?(@account, current_user) %>
         </div>
+
+
       </div>
+
+      <div>
+        <div class="w-full lg:w-3/4 lg:p-4">
+          <h3 class="text-base font-semibold leading-7 text-gray-900">Account Bio</h3>
+          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.description %></p>
+        </div>
+      </div>
+
 
       <% if @account.personal? %>
         <div class="flex items-center text-sm bg-blue-50 text-blue-800 px-4 py-2 rounded">
@@ -26,6 +36,11 @@
           <%= t ".personal_team_description" %>
         </div>
       <% else %>
+        <div>
+          <div class="w-full lg:w-3/4 lg:p-4">
+            <h3 class="text-base font-semibold leading-7 text-gray-900">Account Users</h3>
+          </div>
+        </div>
         <table class="w-full">
           <thead>
             <tr>
