@@ -39,6 +39,7 @@ class Account < ApplicationRecord
   has_many :account_ratings, foreign_key: :target_account_id, dependent: :destroy
   has_one :billing_address, -> { where(address_type: :billing) }, class_name: "Address", as: :addressable
   has_one :shipping_address, -> { where(address_type: :shipping) }, class_name: "Address", as: :addressable
+  has_one :account_rating_detail, dependent: :destroy
 
   scope :personal, -> { where(personal: true) }
   scope :impersonal, -> { where(personal: false) }

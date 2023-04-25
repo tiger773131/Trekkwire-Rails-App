@@ -3,6 +3,8 @@ require "test_helper"
 class AccountRatingsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @account_rating = account_ratings(:one)
+    @user_two = users(:two)
+    sign_in @user_two
   end
 
   test "should get index" do

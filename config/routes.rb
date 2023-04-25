@@ -1,6 +1,5 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  resources :account_ratings
   draw :turbo
 
   # Jumpstart views
@@ -150,6 +149,7 @@ Rails.application.routes.draw do
     root to: "dashboard#show", as: :user_root
     # Alternate route to use if logged in users should still see public root
     # get "/dashboard", to: "dashboard#show", as: :user_root
+    resources :account_ratings
   end
 
   # Public marketing homepage

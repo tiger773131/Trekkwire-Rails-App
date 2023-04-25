@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_24_235716) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_25_004637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_235716) do
     t.index ["account_id"], name: "index_account_invitations_on_account_id"
     t.index ["invited_by_id"], name: "index_account_invitations_on_invited_by_id"
     t.index ["token"], name: "index_account_invitations_on_token", unique: true
+  end
+
+  create_table "account_rating_details", force: :cascade do |t|
+    t.integer "five_star_count"
+    t.integer "four_star_count"
+    t.integer "three_star_count"
+    t.integer "two_star_count"
+    t.integer "one_star_count"
+    t.integer "total_ratings"
+    t.float "total_ratings_score"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_account_rating_details_on_account_id"
   end
 
   create_table "account_ratings", force: :cascade do |t|
@@ -329,6 +343,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_235716) do
 
   add_foreign_key "account_invitations", "accounts"
   add_foreign_key "account_invitations", "users", column: "invited_by_id"
+  add_foreign_key "account_rating_details", "accounts"
   add_foreign_key "account_ratings", "accounts", column: "source_account_id"
   add_foreign_key "account_ratings", "accounts", column: "target_account_id"
   add_foreign_key "account_users", "accounts"
