@@ -1,0 +1,6 @@
+<div id="<%= dom_id(account_rating, :index) %>">
+  <%= turbo_stream_from account_rating %>
+  <%= render account_rating %>
+  <%= link_to "View", account_rating, class: "btn btn-white" %>
+</div>
+
