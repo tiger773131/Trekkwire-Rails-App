@@ -3,6 +3,8 @@ require "application_system_test_case"
 class AccountRatingsTest < ApplicationSystemTestCase
   setup do
     @account_rating = account_ratings(:one)
+    @user_two = users(:two)
+    sign_in @user_two
   end
 
   test "visiting the index" do
