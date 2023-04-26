@@ -30,8 +30,8 @@ class AccountRatingDetail < ApplicationRecord
   # after_destroy_commit -> { broadcast_remove_to :account_rating_details, target: dom_id(self, :index) }
 
   after_update do
-    if self.total_ratings.to_i > 0
-      self.update_column(:total_ratings_score, ((self.one_star_count.to_i * 1) + (self.two_star_count.to_i * 2) + (self.three_star_count.to_i * 3) + (self.four_star_count.to_i * 4) + (self.five_star_count.to_i * 5)) / self.total_ratings.to_i)
+    if total_ratings.to_i > 0
+      update_column(:total_ratings_score, ((one_star_count.to_i * 1) + (two_star_count.to_i * 2) + (three_star_count.to_i * 3) + (four_star_count.to_i * 4) + (five_star_count.to_i * 5)) / total_ratings.to_i)
     end
   end
 end
