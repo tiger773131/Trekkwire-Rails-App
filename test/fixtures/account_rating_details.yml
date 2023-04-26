@@ -24,21 +24,21 @@
 #
 
 one:
-  five_star_count: 1
-  four_star_count: 1
-  three_star_count: 1
-  two_star_count: 1
+  five_star_count: 5
+  four_star_count: 4
+  three_star_count: 3
+  two_star_count: 2
   one_star_count: 1
-  total_ratings: 1
-  total_ratings_score: 1.5
+  total_ratings: 16
+  total_ratings_score: 3.4375
   account: one
 
 two:
-  five_star_count: 1
-  four_star_count: 1
-  three_star_count: 1
-  two_star_count: 1
+  five_star_count: 5
+  four_star_count: 4
+  three_star_count: 3
+  two_star_count: 2
   one_star_count: 1
-  total_ratings: 1
-  total_ratings_score: 1.5
+  total_ratings: 16
+  total_ratings_score: 1.1
   account: two

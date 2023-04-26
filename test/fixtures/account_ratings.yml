@@ -27,11 +27,25 @@ one:
   source_account: one
   title: MyString
   review: MyText
-  rating: 1.5
+  rating: 3
 
 two:
   target_account: two
   source_account: two
   title: MyString
   review: MyText
-  rating: 1.5
+  rating: 2
+
+three:
+  target_account: two
+  source_account: two
+  title: MyString
+  review: MyText
+  rating: 4
+
+four:
+  target_account: two
+  source_account: two
+  title: MyString
+  review: MyText
+  rating: 2
