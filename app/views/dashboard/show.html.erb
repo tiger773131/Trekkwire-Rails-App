@@ -2,7 +2,10 @@
   <div class="my-8">
     <h1><%= t(".title") %></h1>
 
-    <p class="mb-2">This is the homepage for logged in users.</p>
-    <p>You can customize this page in <code>app/views/dashboard/show.html.erb</code></p>
+    <% if current_account.customer_type == "traveler" %>
+    <p class="mb-2">This is the homepage for travelers.</p>
+    <% else %>
+    <p class="mb-2">This is the homepage for guides.</p>
+    <% end %>
   </div>
 </div>
