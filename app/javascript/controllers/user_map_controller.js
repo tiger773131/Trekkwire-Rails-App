@@ -7,12 +7,10 @@ export default class extends Controller {
   connect() {
     if (typeof (google) != "undefined") {
       this.initializeMap()
-      console.log('connect')
     }
   }
 
   async initializeMap() {
-    console.log('initializeMap')
     //@ts-ignore
     const { Map } = await google.maps.importLibrary("maps");
 
