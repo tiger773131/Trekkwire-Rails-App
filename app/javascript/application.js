@@ -22,3 +22,8 @@ require("local-time").start()
 
 // Start Rails UJS
 Rails.start()
+
+window.dispatchMapsEvent = function (...args) {
+  const event = new Event("google-maps-callback", { bubbles: true, cancelable: true });
+  window.dispatchEvent(event)
+}
