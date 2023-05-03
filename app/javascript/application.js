@@ -22,3 +22,9 @@ require("local-time").start()
 
 // Start Rails UJS
 Rails.start()
+
+window.initMap = function() {
+  console.log('init map');
+  const event = new Event('map:load');
+  window.dispatchEvent(event, { bubbles: true, cancelable: false });
+}
