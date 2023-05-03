@@ -2,11 +2,11 @@
   <div class="my-8">
     <h1><%= t(".title") %></h1>
 
-    <div data-controller="user-map" data-action="map-loaded@window->address#initGoogleMap" class="grid grid-cols-2">
+    <div data-controller="user-map" data-action="google-maps-callback@window->user_map.initMap" class="grid grid-rows-2">
       <% if current_account.customer_type == "traveler" %>
-          <div class="col-span-1">test</div>
-          <div data-user-map-target="map"  class="col-span-1" style="height:400px;width:400px"></div>
-      <% else %>
+        <div data-user-map-target="map"  class="row-span-1 flex min-h-[40vh]"></div>
+        <div class="row-span-1">test</div>
+    <% else %>
         <div class="mb-2">This is the homepage for guides.</div>
       <% end %>
     </div>
