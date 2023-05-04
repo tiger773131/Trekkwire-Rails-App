@@ -15,8 +15,8 @@ export default class extends Controller {
     const { Map } = await google.maps.importLibrary("maps");
 
     const map = new Map(this.mapTarget, {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8,
+      center: { lat: 40.7328, lng: -73.9991 },
+      zoom: 14,
     });
   }
 }
