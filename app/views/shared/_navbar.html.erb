@@ -46,7 +46,7 @@
             <% if current_user.admin? %>
               <%= link_to t(".admin"), admin_root_path, class: 'block p-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100', data: { turbo: false } %>
             <% end %>
-            <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'block p-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100' %>
+            <%#= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'block p-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100' %>
           </div>
         </div>
 
@@ -97,8 +97,8 @@
         </div>
 
       <% else %>
-        <%= link_to t(".log_in"), new_user_session_path, class: 'nav-link' %>
-        <%= link_to t(".sign_up"), new_user_registration_path, class: 'btn btn-primary bg-indigo-600 hover:bg-indigo-500' %>
+        <%#= link_to t(".log_in"), new_user_session_path, class: 'nav-link' %>
+        <%#= link_to t(".sign_up"), new_user_registration_path, class: 'btn btn-primary bg-indigo-600 hover:bg-indigo-500' %>
       <% end %>
 
     </div>
