@@ -7,6 +7,11 @@ export default class extends Controller {
     if (typeof (google) != "undefined") {
       this.initPlaces()
     }
+    else {
+      window.addEventListener("google-maps-callback", () => {
+        this.initPlaces()
+      })
+    }
   }
 
   async initPlaces() {
