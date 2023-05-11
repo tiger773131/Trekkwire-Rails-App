@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: operating_locations
+#
+#  id         :bigint           not null, primary key
+#  address    :string
+#  latitude   :decimal(10, 6)
+#  longitude  :decimal(10, 6)
+#  position   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  account_id :bigint           not null
+#
+# Indexes
+#
+#  index_operating_locations_on_account_id  (account_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (account_id => accounts.id)
+#
+
+one:
+  position: 1
+  address: MyString
+  latitude: 9.99
+  longitude: 9.99
+  account: one
+
+two:
+  position: 1
+  address: MyString
+  latitude: 9.99
+  longitude: 9.99
+  account: two

@@ -20,6 +20,7 @@ class AccountsController < Accounts::BaseController
 
   # GET /accounts/1/edit
   def edit
+    @operating_location = @account.operating_location || @account.build_operating_location
   end
 
   # POST /accounts
@@ -92,7 +93,7 @@ class AccountsController < Accounts::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def account_params
-    attributes = [:name, :customer_type, :description, :avatar]
+    attributes = [:name, :customer_type, :description, :avatar, :operating_location_attributes => [:id, :address, :latitude, :longitude]]
     attributes << :domain if Jumpstart::Multitenancy.domain?
     attributes << :subdomain if Jumpstart::Multitenancy.subdomain?
     params.require(:account).permit(*attributes)
