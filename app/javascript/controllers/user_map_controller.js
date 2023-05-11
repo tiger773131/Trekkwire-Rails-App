@@ -2,23 +2,21 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="user-map"
 export default class extends Controller {
-  static targets = ["field", "map", "latitude", "longitude"]
+  static targets = ["map"]
 
   connect() {
     if (typeof (google) != "undefined") {
       this.initializeMap()
-      console.log('connect')
     }
   }
 
   async initializeMap() {
-    console.log('initializeMap')
     //@ts-ignore
     const { Map } = await google.maps.importLibrary("maps");
 
     const map = new Map(this.mapTarget, {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8,
+      center: { lat: 40.7328, lng: -73.9991 },
+      zoom: 14,
     });
   }
 }

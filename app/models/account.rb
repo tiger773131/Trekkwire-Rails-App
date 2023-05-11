@@ -39,6 +39,7 @@ class Account < ApplicationRecord
   has_many :account_ratings, foreign_key: :target_account_id, dependent: :destroy
   has_one :billing_address, -> { where(address_type: :billing) }, class_name: "Address", as: :addressable
   has_one :shipping_address, -> { where(address_type: :shipping) }, class_name: "Address", as: :addressable
+  has_one :operating_location, dependent: :destroy
   has_one :account_rating_detail, dependent: :destroy
 
   scope :personal, -> { where(personal: true) }
@@ -55,7 +56,7 @@ class Account < ApplicationRecord
   # To require a domain or subdomain, add the presence validation
   validates :domain, exclusion: {in: RESERVED_DOMAINS, message: :reserved}, uniqueness: {allow_blank: true}
   validates :subdomain, exclusion: {in: RESERVED_SUBDOMAINS, message: :reserved}, format: {with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\-_]*[a-zA-Z0-9]+\Z/, message: :format, allow_blank: true}, uniqueness: {allow_blank: true}
-
+  accepts_nested_attributes_for :operating_location, allow_destroy: true
   def find_or_build_billing_address
     billing_address || build_billing_address
   end
