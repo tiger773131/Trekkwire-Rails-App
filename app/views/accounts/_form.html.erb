@@ -28,7 +28,7 @@
   </div>
 
   <%= form.fields_for :operating_location, @account.operating_location do |f| %>
-    <div data-controller="places-autocomplete" data-action="google-maps-callback@window->places_autocomplete.initPlaces">
+    <div data-controller="places-autocomplete">
       <div class="form-group">
         <%= f.label :address %>
         <%= f.search_field :address, placeholder: "Enter your address", class: "form-control", data: { target: "places-autocomplete.field" } %>
