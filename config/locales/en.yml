@@ -175,7 +175,8 @@ en:
 
   dashboard:
     show:
-      title: "Dashboard"
+      title_traveler: "Find An Adventure"
+      title_guide: "Manage Your Business"
 
   payments:
     success: "Thanks for subscribing!"
