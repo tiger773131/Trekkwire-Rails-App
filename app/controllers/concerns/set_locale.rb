@@ -1,4 +1,4 @@
-# Check out the Rails guides for setting locale by domain or subdomain
+# Check out the Rails guides.html.erb for setting locale by domain or subdomain
 # https://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-domain-name
 
 module SetLocale

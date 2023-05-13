@@ -134,10 +134,13 @@ Rails.application.routes.draw do
 
   scope controller: :static do
     get :about
+    get :careers
+    get :guides
     get :terms
     get :privacy
     get :pricing
     post "add_email_contact", to: "add_email_contact"
+    post "add_email_guide", to: "add_email_guide"
   end
 
   post :sudo, to: "users/sudo#create"

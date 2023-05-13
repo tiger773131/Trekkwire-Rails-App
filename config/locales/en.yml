@@ -209,15 +209,15 @@ en:
       our_mission:
         "Our Mission"
       mission_overview:
-        "We strive to help travelers discover authentic and unforgettable experiences by connecting them with passionate local guides. We believe that travel should be more than just visiting popular tourist destinations and checking off items on a list. It should be about immersing oneself in local cultures, trying new things, and creating lifelong memories. By providing a platform for travelers to connect with knowledgeable and enthusiastic local guides, we aim to make travel more meaningful, enjoyable, and memorable for everyone."
+        "We strive to help travelers discover authentic and unforgettable experiences by connecting them with passionate local guides.html.erb. We believe that travel should be more than just visiting popular tourist destinations and checking off items on a list. It should be about immersing oneself in local cultures, trying new things, and creating lifelong memories. By providing a platform for travelers to connect with knowledgeable and enthusiastic local guides.html.erb, we aim to make travel more meaningful, enjoyable, and memorable for everyone."
       for_travelers:
         "For Travelers"
       for_travelers_overview:
-        "We are your ultimate travel companion, providing you with on-demand access to knowledgeable guides who will show you the best of your destination. Whether you're a solo traveler or part of a group, our platform connects you with local experts who will help you get off the beaten path and experience the culture, history, and natural beauty of the place you're visiting."
+        "We are your ultimate travel companion, providing you with on-demand access to knowledgeable guides.html.erb who will show you the best of your destination. Whether you're a solo traveler or part of a group, our platform connects you with local experts who will help you get off the beaten path and experience the culture, history, and natural beauty of the place you're visiting."
       for_companies_and_agencies:
         "For Companies and Agencies"
       for_companies_and_agencies_overview:
-        "We are a technology-driven platform that connects travelers with local guides. By partnering with Trekkwire, you can expand your reach and attract new customers who are looking for authentic and unique travel experiences. Our platform streamlines the booking process and enables you to deliver a high-quality service to your clients."
+        "We are a technology-driven platform that connects travelers with local guides.html.erb. By partnering with Trekkwire, you can expand your reach and attract new customers who are looking for authentic and unique travel experiences. Our platform streamlines the booking process and enables you to deliver a high-quality service to your clients."
       for_locals:
         "For Locals"
       for_locals_overview:
@@ -229,11 +229,26 @@ en:
     terms:
       title: "Terms Of Service"
 
+    guides:
+      title: "Guides"
+      title_subhead:
+            "Earn Extra Income While Doing What You Love"
+      title_sub_subhead:
+        "Please enter your contact information and your interests so we can keep you informed about new opportunities."
+      first_name: "First Name"
+      last_name: "Last Name"
+      company: "Company"
+      email: "Email"
+      phone_number: "Phone Number"
+      message: "Message"
+      button_text: "Add Me To The List"
   shared:
     footer:
       about: "About Us"
       privacy: "Privacy Policy"
       terms: "Terms of Service"
+      careers: "Careers"
+      guides: "Guides"
     account_navbar:
       profile: "Profile"
       password: "Password"
