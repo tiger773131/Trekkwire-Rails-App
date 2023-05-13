@@ -118,7 +118,7 @@ Rails.application.configure do
   #
   # The `shard_resolver` option is used by the middleware to determine which shard
   # to switch to. The application must provide a mechanism for finding the shard name
-  # in a proc. See guides for an example.
+  # in a proc. See guides.html.erb for an example.
   # config.active_record.shard_selector = { lock: true }
   # config.active_record.shard_resolver = ->(request) { Tenant.find_by!(host: request.host).shard }
 end
