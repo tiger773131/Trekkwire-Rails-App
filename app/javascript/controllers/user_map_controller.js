@@ -47,8 +47,6 @@ export default class extends Controller {
         southWestLat: southWest.lat(),
         southWestLng: southWest.lng()
       };
-      console.log(mapBounds)
-      // this.fetchAccounts(mapBounds);
       this.fetchAccounts(mapBounds)
     });
   }
@@ -60,7 +58,6 @@ export default class extends Controller {
     fetch(`/map_pins?bounds=${encodeURIComponent(JSON.stringify(bounds))}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         data.forEach(function(location) {
           var coordinatesLat = parseFloat(location.operating_location.latitude);
           var coordinatesLong = parseFloat(location.operating_location.longitude);
@@ -74,9 +71,7 @@ export default class extends Controller {
       });
   }
   setMapOnAll(theMap) {
-    // console.log("set map on all")
     for (var i = 0; i < markers.length; i++) {
-      console.log("marker " + markers[i])
       markers[i].setMap(theMap);
       markers[i].setVisible(true);
     }
@@ -84,14 +79,11 @@ export default class extends Controller {
 
 // Removes the markers from the map, but keeps them in the array.
   hideMarkers() {
-    // console.log("hide markers")
     this.setMapOnAll(null);
   }
 
 // Shows any markers currently in the array.
   showMarkers() {
-    // console.log("show markers")
-    // console.log("markers " + this.markers.length)
     this.setMapOnAll(map);
   }
 
