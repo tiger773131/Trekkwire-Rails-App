@@ -57,6 +57,7 @@ class Account < ApplicationRecord
   validates :domain, exclusion: {in: RESERVED_DOMAINS, message: :reserved}, uniqueness: {allow_blank: true}
   validates :subdomain, exclusion: {in: RESERVED_SUBDOMAINS, message: :reserved}, format: {with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\-_]*[a-zA-Z0-9]+\Z/, message: :format, allow_blank: true}, uniqueness: {allow_blank: true}
   accepts_nested_attributes_for :operating_location, allow_destroy: true
+
   def find_or_build_billing_address
     billing_address || build_billing_address
   end
@@ -84,6 +85,14 @@ class Account < ApplicationRecord
   # * Has more than one user in it
   def can_transfer?(user)
     impersonal? && owner?(user) && users.size >= 2
+  end
+
+  def latitude
+    operating_location&.latitude
+  end
+
+  def longitude
+    operating_location&.longitude
   end
 
   # Transfers ownership of the account to a user
