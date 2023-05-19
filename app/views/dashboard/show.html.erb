@@ -1,27 +1,22 @@
 <div class="container mx-auto p-4">
   <div class="my-8">
-
     <% if current_account.customer_type == "traveler" %>
       <h1><%= t(".title_traveler") %></h1>
       <div data-controller="user-map" data-action="google-maps-callback@window->user-map.initializeMap">
-        <div data-user-map-target="map"  class="row-span-1 flex min-h-[60vh] min-w-fit"></div>
-        <table class="w-full">
-          <tbody>
-            <% @guides.sorted.each do |guide| %>
+        <div data-user-map-target="map" class="row-span-1 flex min-h-[60vh] min-w-fit"></div>
+          <table class="w-full">
+            <tbody>
               <tr class="border-t border-gray-100 group">
                 <td class="p-10">
-                  <%= link_to guide, class: "flex items-center" do %>
-                    <%= account_avatar guide, class: "rounded-full h-8 w-8 mr-3" %>
-                    <%= tag.span guide.name, class: "text-gray-900 font-semibold text-sm no-underline hover:text-primary" %>
-                    <%= badge "Personal", class: "bg-primary-500 text-xs inline-block text-white font-medium ml-3" if guide.personal_account_for?(current_user) %>
-                    <%= badge "Guide", class: "bg-orange-400 text-xs inline-block text-orange-800 font-bold leading-normal ml-3" if guide.customer_type == "guide" %>
-                    <%= badge "Traveler", class: "bg-red-100 text-red-800 text-xs font-medium ml-3" if guide.customer_type == "traveler" %>
+                  <%= turbo_frame_tag "guides",src: page_list_path, data: {action: "update-guide-list@window->user-map#reload"} do %>
+                    <div>
+                      Placeholder content
+                    </div>
                   <% end %>
                 </td>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
       </div>
 
 
