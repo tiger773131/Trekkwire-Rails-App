@@ -92,12 +92,12 @@ export default class extends Controller {
   }
 
   testOne() {
-    console.log("test one")
+    // console.log("test one")
   }
 
   reload() {
-    console.log("reload")
-    Turbo.visit("/page_list", { action: "reload", target: "guides",
-    });
+    // console.log("reload")
+    // Turbo.visit("/page_list", { action: "reload", target: "guides",
+    // });
   }
 }
