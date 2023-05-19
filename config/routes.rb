@@ -154,6 +154,7 @@ Rails.application.routes.draw do
     # get "/dashboard", to: "dashboard#show", as: :user_root
     resources :account_ratings
     get "/map_pins", to: "dashboard#map_pins"
+    get "/page_list", to: "dashboard#page_list"
   end
 
   # Public marketing homepage

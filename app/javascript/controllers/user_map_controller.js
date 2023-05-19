@@ -4,6 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 let map;
 let markers = [];
 let marker;
+import { Turbo } from "@hotwired/turbo-rails"
 
 export default class extends Controller {
   static targets = ["map"]
@@ -23,18 +24,18 @@ export default class extends Controller {
   async initializeMap() {
     //@ts-ignore
     const {Map} = await google.maps.importLibrary("maps");
-    const {Marker} = await google.maps.importLibrary("marker");
     map = new Map(this.mapTarget, {
       center: {lat: 40.7328, lng: -73.9991},
-      zoom: 14,
-    });
-    // listens on drag end event
-    map.addListener("drag", () => {
-      this.markers = [];
-      this.hideMarkers();
+      zoom: 8,
     });
 
-    map.addListener("dragend", () => {
+    // listens on drag end event
+    map.addListener("drag", () => {
+      this.hideMarkers();
+      this.markers = [];
+    });
+
+    map.addListener("idle", () => {
       const bounds = map.getBounds();
 
       // Extract the necessary information from the bounds object
@@ -48,13 +49,14 @@ export default class extends Controller {
         southWestLng: southWest.lng()
       };
       this.fetchAccounts(mapBounds)
+      const event = new Event("update-list", { bubbles: true, cancelable: true });
+      window.dispatchEvent(event)
+
     });
   }
 
   // get new list of accounts from the server within the map bounds
   async fetchAccounts(bounds) {
-    markers = [];
-    this.hideMarkers();
     fetch(`/map_pins?bounds=${encodeURIComponent(JSON.stringify(bounds))}`)
       .then((response) => response.json())
       .then((data) => {
@@ -68,6 +70,8 @@ export default class extends Controller {
           markers.push(marker)
         });
         this.showMarkers();
+        const event = new Event("update-guide-list", { bubbles: true, cancelable: true });
+        window.dispatchEvent(event)
       });
   }
   setMapOnAll(theMap) {
@@ -87,16 +91,13 @@ export default class extends Controller {
     this.setMapOnAll(map);
   }
 
-  addMarker() {
-    if (marker) {
-      marker.setMap(null);
-    }
+  testOne() {
+    console.log("test one")
+  }
 
-    // Create a new marker at the center of the map
-    marker = new google.maps.Marker({
-      position: map.getCenter(),
-      map: map
+  reload() {
+    console.log("reload")
+    Turbo.visit("/page_list", { action: "reload", target: "guides",
     });
-
   }
 }
