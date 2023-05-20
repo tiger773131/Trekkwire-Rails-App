@@ -157,6 +157,7 @@ Rails.application.routes.draw do
     get "/page_list", to: "dashboard#page_list"
     resources :tours
     resources :schedules
+    resources :scheduled_tours
   end
 
   # Public marketing homepage

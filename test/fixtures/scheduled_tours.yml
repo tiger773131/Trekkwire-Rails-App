@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scheduled_date: 2023-05-20
+  scheduled_time: 2023-05-20 16:37:33
+  location: MyString
+  tour: one
+  account_user: one
+
+two:
+  scheduled_date: 2023-05-20
+  scheduled_time: 2023-05-20 16:37:33
+  location: MyString
+  tour: two
+  account_user: two

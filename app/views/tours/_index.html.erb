@@ -1,7 +1,9 @@
 <div id="<%= dom_id(tour, :index) %>">
   <%= turbo_stream_from tour %>
   <%= render tour %>
-  <%= link_to "View", tour, class: "btn btn-white" %>
+  <% if current_account.customer_type == "traveler" %>
+    <%= link_to "Book A Tour", tour, class: "btn btn-white" %>
+  <% end %>
   <%= link_to "Cancel", page_list_path, class: "btn btn-white" %>
 </div>
 

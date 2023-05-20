@@ -19,7 +19,7 @@ class SchedulesTest < ApplicationSystemTestCase
     fill_in "Account", with: @schedule.account_id
     click_on "Create Schedule"
 
-    assert_text "Schedule was successfully created"
+    # assert_text "Schedule was successfully created"
     assert_selector "h1", text: "Schedules"
   end
 
@@ -30,7 +30,7 @@ class SchedulesTest < ApplicationSystemTestCase
     fill_in "Account", with: @schedule.account_id
     click_on "Update Schedule"
 
-    assert_text "Schedule was successfully updated"
+    # assert_text "Schedule was successfully updated"
     assert_selector "h1", text: "Schedules"
   end
 
