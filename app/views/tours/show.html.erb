@@ -8,8 +8,10 @@
         <span class="text-gray-400 font-light mx-2">\</span>
         Tour #<%= @tour.id %>
       </h1>
-      <%= link_to t("edit"), edit_tour_path(@tour), class: "btn btn-white" %>
-      <%= link_to "Back", page_list_path, class: "btn btn-white" %>
+      <div>
+        <%= link_to t("edit"), edit_tour_path(@tour), class: "btn btn-white" %>
+        <%= link_to "Cancel", tours_path, class: "btn btn-white" %>
+      </div>
     </div>
 
     <div class="p-8 bg-white rounded shadow">
