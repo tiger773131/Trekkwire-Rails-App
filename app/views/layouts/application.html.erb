@@ -35,6 +35,7 @@
   <body class="h-full font-sans antialiased font-normal leading-normal bg-gray-50">
     <div class="main flex flex-col">
       <header>
+        <%= turbo_stream.prepend :flash, partial: "shared/flash" %>
         <turbo-frame id="flash">
           <%= render 'shared/flash' %>
         </turbo-frame>
