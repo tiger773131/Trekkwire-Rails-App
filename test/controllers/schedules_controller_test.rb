@@ -3,6 +3,8 @@ require "test_helper"
 class SchedulesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @schedule = schedules(:one)
+    @user_two = users(:two)
+    sign_in @user_two
   end
 
   test "should get index" do
