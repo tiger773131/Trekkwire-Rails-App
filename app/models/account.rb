@@ -41,6 +41,7 @@ class Account < ApplicationRecord
   has_one :shipping_address, -> { where(address_type: :shipping) }, class_name: "Address", as: :addressable
   has_one :operating_location, dependent: :destroy
   has_one :account_rating_detail, dependent: :destroy
+  has_one :schedule, dependent: :destroy
 
   scope :personal, -> { where(personal: true) }
   scope :impersonal, -> { where(personal: false) }
