@@ -7,7 +7,13 @@ class ToursController < ApplicationController
 
   # GET /tours
   def index
-    @pagy, @tours = pagy(current_account.tours.sort_by_params(params[:sort], sort_direction))
+    @owned_account = false
+    if params[:account_id].present?
+      @pagy, @tours = pagy(Tour.where(account_id: params[:account_id]).sort_by_params(params[:sort], sort_direction))
+    else
+      @owned_account = true
+      @pagy, @tours = pagy(Tour.sort_by_params(params[:sort], sort_direction))
+    end
 
     # Uncomment to authorize with Pundit
     # authorize @tours

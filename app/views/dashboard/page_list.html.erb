@@ -4,7 +4,7 @@
       <% @guides.sorted.each do |guide| %>
         <tr class="border-t border-gray-100 group">
           <td class="p-10">
-            <%= link_to guide, class: "flex items-center" do %>
+            <%= link_to tours_path(account_id: guide.id), class: "flex items-center" do %>
             <%= account_avatar guide, class: "rounded-full h-8 w-8 mr-3" %>
             <%= tag.span guide.name, class: "text-gray-900 font-semibold text-sm no-underline hover:text-primary" %>
             <%= badge "Personal", class: "bg-primary-500 text-xs inline-block text-white font-medium ml-3" if guide.personal_account_for?(current_user) %>
