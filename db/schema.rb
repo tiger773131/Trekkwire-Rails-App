@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_20_122205) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_20_122719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -319,6 +319,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_122205) do
     t.boolean "charge_per_unit"
   end
 
+  create_table "schedule_availabilities", force: :cascade do |t|
+    t.bigint "schedule_id", null: false
+    t.date "begin_date"
+    t.date "end_date"
+    t.time "begin_time"
+    t.time "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_schedule_availabilities_on_schedule_id"
+  end
+
   create_table "schedules", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
@@ -380,5 +391,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_122205) do
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
+  add_foreign_key "schedule_availabilities", "schedules"
   add_foreign_key "schedules", "accounts"
 end
