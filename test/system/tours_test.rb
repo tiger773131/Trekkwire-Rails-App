@@ -3,6 +3,8 @@ require "application_system_test_case"
 class ToursTest < ApplicationSystemTestCase
   setup do
     @tour = tours(:one)
+    @user = users(:guide_user)
+    login_as @user, scope: :user
   end
 
   test "visiting the index" do

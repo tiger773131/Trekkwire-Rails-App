@@ -1,6 +1,6 @@
-<%= content_for :title, "Tours" %>
-<%= turbo_stream_from :tours %>
 <turbo-frame id="guides", data-turbo-action="advance">
+  <%= content_for :title, "Tours" %>
+  <%= turbo_stream_from :tours %>
   <div class="container px-4 mx-auto my-8">
     <div class="flex items-center justify-between mb-4">
       <div>

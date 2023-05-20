@@ -3,6 +3,8 @@ require "application_system_test_case"
 class SchedulesTest < ApplicationSystemTestCase
   setup do
     @schedule = schedules(:one)
+    @user = users(:guide_user)
+    login_as @user, scope: :user
   end
 
   test "visiting the index" do

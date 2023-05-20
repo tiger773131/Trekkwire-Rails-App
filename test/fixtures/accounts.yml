@@ -58,3 +58,9 @@ fake_processor:
   name: "Per Seat Account"
   personal: false
   account_users_count: 1
+
+guide:
+  owner: guide_user
+  name: "Guide Account"
+  personal: false
+  customer_type: guide

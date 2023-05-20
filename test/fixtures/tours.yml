@@ -21,9 +21,9 @@
 one:
   title: MyString
   description: MyText
-  account: one
+  account: guide
 
 two:
   title: MyString
   description: MyText
-  account: two
+  account: guide
