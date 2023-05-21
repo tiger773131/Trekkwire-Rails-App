@@ -8,7 +8,7 @@
 #  scheduled_time  :time
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  account_user_id :bigint           not null
+#  account_user_id :bigint
 #  tour_id         :bigint           not null
 #
 # Indexes

@@ -335,7 +335,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_203733) do
     t.time "scheduled_time"
     t.string "location"
     t.bigint "tour_id", null: false
-    t.bigint "account_user_id", null: false
+    t.bigint "account_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_user_id"], name: "index_scheduled_tours_on_account_user_id"

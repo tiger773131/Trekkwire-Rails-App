@@ -5,7 +5,7 @@ class CreateScheduledTours < ActiveRecord::Migration[7.0]
       t.time :scheduled_time
       t.string :location
       t.references :tour, null: false, foreign_key: true
-      t.references :account_user, null: false, foreign_key: true
+      t.references :account_user, foreign_key: true
 
       t.timestamps
     end

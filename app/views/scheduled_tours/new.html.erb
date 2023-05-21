@@ -1,15 +1,16 @@
 <%= content_for :title, t("shared.scaffold.new.title", model: "Scheduled Tour") %>
+<turbo-frame id="guides", data-turbo-action="advance">
+  <div class="container px-4 mx-auto my-8">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="h3">
+        <%= link_to "Scheduled Tours", scheduled_tours_path, class: "text-black" %>
+        <span class="text-gray-400 font-light mx-2">\</span>
+        <%= t("shared.scaffold.new.title", model: "Scheduled Tour") %>
+      </h1>
+    </div>
 
-<div class="container px-4 mx-auto my-8">
-  <div class="flex items-center justify-between mb-4">
-    <h1 class="h3">
-      <%= link_to "Scheduled Tours", scheduled_tours_path, class: "text-black" %>
-      <span class="text-gray-400 font-light mx-2">\</span>
-      <%= t("shared.scaffold.new.title", model: "Scheduled Tour") %>
-    </h1>
+    <div class="p-8 bg-white rounded shadow">
+      <%= render "form", scheduled_tour: @scheduled_tour %>
+    </div>
   </div>
-
-  <div class="p-8 bg-white rounded shadow">
-    <%= render "form", scheduled_tour: @scheduled_tour %>
-  </div>
-</div>
+</turbo-frame>

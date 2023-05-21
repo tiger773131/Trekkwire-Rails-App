@@ -16,15 +16,7 @@
     <%= form.text_field :location, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :tour_id %>
-    <%= form.text_field :tour_id, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :account_user_id %>
-    <%= form.text_field :account_user_id, class: "form-control" %>
-  </div>
+  <%= hidden_field_tag :tour_id, params[:tour_id] %>
 
   <div>
     <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>

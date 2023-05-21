@@ -8,7 +8,7 @@
 #  scheduled_time  :time
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  account_user_id :bigint           not null
+#  account_user_id :bigint
 #  tour_id         :bigint           not null
 #
 # Indexes
@@ -23,7 +23,8 @@
 #
 class ScheduledTour < ApplicationRecord
   belongs_to :tour
-  belongs_to :account_user
+  belongs_to :account_user, optional: true
+  validates :scheduled_date, :scheduled_time, :location, :presence => true
   # Broadcast changes in realtime with Hotwire
   after_create_commit -> { broadcast_prepend_later_to :scheduled_tours, partial: "scheduled_tours/index", locals: {scheduled_tour: self} }
   after_update_commit -> { broadcast_replace_later_to self }

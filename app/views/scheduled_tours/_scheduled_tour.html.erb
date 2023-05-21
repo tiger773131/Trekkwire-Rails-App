@@ -12,11 +12,11 @@
     <%= scheduled_tour.location %>
   </div>
   <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Tour</p>
-    <%= scheduled_tour.tour_id %>
+    <p class="text-sm font-medium text-gray-500">What tour are you taking?</p>
+    <%= link_to scheduled_tour.tour.title, scheduled_tour.tour %>
   </div>
   <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Account user</p>
-    <%= scheduled_tour.account_user_id %>
+    <p class="text-sm font-medium text-gray-500">Who will be your personal guide?</p>
+    <%= scheduled_tour.account_user ? scheduled_tour.account_user.name : "Pending assignment" %>
   </div>
 </div>
