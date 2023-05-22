@@ -85,7 +85,9 @@ class ScheduledToursController < ApplicationController
   # Only allow a list of trusted parameters through.
   def scheduled_tour_params
     scheduled_tour = params.require(:scheduled_tour).permit(:scheduled_date, :scheduled_time, :location, :tour_id, :account_user_id)
-    scheduled_tour[:tour_id] = params[:tour_id]
+    unless params[:tour_id].blank?
+      scheduled_tour[:tour_id] = params[:tour_id]
+    end
     scheduled_tour
     # Uncomment to use Pundit permitted attributes
     # params.require(:scheduled_tour).permit(policy(@scheduled_tour).permitted_attributes)

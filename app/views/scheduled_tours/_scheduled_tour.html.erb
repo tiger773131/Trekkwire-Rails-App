@@ -17,6 +17,6 @@
   </div>
   <div class="mb-4">
     <p class="text-sm font-medium text-gray-500">Who will be your personal guide?</p>
-    <%= scheduled_tour.account_user ? scheduled_tour.account_user.name : "Pending assignment" %>
+    <%= scheduled_tour.account_user ? scheduled_tour.account_user.user.name : "Pending assignment" %>
   </div>
 </div>
