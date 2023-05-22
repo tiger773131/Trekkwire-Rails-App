@@ -49,3 +49,9 @@ invited_user:
 fake_processor:
   account: fake_processor
   user: fake_processor
+
+guide_user:
+  account: guide
+  user: guide_user
+  roles:
+    admin: true

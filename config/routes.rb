@@ -155,6 +155,9 @@ Rails.application.routes.draw do
     resources :account_ratings
     get "/map_pins", to: "dashboard#map_pins"
     get "/page_list", to: "dashboard#page_list"
+    resources :tours
+    resources :schedules
+    resources :scheduled_tours
   end
 
   # Public marketing homepage

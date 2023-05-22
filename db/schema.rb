@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_07_030117) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_20_203733) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -319,6 +319,45 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_07_030117) do
     t.boolean "charge_per_unit"
   end
 
+  create_table "schedule_availabilities", force: :cascade do |t|
+    t.bigint "schedule_id", null: false
+    t.date "begin_date"
+    t.date "end_date"
+    t.time "begin_time"
+    t.time "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_schedule_availabilities_on_schedule_id"
+  end
+
+  create_table "scheduled_tours", force: :cascade do |t|
+    t.date "scheduled_date"
+    t.time "scheduled_time"
+    t.string "location"
+    t.bigint "tour_id", null: false
+    t.bigint "account_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_user_id"], name: "index_scheduled_tours_on_account_user_id"
+    t.index ["tour_id"], name: "index_scheduled_tours_on_tour_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_schedules_on_account_id"
+  end
+
+  create_table "tours", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_tours_on_account_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -373,4 +412,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_07_030117) do
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
+  add_foreign_key "schedule_availabilities", "schedules"
+  add_foreign_key "scheduled_tours", "account_users"
+  add_foreign_key "scheduled_tours", "tours"
+  add_foreign_key "schedules", "accounts"
+  add_foreign_key "tours", "accounts"
 end

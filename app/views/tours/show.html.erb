@@ -1,0 +1,21 @@
+<turbo-frame id="guides", data-turbo-action="advance">
+  <%= content_for :title, "Tours ##{@tour.id}" %>
+  <%= turbo_stream_from @tour %>
+  <div class="container px-4 mx-auto my-8">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="h3">
+        <%= link_to "Tours", tours_path, class: "text-black" %>
+        <span class="text-gray-400 font-light mx-2">\</span>
+        Tour #<%= @tour.id %>
+      </h1>
+      <div>
+        <%= link_to t("edit"), edit_tour_path(@tour), class: "btn btn-white" %>
+        <%= link_to "Cancel", tours_path, class: "btn btn-white" %>
+      </div>
+    </div>
+
+    <div class="p-8 bg-white rounded shadow">
+      <%= render @tour %>
+    </div>
+  </div>
+</turbo-frame>

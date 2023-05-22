@@ -8,9 +8,9 @@
             <tbody>
               <tr class="border-t border-gray-100 group">
                 <td class="p-10">
-                  <%= turbo_frame_tag "guides",src: page_list_path, data: {action: "update-guide-list@window->user-map#reload"} do %>
+                  <%= turbo_frame_tag "guides", src: page_list_path , data: {action: "update-guide-list@window->user-map#reload", turbo_action: :advance} do %>
                     <div>
-                      Placeholder content
+                      Loading accounts ...
                     </div>
                   <% end %>
                 </td>
