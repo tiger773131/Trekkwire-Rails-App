@@ -545,6 +545,7 @@ en:
       title: "Notifications"
       empty_placeholder: "Nothing to see here — yet."
     invite_accepted: "%{user} accepted your invitation."
+    scheduled_tour_notification: "%{user} scheduled a tour for %{scheduled_tour}."
     account_transferred: "%{previous_owner} made you owner of the %{account} account."
     empty: "Nothing to see here — yet."
     empty_description: "We'll let you know when you have new notifications."

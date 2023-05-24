@@ -39,7 +39,9 @@ class ScheduledToursController < ApplicationController
 
     respond_to do |format|
       if @scheduled_tour.save
-        format.html { redirect_to @scheduled_tour, notice: "Scheduled tour was successfully created." }
+        ScheduledTourNotification.with(account: @scheduled_tour.tour.account, user: current_user, 
+                                       scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
+        format.html { redirect_to @scheduled_tour, notice: 'Scheduled tour was successfully created.' }
         format.json { render :show, status: :created, location: @scheduled_tour }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +54,7 @@ class ScheduledToursController < ApplicationController
   def update
     respond_to do |format|
       if @scheduled_tour.update(scheduled_tour_params)
-        format.html { redirect_to @scheduled_tour, notice: "Scheduled tour was successfully updated." }
+        format.html { redirect_to @scheduled_tour, notice: 'Scheduled tour was successfully updated.' }
         format.json { render :show, status: :ok, location: @scheduled_tour }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,7 +67,8 @@ class ScheduledToursController < ApplicationController
   def destroy
     @scheduled_tour.destroy
     respond_to do |format|
-      format.html { redirect_to scheduled_tours_url, status: :see_other, notice: "Scheduled tour was successfully destroyed." }
+      format.html {
+ redirect_to scheduled_tours_url, status: :see_other, notice: 'Scheduled tour was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -84,7 +87,8 @@ class ScheduledToursController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def scheduled_tour_params
-    scheduled_tour = params.require(:scheduled_tour).permit(:scheduled_date, :scheduled_time, :location, :tour_id, :account_user_id)
+    scheduled_tour = params.require(:scheduled_tour).permit(:scheduled_date, :scheduled_time, :location, :tour_id, 
+                                                            :account_user_id)
     unless params[:tour_id].blank?
       scheduled_tour[:tour_id] = params[:tour_id]
     end
