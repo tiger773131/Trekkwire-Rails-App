@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_20_203733) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_24_175757) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -338,6 +338,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_203733) do
     t.bigint "account_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "assigned_guide_id"
     t.index ["account_user_id"], name: "index_scheduled_tours_on_account_user_id"
     t.index ["tour_id"], name: "index_scheduled_tours_on_tour_id"
   end
@@ -414,6 +415,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_203733) do
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
   add_foreign_key "schedule_availabilities", "schedules"
   add_foreign_key "scheduled_tours", "account_users"
+  add_foreign_key "scheduled_tours", "account_users", column: "assigned_guide_id"
   add_foreign_key "scheduled_tours", "tours"
   add_foreign_key "schedules", "accounts"
   add_foreign_key "tours", "accounts"

@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <% if @owned_account %>
+      <% if current_account.customer_type == "guide" %>
         <%= link_to t("shared.scaffold.new.title", model: "Tour"), new_tour_path, class: "btn btn-white" %>
       <% end %>
     </div>

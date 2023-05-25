@@ -93,6 +93,9 @@ class ScheduledToursController < ApplicationController
     unless params[:tour_id].blank?
       scheduled_tour[:tour_id] = params[:tour_id]
     end
+    unless params[:account_user_id].blank?
+      scheduled_tour[:account_user_id] = params[:account_user_id]
+    end
     scheduled_tour
     # Uncomment to use Pundit permitted attributes
     # params.require(:scheduled_tour).permit(policy(@scheduled_tour).permitted_attributes)

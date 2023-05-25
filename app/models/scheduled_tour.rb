@@ -2,14 +2,15 @@
 #
 # Table name: scheduled_tours
 #
-#  id              :bigint           not null, primary key
-#  location        :string
-#  scheduled_date  :date
-#  scheduled_time  :time
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  account_user_id :bigint
-#  tour_id         :bigint           not null
+#  id                :bigint           not null, primary key
+#  location          :string
+#  scheduled_date    :date
+#  scheduled_time    :time
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  account_user_id   :bigint
+#  assigned_guide_id :integer
+#  tour_id           :bigint           not null
 #
 # Indexes
 #
@@ -19,11 +20,12 @@
 # Foreign Keys
 #
 #  fk_rails_...  (account_user_id => account_users.id)
+#  fk_rails_...  (assigned_guide_id => account_users.id)
 #  fk_rails_...  (tour_id => tours.id)
 #
 class ScheduledTour < ApplicationRecord
   belongs_to :tour
-  belongs_to :account_user, optional: true
+  belongs_to :account_user
   validates :scheduled_date, :scheduled_time, :location, :presence => true
   # Broadcast changes in realtime with Hotwire
   after_create_commit -> { broadcast_prepend_later_to :scheduled_tours, partial: "scheduled_tours/index", locals: {scheduled_tour: self} }

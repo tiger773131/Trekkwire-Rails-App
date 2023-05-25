@@ -17,6 +17,7 @@
   </div>
 
   <%= hidden_field_tag :tour_id, params[:tour_id] %>
+  <%= hidden_field_tag :account_user_id, current_account_user.id %>
 
   <div>
     <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
