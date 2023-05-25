@@ -88,11 +88,12 @@ class ScheduledToursController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def scheduled_tour_params
-    byebug
     scheduled_tour = params.require(:scheduled_tour).permit(:scheduled_date, :scheduled_time, :location, :tour_id,
       :account_user_id)
     unless params[:tour_id].blank?
       scheduled_tour[:tour_id] = params[:tour_id]
+    end
+    unless params[:account_user_id].blank?
       scheduled_tour[:account_user_id] = params[:account_user_id]
     end
     scheduled_tour
