@@ -25,9 +25,6 @@
               <h1 class="text-base font-semibold leading-6 text-gray-900">Scheduled Tours</h1>
               <p class="mt-2 text-sm text-gray-700">A list of signups for the scheduled tours.</p>
             </div>
-            <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-              <button type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">New Tour</button>
-            </div>
           </div>
           <div class="mt-8 flow-root">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -50,7 +47,7 @@
                       <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= scheduled_tour.scheduled_date %></td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.scheduled_time %></td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.location %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.account_user %></td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.account_user.blank? ? "Unknown user" : link_to(scheduled_tour.account_user.user.name, account_path(scheduled_tour.account_user.account)) %></td>
                       <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                         <%= link_to "show", scheduled_tour_path(scheduled_tour) %>
                       </td>
