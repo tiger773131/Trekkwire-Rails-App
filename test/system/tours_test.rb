@@ -16,7 +16,6 @@ class ToursTest < ApplicationSystemTestCase
     visit tours_url
     click_on "New Tour"
 
-    fill_in "Account", with: @tour.account_id
     fill_in "Description", with: @tour.description
     fill_in "Title", with: @tour.title
     click_on "Create Tour"
@@ -29,7 +28,6 @@ class ToursTest < ApplicationSystemTestCase
     visit tour_url(@tour)
     click_on "Edit", match: :first
 
-    fill_in "Account", with: @tour.account_id
     fill_in "Description", with: @tour.description
     fill_in "Title", with: @tour.title
     click_on "Update Tour"
