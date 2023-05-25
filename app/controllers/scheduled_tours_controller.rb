@@ -7,7 +7,7 @@ class ScheduledToursController < ApplicationController
 
   # GET /scheduled_tours
   def index
-    @pagy, @scheduled_tours = pagy(ScheduledTour.sort_by_params(params[:sort], sort_direction))
+    @pagy, @scheduled_tours = pagy(ScheduledTour.where(account_user_id: current_account_user.id).sort_by_params(params[:sort], sort_direction))
 
     # Uncomment to authorize with Pundit
     # authorize @scheduled_tours

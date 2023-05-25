@@ -1,0 +1,9 @@
+<div id="<%= dom_id scheduled_tour %>">
+  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= scheduled_tour.scheduled_date %></td>
+  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.scheduled_time %></td>
+  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.location %></td>
+  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.account_user.blank? ? "Unknown user" : link_to(scheduled_tour.account_user.user.name, account_path(scheduled_tour.account_user.account)) %></td>
+  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+    <%= link_to "show", scheduled_tour_path(scheduled_tour) %>
+  </td>
+</div>

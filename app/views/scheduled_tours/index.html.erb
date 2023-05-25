@@ -1,39 +1,43 @@
 <%= content_for :title, "Scheduled Tours" %>
 <%= turbo_stream_from :scheduled_tours %>
 
-<div class="container px-4 mx-auto my-8">
-  <div class="flex items-center justify-between mb-4">
-    <div>
-      <h1 class="h3">Scheduled Tours</h1>
-
-      <div class="text-sm font-medium">
-        <span class="text-gray-500">Sort by:</span>
-        <%= sortable @scheduled_tours, :scheduled_date, "Scheduled date", class: "text-gray-700 mr-1" %>
-        <%= sortable @scheduled_tours, :scheduled_time, "Scheduled time", class: "text-gray-700 mr-1" %>
-        <%= sortable @scheduled_tours, :location, "Location", class: "text-gray-700 mr-1" %>
-        <%= sortable @scheduled_tours, :tour_id, "Tour", class: "text-gray-700 mr-1" %>
-        <%= sortable @scheduled_tours, :account_user_id, "Account user", class: "text-gray-700 mr-1" %>
+<div class="p-8 bg-white rounded shadow">
+  <div class="px-4 sm:px-6 lg:px-8">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-base font-semibold leading-6 text-gray-900">Scheduled Tours</h1>
+        <p class="mt-2 text-sm text-gray-700">A list of the tours you signed up for.</p>
       </div>
     </div>
+    <div class="mt-8 flow-root">
+      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead>
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm sm:pl-0"><%= sortable @scheduled_tours, :scheduled_date, "Scheduled date", class:"font-semibold text-gray-900"%></th>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900"><%= sortable @scheduled_tours, :location, "Location", class: "font-semibold text-gray-900" %></th>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900"><%= sortable @scheduled_tours, :tour_id, "Tour", class: "font-semibold text-gray-900" %></th>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900"><%= sortable @scheduled_tours, :account_user_id, "Account user", class: "font-semibold text-gray-900" %></th>
+              <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                <span class="sr-only">Show</span>
+              </th>
+            </tr>
+            </thead>
 
-    <%= link_to t("shared.scaffold.new.title", model: "Scheduled Tour"), new_scheduled_tour_path, class: "btn btn-white" %>
+            <tbody class="divide-y divide-gray-200">
+              <%= tag.div id: ("scheduled_tours" if first_page?) do %>
+                <%= render partial: "scheduled_tours/index", collection: @scheduled_tours, as: :scheduled_tour, cached: true %>
+              <% end %>
+            </tbody>
+          </table>
+            <% if @pagy.pages > 1 %>
+                <div class="my-6 text-center">
+                  <%== pagy_nav(@pagy) %>
+                </div>
+              <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <%= tag.div id: ("scheduled_tours" if first_page?), class: "bg-white rounded-md shadow p-6 space-y-8" do %>
-    <%= render partial: "scheduled_tours/index", collection: @scheduled_tours, as: :scheduled_tour, cached: true %>
-
-    <div class="hidden only:flex flex-col items-center justify-between lg:flex-row">
-      <%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
-      <div class="flex-1 text-center">
-        <p class="mb-4 h3">Create your first Scheduled Tour</p>
-        <%= link_to t("shared.scaffold.new.title", model: "Scheduled Tour"), new_scheduled_tour_path, class: "btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
-
-  <% if @pagy.pages > 1 %>
-    <div class="my-6 text-center">
-      <%== pagy_nav(@pagy) %>
-    </div>
-  <% end %>
 </div>

@@ -1,6 +1,7 @@
 <div id="<%= dom_id(scheduled_tour, :index) %>">
   <%= turbo_stream_from scheduled_tour %>
-  <%= render scheduled_tour %>
-  <%= link_to "View", scheduled_tour, class: "btn btn-white" %>
+  <tr>
+    <%= render partial: "scheduled_tours/scheduled_tour_row", locals: {scheduled_tour: scheduled_tour} %>
+  </tr>
 </div>
 
