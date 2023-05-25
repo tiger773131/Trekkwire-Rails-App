@@ -21,7 +21,7 @@
     <%= tag.div id: ("tours" if first_page?), class: "bg-white rounded-md shadow p-6 space-y-8" do %>
       <%= render partial: "tours/index", collection: @tours, as: :tour, cached: true %>
 
-      <% if @owned_account == true %>
+      <% if @owned_account == true && current_account.customer_type == "guide" %>
         <div class="hidden only:flex flex-col items-center justify-between lg:flex-row">
           <%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
           <div class="flex-1 text-center">

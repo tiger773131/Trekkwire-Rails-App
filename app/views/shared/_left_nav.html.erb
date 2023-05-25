@@ -1,1 +1,6 @@
 <%# Place any links for the LEFT side of the nav bar here. Be sure to add class: "nav-link" to each item for proper spacing. %>
+<% if user_signed_in? %>
+  <% if current_account.customer_type == "traveler" %>
+    <%= link_to "My Trips", scheduled_tours_path, class: "border-indigo-500 px-1 pt-4 text-sm font-medium text-gray-900 nav-link" %>
+  <% end %>
+<% end %>

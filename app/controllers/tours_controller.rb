@@ -7,7 +7,13 @@ class ToursController < ApplicationController
 
   # GET /tours
   def index
-    @pagy, @tours = pagy(Tour.where(account_id: current_account.id).sort_by_params(params[:sort], sort_direction))
+    @owned_account = false
+    if params[:account_id].present?
+      @pagy, @tours = pagy(Tour.where(account_id: params[:account_id]).sort_by_params(params[:sort], sort_direction))
+    else
+      @owned_account = true
+      @pagy, @tours = pagy(current_account.tours.sort_by_params(params[:sort], sort_direction))
+    end
 
     # Uncomment to authorize with Pundit
     # authorize @tours
@@ -83,9 +89,7 @@ class ToursController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def tour_params
-    tour = params.require(:tour).permit(:title, :description)
-    tour[:account_id] = current_account.id
-    tour
+    params.require(:tour).permit(:title, :description, :account_id)
 
     # Uncomment to use Pundit permitted attributes
     # params.require(:tour).permit(policy(@tour).permitted_attributes)
