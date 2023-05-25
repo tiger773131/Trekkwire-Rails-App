@@ -13,8 +13,7 @@ class ScheduledToursTest < ApplicationSystemTestCase
   end
 
   test "creating a Scheduled tour" do
-    visit scheduled_tours_url
-    click_on "New Scheduled Tour"
+    visit new_scheduled_tour_url
 
     fill_in "Scheduled date", with: @scheduled_tour.scheduled_date
     fill_in "Scheduled time", with: @scheduled_tour.scheduled_time
