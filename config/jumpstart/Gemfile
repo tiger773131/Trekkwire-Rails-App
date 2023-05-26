@@ -1,3 +1,8 @@
+gem "omniauth-facebook", github: "excid3/omniauth-facebook"
+gem "omniauth-google-oauth2"
+gem "stripe"
+gem "sidekiq"
+
 group :development do
-  gem "solargraph-rails", "~> 1.1.0"
+  gem "solargraph-rails", "~> 0.2.0.pre"
 end

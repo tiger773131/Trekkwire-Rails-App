@@ -5,11 +5,16 @@ business_address: 286 Forbes Ave Tonawanda, NY 14150
 domain: trekkwire.com
 default_from_email: Trekkwire <support@trekkwire.com>
 support_email: jdpahl122@gmail.com
-background_job_processor: async
+background_job_processor: sidekiq
 email_provider: sendgrid
 personal_accounts: true
 solargraph: true
 register_with_account: true
 apns: false
 fcm: false
-collect_billing_address: false
+collect_billing_address: true
+omniauth_providers:
+- facebook
+- google-oauth2
+payment_processors:
+- stripe
