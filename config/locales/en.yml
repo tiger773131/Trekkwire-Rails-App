@@ -283,6 +283,7 @@ en:
     right_nav:
       pricing: "Pricing"
       announcements: "What's New"
+      MyTrips: "My Trips"
     scaffold:
       edit:
         title: "Edit %{model}"
