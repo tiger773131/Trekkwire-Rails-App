@@ -23,7 +23,7 @@
     <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
 
     <% if form.object.new_record? %>
-      <%= link_to t("cancel"), scheduled_tours_path, class: "btn btn-white" %>
+      <%= link_to t("cancel"), page_list_path, class: "btn btn-white" %>
     <% else %>
       <%= link_to t("cancel"), scheduled_tour_path(@scheduled_tour), class: "btn btn-white" %>
     <% end %>
