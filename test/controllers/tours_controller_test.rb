@@ -19,7 +19,7 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tour" do
     assert_difference("Tour.count") do
-      post tours_url, params: {tour: {account_id: @tour.account_id, description: @tour.description, title: @tour.title}}
+      post tours_url, params: {tour: {account_id: @tour.account_id, description: @tour.description, title: @tour.title, price: @tour.price}}
     end
 
     assert_redirected_to tour_url(Tour.last)

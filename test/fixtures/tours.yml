@@ -23,8 +23,10 @@ one:
   title: MyString
   description: MyText
   account: guide
+  price: 100.00
 
 two:
   title: MyString
   description: MyText
   account: guide
+  price: 100.00

@@ -4,6 +4,7 @@ class ScheduledToursControllerTest < ActionDispatch::IntegrationTest
   setup do
     @scheduled_tour = scheduled_tours(:one)
     @user_two = users(:two)
+    @tour = tours(:one)
     sign_in @user_two
   end
 
@@ -13,8 +14,13 @@ class ScheduledToursControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_scheduled_tour_url
+    get new_scheduled_tour_url + "?tour_id=" + @tour.id.to_s
     assert_response :success
+  end
+
+  test "should redirect new if no params passed" do
+    get new_scheduled_tour_url
+    assert_redirected_to root_url
   end
 
   test "should create scheduled_tour" do

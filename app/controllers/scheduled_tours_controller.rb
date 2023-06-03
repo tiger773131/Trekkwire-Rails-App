@@ -19,9 +19,14 @@ class ScheduledToursController < ApplicationController
 
   # GET /scheduled_tours/new
   def new
-    @tour = Tour.find_by_id(params[:tour_id])
-    @scheduled_tour = ScheduledTour.new
-
+    if params[:tour_id]
+      @tour = Tour.find_by_id(params[:tour_id])
+      @scheduled_tour = ScheduledTour.new
+      @scheduled_tour.tour = @tour
+    else
+      redirect_to root_path
+      flash[:notice] = "You must select a tour to schedule a tour."
+    end
     # Uncomment to authorize with Pundit
     # authorize @scheduled_tour
   end
