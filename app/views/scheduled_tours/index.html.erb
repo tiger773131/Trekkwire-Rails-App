@@ -16,6 +16,7 @@
             <thead>
             <tr>
               <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm sm:pl-0"><%= sortable @scheduled_tours, :scheduled_date, "Scheduled date", class:"font-semibold text-gray-900"%></th>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm sm:pl-0"><%= sortable @scheduled_tours, :scheduled_time, "Scheduled time", class:"font-semibold text-gray-900"%></th>
               <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900"><%= sortable @scheduled_tours, :location, "Location", class: "font-semibold text-gray-900" %></th>
               <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900"><%= sortable @scheduled_tours, :tour_id, "Tour", class: "font-semibold text-gray-900" %></th>
               <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900"><%= sortable @scheduled_tours, :account_user_id, "Account user", class: "font-semibold text-gray-900" %></th>

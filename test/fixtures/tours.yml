@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text
+#  price       :decimal(8, 2)
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -22,8 +23,10 @@ one:
   title: MyString
   description: MyText
   account: guide
+  price: 100.00
 
 two:
   title: MyString
   description: MyText
   account: guide
+  price: 100.00

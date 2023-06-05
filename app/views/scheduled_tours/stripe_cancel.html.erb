@@ -1,0 +1,20 @@
+<%= content_for :title, "Scheduled Tours ##{@scheduled_tour.id}" %>
+<%= turbo_stream_from @scheduled_tour %>
+
+<turbo-frame id="guides", data-turbo-action="advance">
+
+  <div class="container px-4 mx-auto my-8">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="h3">
+        <%= link_to "Scheduled Tours", scheduled_tours_path, class: "text-black" %>
+        <span class="text-gray-400 font-light mx-2">\</span>
+        <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">PAYMENT FAILED ... </span>
+      </h1>
+      <%= link_to t("edit"), edit_scheduled_tour_path(@scheduled_tour), class: "btn btn-white" %>
+    </div>
+
+    <div class="p-8 bg-white rounded shadow">
+      <%= render @scheduled_tour %>
+    </div>
+  </div>
+</turbo-frame>

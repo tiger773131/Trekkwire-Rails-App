@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text
+#  price       :decimal(8, 2)
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -24,4 +25,5 @@ class Tour < ApplicationRecord
   after_create_commit -> { broadcast_prepend_later_to :tours, partial: "tours/index", locals: {tour: self} }
   after_update_commit -> { broadcast_replace_later_to self }
   after_destroy_commit -> { broadcast_remove_to :tours, target: dom_id(self, :index) }
+  validates :price, :title, :description, :presence => true
 end

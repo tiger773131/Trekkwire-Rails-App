@@ -4,4 +4,3 @@ js: yarn build --reload
 
 # docker: docker-compose up
 stripe: stripe listen --forward-to localhost:3000/webhooks/stripe
-worker: bundle exec sidekiq
