@@ -45,8 +45,27 @@ class ScheduledToursController < ApplicationController
     respond_to do |format|
       if @scheduled_tour.save
         ScheduledTourNotification.with(account: @scheduled_tour.tour.account, user: current_user,
-          scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
-        format.html { redirect_to @scheduled_tour, notice: "Scheduled tour was successfully created." }
+                                       scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
+        format.html do
+          session = Stripe::Checkout::Session.create({
+                                                       payment_method_types: ['card'],
+                                                       line_items: [{
+                                                         price_data: {
+                                                           currency: 'usd',
+                                                           product_data: {
+                                                             name: 'Product Name',
+                                                             images: ['https://example.com/product-image.jpg']
+                                                           },
+                                                           unit_amount: 2000
+                                                         },
+                                                         quantity: 1
+                                                       }],
+                                                       mode: 'payment',
+                                                       success_url:  stripe_success_url + '?scheduled_tour_id=' + @scheduled_tour.id.to_s,
+                                                       cancel_url: 'http://localhost:3000/cancel.html'
+                                                     })
+          redirect_to session.url, allow_other_host: true, notice: "Scheduled tour was successfully created."
+        end
         format.json { render :show, status: :created, location: @scheduled_tour }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -72,11 +91,20 @@ class ScheduledToursController < ApplicationController
   def destroy
     @scheduled_tour.destroy
     respond_to do |format|
-      format.html {
+      format.html do
         redirect_to scheduled_tours_url, status: :see_other, notice: "Scheduled tour was successfully destroyed."
-      }
+      end
       format.json { head :no_content }
     end
+  end
+
+  def stripe_success
+    @scheduled_tour = ScheduledTour.find(params[:scheduled_tour_id])
+    @scheduled_tour.update(paid: true)
+  end
+
+  def stripe_cancel
+
   end
 
   private
@@ -105,4 +133,5 @@ class ScheduledToursController < ApplicationController
     # Uncomment to use Pundit permitted attributes
     # params.require(:scheduled_tour).permit(policy(@scheduled_tour).permitted_attributes)
   end
+
 end

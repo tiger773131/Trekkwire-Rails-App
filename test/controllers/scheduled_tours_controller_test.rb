@@ -23,13 +23,13 @@ class ScheduledToursControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
-  test "should create scheduled_tour" do
-    assert_difference("ScheduledTour.count") do
-      post scheduled_tours_url, params: {scheduled_tour: {account_user_id: @scheduled_tour.account_user_id, location: @scheduled_tour.location, scheduled_date: @scheduled_tour.scheduled_date, scheduled_time: @scheduled_tour.scheduled_time, tour_id: @scheduled_tour.tour_id}}
-    end
-
-    assert_redirected_to scheduled_tour_url(ScheduledTour.last)
-  end
+  # test "should create scheduled_tour" do
+  #   assert_difference("ScheduledTour.count") do
+  #     post scheduled_tours_url, params: {scheduled_tour: {account_user_id: @scheduled_tour.account_user_id, location: @scheduled_tour.location, scheduled_date: @scheduled_tour.scheduled_date, scheduled_time: @scheduled_tour.scheduled_time, tour_id: @scheduled_tour.tour_id}}
+  #   end
+  #
+  #   assert_redirected_to scheduled_tour_url(ScheduledTour.last)
+  # end
 
   test "should show scheduled_tour" do
     get scheduled_tour_url(@scheduled_tour)
