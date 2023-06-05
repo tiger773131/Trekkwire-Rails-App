@@ -62,7 +62,7 @@ class ScheduledToursController < ApplicationController
             }],
             mode: "payment",
             success_url: success_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
-            cancel_url: "http://localhost:3000/cancel.html"
+            cancel_url:  cancel_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s
           })
           redirect_to session.url, allow_other_host: true, notice: "Scheduled tour was successfully created."
         end
@@ -104,6 +104,8 @@ class ScheduledToursController < ApplicationController
   end
 
   def stripe_cancel
+    @scheduled_tour = ScheduledTour.find(params[:scheduled_tour_id])
+    @scheduled_tour.update(paid: false)
   end
 
   private

@@ -159,6 +159,7 @@ Rails.application.routes.draw do
     resources :schedules
     resources :scheduled_tours
     get "/success", to: "scheduled_tours#stripe_success"
+    get "/cancel", to: "scheduled_tours#stripe_cancel"
   end
 
   # Public marketing homepage
