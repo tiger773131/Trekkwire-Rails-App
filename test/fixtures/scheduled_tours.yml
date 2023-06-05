@@ -4,6 +4,7 @@
 #
 #  id                :bigint           not null, primary key
 #  location          :string
+#  paid              :boolean
 #  scheduled_date    :date
 #  scheduled_time    :time
 #  created_at        :datetime         not null
