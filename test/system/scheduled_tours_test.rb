@@ -14,7 +14,6 @@ class ScheduledToursTest < ApplicationSystemTestCase
 
   # test "creating a Scheduled tour" do
   #   visit new_scheduled_tour_url
-  #   byebug
   #   fill_in "Scheduled date", with: @scheduled_tour.scheduled_date
   #   fill_in "Scheduled time", with: @scheduled_tour.scheduled_time
   #   fill_in "Location", with: @scheduled_tour.location
