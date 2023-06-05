@@ -61,7 +61,7 @@ class ScheduledToursController < ApplicationController
               quantity: 1
             }],
             mode: "payment",
-            success_url: stripe_success_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
+            success_url: success_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
             cancel_url: "http://localhost:3000/cancel.html"
           })
           redirect_to session.url, allow_other_host: true, notice: "Scheduled tour was successfully created."
