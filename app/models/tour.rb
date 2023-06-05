@@ -26,5 +26,4 @@ class Tour < ApplicationRecord
   after_update_commit -> { broadcast_replace_later_to self }
   after_destroy_commit -> { broadcast_remove_to :tours, target: dom_id(self, :index) }
   validates :price, :title, :description, :presence => true
-
 end

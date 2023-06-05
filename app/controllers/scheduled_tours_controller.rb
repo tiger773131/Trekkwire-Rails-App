@@ -45,25 +45,25 @@ class ScheduledToursController < ApplicationController
     respond_to do |format|
       if @scheduled_tour.save
         ScheduledTourNotification.with(account: @scheduled_tour.tour.account, user: current_user,
-                                       scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
+          scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
         format.html do
           session = Stripe::Checkout::Session.create({
-                                                       payment_method_types: ['card'],
-                                                       line_items: [{
-                                                         price_data: {
-                                                           currency: 'usd',
-                                                           product_data: {
-                                                             name: 'Product Name',
-                                                             images: ['https://example.com/product-image.jpg']
-                                                           },
-                                                           unit_amount: 2000
-                                                         },
-                                                         quantity: 1
-                                                       }],
-                                                       mode: 'payment',
-                                                       success_url:  stripe_success_url + '?scheduled_tour_id=' + @scheduled_tour.id.to_s,
-                                                       cancel_url: 'http://localhost:3000/cancel.html'
-                                                     })
+            payment_method_types: ["card"],
+            line_items: [{
+              price_data: {
+                currency: "usd",
+                product_data: {
+                  name: "Product Name",
+                  images: ["https://example.com/product-image.jpg"]
+                },
+                unit_amount: 2000
+              },
+              quantity: 1
+            }],
+            mode: "payment",
+            success_url: stripe_success_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
+            cancel_url: "http://localhost:3000/cancel.html"
+          })
           redirect_to session.url, allow_other_host: true, notice: "Scheduled tour was successfully created."
         end
         format.json { render :show, status: :created, location: @scheduled_tour }
@@ -104,7 +104,6 @@ class ScheduledToursController < ApplicationController
   end
 
   def stripe_cancel
-
   end
 
   private
@@ -133,5 +132,4 @@ class ScheduledToursController < ApplicationController
     # Uncomment to use Pundit permitted attributes
     # params.require(:scheduled_tour).permit(policy(@scheduled_tour).permitted_attributes)
   end
-
 end
