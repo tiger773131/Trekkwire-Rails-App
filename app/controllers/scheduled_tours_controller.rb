@@ -63,7 +63,7 @@ class ScheduledToursController < ApplicationController
             mode: "payment",
             success_url: success_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
             cancel_url: cancel_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
-            automatic_tax: { enabled: true },
+            automatic_tax: {enabled: true},
             customer_email: current_user.email
           })
           redirect_to session.url, allow_other_host: true, notice: "Scheduled tour was successfully created."
