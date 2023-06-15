@@ -28,7 +28,6 @@ class SubscriptionsController < ApplicationController
       payment_processor = current_account.add_payment_processor(:stripe)
       if @plan.trial_period_days?
         @client_secret = payment_processor.create_setup_intent.client_secret
-
       else
         args = {
           plan: @plan.id_for_processor(:stripe),
