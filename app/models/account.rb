@@ -51,6 +51,7 @@ class Account < ApplicationRecord
   has_noticed_notifications
   has_one_attached :avatar
   pay_customer stripe_attributes: :stripe_attributes
+  pay_customer default_payment_processor: :stripe
 
   validates :avatar, resizable_image: true
   validates :name, presence: true
