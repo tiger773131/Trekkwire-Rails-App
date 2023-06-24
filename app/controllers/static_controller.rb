@@ -29,6 +29,9 @@ class StaticController < ApplicationController
     @agreement = Rails.application.config.agreements.find { _1.id == :privacy_policy }
   end
 
+  def sign_up_entry
+  end
+
   def add_email_contact
     sg = SendGrid::API.new(api_key: Rails.application.credentials[:sendgrid_contact_list][:api_key])
     list_id = Rails.application.credentials[:sendgrid_contact_list][:list_id]
