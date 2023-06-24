@@ -139,6 +139,7 @@ Rails.application.routes.draw do
     get :terms
     get :privacy
     get :pricing
+    get :sign_up_entry
     post "add_email_contact", to: "add_email_contact"
     post "add_email_guide", to: "add_email_guide"
   end
