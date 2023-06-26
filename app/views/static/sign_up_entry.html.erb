@@ -3,12 +3,12 @@
 </div>
   <div class="flex flex-col mx-auto max-w-3xl leading-7 text-gray-700">
     <figure class="mt-8 w-2/3 mx-auto">
-      <%= link_to new_user_registration_path do %>
+      <%= link_to new_user_registration_path(:user_type => "traveler") do %>
         <%= image_tag "traveler_sign_up.png", class: "w-full object-cover object-center rounded-lg" %>
       <% end %>
     </figure>
     <figure class="mt-8 w-2/3 mx-auto">
-      <%= link_to new_user_registration_path do %>
+      <%= link_to new_user_registration_path(:user_type => "guide") do %>
         <%= image_tag "guide_sign_up.png", class: "w-full object-cover object-center rounded-lg" %>
       <% end %>
     </figure>
