@@ -1,36 +1,43 @@
 <div class="container mx-auto p-4">
   <div class="my-8">
-    <% if current_account.customer_type == "traveler" %>
-      <h1><%= t(".title_traveler") %></h1>
-      <div data-controller="user-map" data-action="google-maps-callback@window->user-map.initializeMap">
-        <div data-user-map-target="map" class="row-span-1 flex min-h-[40vh] min-w-fit"></div>
-          <table class="w-full">
-            <tbody>
-              <tr class="border-t border-gray-100 group">
-                <td class="p-10">
-                  <%= turbo_frame_tag "guides", src: page_list_path , data: {action: "update-guide-list@window->user-map#reload", turbo_action: :advance} do %>
-                    <div>
-                      Loading accounts ...
-                    </div>
-                  <% end %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-      </div>
+    <% if Rails.env.development? || Rails.env.test? %>
+      <% if current_account.customer_type == "traveler" %>
+        <h1><%= t(".title_traveler") %></h1>
+        <div data-controller="user-map" data-action="google-maps-callback@window->user-map.initializeMap">
+          <div data-user-map-target="map" class="row-span-1 flex min-h-[40vh] min-w-fit"></div>
+            <table class="w-full">
+              <tbody>
+                <tr class="border-t border-gray-100 group">
+                  <td class="p-10">
+                    <%= turbo_frame_tag "guides", src: page_list_path , data: {action: "update-guide-list@window->user-map#reload", turbo_action: :advance} do %>
+                      <div>
+                        Loading accounts ...
+                      </div>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
 
 
-      <% if @pagy.pages > 1 %>
-        <div class="my-6 text-center">
-          <%== pagy_nav(@pagy) %>
+        <% if @pagy.pages > 1 %>
+          <div class="my-6 text-center">
+            <%== pagy_nav(@pagy) %>
+          </div>
+        <% end %>
+
+      <% else %>
+        <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900"><%= t(".title_guide") %></h1>
+        <div class="mb-2"><%= "Account: " + current_account.name %></div>
+        <div class="my-20">
+          <%= render partial: 'dashboard/guide_dashboard' %>
         </div>
       <% end %>
 
     <% else %>
-      <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900"><%= t(".title_guide") %></h1>
-      <div class="mb-2"><%= "Account: " + current_account.name %></div>
       <div class="my-20">
-        <%= render partial: 'dashboard/guide_dashboard' %>
+        <%= render partial: 'dashboard/not_available' %>
       </div>
     <% end %>
   </div>
