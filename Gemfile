@@ -38,6 +38,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.12"
+gem 'google-cloud-storage', '~> 1.44'
 
 # Security update
 gem "nokogiri", ">= 1.12.5"
