@@ -8,10 +8,6 @@
     <%= t(".login_html", link: link_to("log in to your account", new_session_path(resource_name), class: "font-semibold")) %>
   </div>
 
-  <p>User Type: <%= params[:user_type] %></p>
-
-  
-
   <% if @account_invitation %>
     <div class="flex items-center justify-center mb-4 text-center">
       <%= image_tag avatar_url_for(@account_invitation.account), class: "h-5 w-5 rounded-full inline-block mr-1" %>
@@ -40,11 +36,7 @@
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, autocomplete: "email", placeholder: true, class: "form-control" %>
-    </div>
-
-
-    <p>User Type: <%= params[:user_type] %></p>
-    
+    </div>    
 
     <div class="form-group">
     <%= f.label :user_type %>

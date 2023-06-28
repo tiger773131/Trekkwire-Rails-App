@@ -29,7 +29,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up(resource_name, resource)
-    #byebug
     sign_in(resource_name, resource)
 
     # If user registered through an invitation, automatically accept it after signing in
