@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # Build and display account fields in registration form if enabled
     elsif Jumpstart.config.register_with_account?
       account = resource.owned_accounts.first
-      account ||= resource.owned_accounts.new(name: resource.name)
+      account ||= resource.owned_accounts.new(name: resource.name, customer_type: params[:user_type])
       account.account_users.new(user: resource, admin: true)
     end
   end

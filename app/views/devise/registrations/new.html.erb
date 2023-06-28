@@ -36,7 +36,9 @@
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, autocomplete: "email", placeholder: true, class: "form-control" %>
-    </div>
+    </div>    
+
+    <%= hidden_field_tag :user_type, params[:user_type] %>
 
     <div class="form-group">
       <%= f.label :password %>
