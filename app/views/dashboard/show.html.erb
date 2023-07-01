@@ -5,7 +5,8 @@
         <h1><%= t(".title_traveler") %></h1>
         <div data-controller="user-map" data-action="google-maps-callback@window->user-map.initializeMap">
           <div data-user-map-target="map" class="row-span-1 flex min-h-[40vh] min-w-fit"></div>
-            <table class="w-full">
+          <a data-user-map-target="link"></a>
+          <table class="w-full">
               <tbody>
                 <tr class="border-t border-gray-100 group">
                   <td class="p-10">

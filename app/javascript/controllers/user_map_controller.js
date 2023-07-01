@@ -3,20 +3,36 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="user-map"
 let map;
 let markers = [];
-let marker;
+let location;
 import { Turbo } from "@hotwired/turbo-rails"
 
 export default class extends Controller {
-  static targets = ["map"]
+  static targets = ["map", "link"]
 
   connect() {
     if (typeof (google) != "undefined") {
+      this.geolocate()
       this.initializeMap()
     }
     else {
       window.addEventListener("google-maps-callback", () => {
+        this.geolocate()
         this.initializeMap()
       })
+    }
+  }
+
+  geolocate() {
+    if (!navigator.geolocation) {
+      this.linkTarget.textContent = "Geolocation is not supported in this browser."
+    } else {
+      location = navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error.bind(this))
+      //let options = {
+      //  enableHighAccuracy: false,
+      //  timeout: 5000,
+      //  maximumAge: 0
+      //}
+      //navigator.geolocation.watchPosition(this.success.bind(this), this.error.bind(this), options)
     }
   }
 
@@ -24,9 +40,13 @@ export default class extends Controller {
   async initializeMap() {
     //@ts-ignore
     const {Map} = await google.maps.importLibrary("maps");
+    let center = {lat: 40.7328, lng: -73.9991}
+    if (location) {
+      center = {lat: location.coords.latitude, lng: location.coords.longitude}
+    }
     map = new Map(this.mapTarget, {
-      center: {lat: 40.7328, lng: -73.9991},
-      zoom: 8,
+      center: center,
+      zoom: 14,
     });
 
     // listens on drag end event
@@ -99,5 +119,14 @@ export default class extends Controller {
     // console.log("reload")
     // Turbo.visit("/page_list", { action: "reload", target: "guides",
     // });
+  }
+
+  success(position) {
+    this.linkTarget.textContent = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`
+    map.panTo({lat: position.coords.latitude, lng: position.coords.longitude})
+  }
+
+  error() {
+    this.linkTarget.textContent = "Unable to get your location. Please enable geolocation in your browser."
   }
 }
