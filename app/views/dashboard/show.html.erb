@@ -2,7 +2,9 @@
   <div class="my-8">
     <% if Rails.env.development? || Rails.env.test? %>
       <% if current_account.customer_type == "traveler" %>
-        <h1><%= t(".title_traveler") %></h1>
+        <div class="border-b border-gray-200 pb-5">
+          <h3 class="text-base font-semibold leading-6 text-gray-900"><%= t(".title_traveler") %></h3>
+        </div>
         <div data-controller="user-map" data-action="google-maps-callback@window->user-map.initializeMap">
           <div data-user-map-target="map" class="row-span-1 flex min-h-[40vh] min-w-fit"></div>
           <a data-user-map-target="link"></a>
