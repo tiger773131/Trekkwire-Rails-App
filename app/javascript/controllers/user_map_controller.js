@@ -7,17 +7,19 @@ let location;
 import { Turbo } from "@hotwired/turbo-rails"
 
 export default class extends Controller {
-  static targets = ["map", "link"]
+  static targets = ["map", "link", "field", "latitude", "longitude"]
 
   connect() {
     if (typeof (google) != "undefined") {
       this.geolocate()
       this.initializeMap()
+      this.initPlaces()
     }
     else {
       window.addEventListener("google-maps-callback", () => {
         this.geolocate()
         this.initializeMap()
+        this.initPlaces()
       })
     }
   }
@@ -47,6 +49,9 @@ export default class extends Controller {
     map = new Map(this.mapTarget, {
       center: center,
       zoom: 14,
+      mapTypeControlOptions: {
+        mapTypeIds: [false],
+      },
     });
 
     // listens on drag end event
@@ -128,5 +133,23 @@ export default class extends Controller {
 
   error() {
     this.linkTarget.textContent = "Unable to get your location. Please enable geolocation in your browser."
+  }
+
+  async initPlaces() {
+    //@ts-ignore
+    //setup the autocomplete
+    const { Autocomplete } = await google.maps.importLibrary("places");
+    this.autocomplete = new Autocomplete(this.fieldTarget, {
+      types: ["geocode"],
+    });
+    this.autocomplete.addListener("place_changed", this.placeChanged.bind(this))
+  }
+  placeChanged() {
+    let place = this.autocomplete.getPlace()
+    if (!place.geometry) {
+      window.alert("No details available for input: '" + place.name + "'")
+      return
+    }
+    map.panTo({lat: place.geometry.location.lat(), lng: place.geometry.location.lng()})
   }
 }
