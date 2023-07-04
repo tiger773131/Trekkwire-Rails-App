@@ -85,7 +85,6 @@ export default class extends Controller {
         guide_document.src = guide_document_src + "?bounds=" + encodeURIComponent(JSON.stringify(mapBounds));
       }
       window.dispatchEvent(event)
-
     });
   }
 
