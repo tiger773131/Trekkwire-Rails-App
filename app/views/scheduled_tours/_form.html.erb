@@ -2,18 +2,18 @@
   <%= render "shared/error_messages", resource: form.object %>
 
   <div class="form-group">
-    <%= form.label :scheduled_date %>
-    <%= form.date_field :scheduled_date, class: "form-control" %>
+    <%= form.label "Scheduled Date" %>
+    <%= form.date_field :scheduled_date, min: Date.today, max: Date.today + 6.months, required: true, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :scheduled_time %>
-    <%= form.time_field :scheduled_time, class: "form-control" %>
+    <%= form.label "Scheduled Time (Tours only available to begin between 9AM - 5PM)" %>
+    <%= form.time_field :scheduled_time, value: "%H:%M", min: '09:00', max: '17:00', required: true, class: "form-control"  %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" data-controller="places-autocomplete">
     <%= form.label :location, "Where can you meet your guide?" %>
-    <%= form.text_field :location, class: "form-control" %>
+    <%= form.search_field :location, class: "form-control", data: { target: "places-autocomplete.field" } %>
   </div>
 
   <div class="form-group">
@@ -25,7 +25,7 @@
   <%= hidden_field_tag :account_user_id, current_account_user.id %>
 
   <div>
-    <%= form.button button_text("Checkout"), class: "btn btn-primary" %>
+    <%= form.button button_text("Checkout"), data: { turbo: false }, class: "btn btn-primary" %>
 
     <% if form.object.new_record? %>
       <%= link_to t("cancel"), page_list_path, class: "btn btn-white" %>
