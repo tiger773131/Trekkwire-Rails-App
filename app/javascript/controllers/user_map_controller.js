@@ -1,12 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="user-map"
+import { Turbo } from "@hotwired/turbo-rails"
+
 let map;
 let markers = [];
 let location;
-let guide_document = document.getElementById('guides');
-const guide_docuemnt_src = guide_document.src;
-import { Turbo } from "@hotwired/turbo-rails"
+let guide_document;
+let guide_document_src;
 
 export default class extends Controller {
   static targets = ["map", "link", "field", "latitude", "longitude"]
@@ -45,6 +46,8 @@ export default class extends Controller {
     //@ts-ignore
     const {Map} = await google.maps.importLibrary("maps");
     let center = {lat: 40.7328, lng: -73.9991}
+    guide_document = document.querySelector("#guides");
+    guide_document_src = guide_document.src;
     if (location) {
       center = {lat: location.coords.latitude, lng: location.coords.longitude}
     }
@@ -78,7 +81,9 @@ export default class extends Controller {
       };
       this.fetchAccounts(mapBounds)
       const event = new Event("update-list", { bubbles: true, cancelable: true });
-      guide_document.src = guide_docuemnt_src + "?bounds=" + encodeURIComponent(JSON.stringify(mapBounds));
+      if (guide_document.src.includes("page_list")) {
+        guide_document.src = guide_document_src + "?bounds=" + encodeURIComponent(JSON.stringify(mapBounds));
+      }
       window.dispatchEvent(event)
 
     });
