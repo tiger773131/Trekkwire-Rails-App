@@ -4,6 +4,8 @@ import { Controller } from "@hotwired/stimulus"
 let map;
 let markers = [];
 let location;
+let guide_document = document.getElementById('guides');
+const guide_docuemnt_src = guide_document.src;
 import { Turbo } from "@hotwired/turbo-rails"
 
 export default class extends Controller {
@@ -52,6 +54,7 @@ export default class extends Controller {
       mapTypeControlOptions: {
         mapTypeIds: [false],
       },
+      gestureHandling: "greedy",
     });
 
     // listens on drag end event
@@ -75,6 +78,7 @@ export default class extends Controller {
       };
       this.fetchAccounts(mapBounds)
       const event = new Event("update-list", { bubbles: true, cancelable: true });
+      guide_document.src = guide_docuemnt_src + "?bounds=" + encodeURIComponent(JSON.stringify(mapBounds));
       window.dispatchEvent(event)
 
     });
@@ -114,6 +118,7 @@ export default class extends Controller {
 // Shows any markers currently in the array.
   showMarkers() {
     this.setMapOnAll(map);
+    guide_document.reload();
   }
 
   testOne() {
