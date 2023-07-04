@@ -44,31 +44,30 @@ class ScheduledToursController < ApplicationController
 
     respond_to do |format|
       if @scheduled_tour.save
-        byebug
         ScheduledTourNotification.with(account: @scheduled_tour.tour.account, user: current_user,
-                                       scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
+          scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
         format.html do
           logo_img = "https://www.trekkwire.com/assets/Trekkwire-c73296d968061a6af217e717fc97651eed296354a8deabd05599d9a6a8257c80.png"
           image_url = @scheduled_tour.tour.account.avatar.attached? ? @scheduled_tour.tour.account.avatar.url : logo_img
           session = Stripe::Checkout::Session.create({
-                                                       payment_method_types: ["card", "cashapp"],
-                                                       line_items: [{
-                                                         price_data: {
-                                                           currency: "usd",
-                                                           product_data: {
-                                                             name: @scheduled_tour.tour.title,
-                                                             images: [image_url]
-                                                           },
-                                                           unit_amount: (@scheduled_tour.tour.price * 100).to_i
-                                                         },
-                                                                      quantity: 1
-                                                       }],
-                                                       mode: "payment",
-                                                       success_url: success_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
-                                                       cancel_url: cancel_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
-                                                       automatic_tax: {enabled: true},
-                                                       customer_email: current_user.email
-                                                     })
+            payment_method_types: ["card", "cashapp"],
+            line_items: [{
+              price_data: {
+                currency: "usd",
+                product_data: {
+                  name: @scheduled_tour.tour.title,
+                  images: [image_url]
+                },
+                unit_amount: (@scheduled_tour.tour.price * 100).to_i
+              },
+              quantity: 1
+            }],
+            mode: "payment",
+            success_url: success_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
+            cancel_url: cancel_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
+            automatic_tax: {enabled: true},
+            customer_email: current_user.email
+          })
           redirect_to session.url, allow_other_host: true, notice: "Scheduled tour was successfully created."
         end
         format.json { render :show, status: :created, location: @scheduled_tour }
