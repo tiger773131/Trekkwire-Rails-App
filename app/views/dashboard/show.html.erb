@@ -46,11 +46,17 @@
 
       <% else %>
         <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900"><%= t(".title_guide") %></h1>
-        <div class="mb-2"><%= "Account: " + current_account.name %></div>
         <% unless current_account.approved %>
-          <div class="mb-2"><%= t(".not_approved") %></div>
+          <%= badge t(".not_approved"), class: "bg-red-100 text-red-800 text-xs font-medium" %>
         <% end %>
-        <div class="my-20">
+        <% unless !current_account.active %>
+          <div class="my-2">
+            <%= badge t(".not_active"), class: "bg-red-100 text-red-800 text-xs font-medium" %>
+            <%= link_to "Activate account", edit_account_path(current_account) %>
+          </div>
+        <% end %>
+        <div class="my-2 mx-2"><%= "Current Account: " + current_account.name %></div>
+        <div class="my-10">
           <%= render partial: 'dashboard/guide_dashboard' %>
         </div>
       <% end %>

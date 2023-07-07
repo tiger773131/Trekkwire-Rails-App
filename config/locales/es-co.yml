@@ -116,6 +116,7 @@ es-co:
       title_traveler: "Find An Adventure"
       title_guide: "Manage Your Business"
       not_approved: "Your account still needs approval. Please reach out to support to complete your onboarding."
+      not_active: "Your account is not active."
 
   payments:
     success: "Gracias por suscribirte!"
