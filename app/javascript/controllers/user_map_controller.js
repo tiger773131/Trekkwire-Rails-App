@@ -136,7 +136,7 @@ export default class extends Controller {
   }
 
   success(position) {
-    this.linkTarget.textContent = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`
+    // this.linkTarget.textContent = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`
     map.panTo({lat: position.coords.latitude, lng: position.coords.longitude})
   }
 
