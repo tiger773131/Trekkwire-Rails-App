@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
     if params[:bounds].present?
       bounds = JSON.parse(params[:bounds])
       account_ids = OperatingLocation.where(latitude: bounds["southWestLat"]..bounds["northEastLat"], longitude: bounds["southWestLng"]..bounds["northEastLng"]).map(&:account_id)
-      @pagy, @guides = pagy(Account.where(id: account_ids, customer_type: 1, active: true))
+      @pagy, @guides = pagy(Account.where(id: account_ids, customer_type: 1, active: true, approved: true))
     else
       @pagy, @guides = pagy(Account.where(customer_type: 1))
     end
@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
     if params[:bounds].present?
       bounds = JSON.parse(params[:bounds])
       account_ids = OperatingLocation.where(latitude: bounds["southWestLat"]..bounds["northEastLat"], longitude: bounds["southWestLng"]..bounds["northEastLng"]).map(&:account_id)
-      @pagy, @guides = pagy(Account.where(id: account_ids, customer_type: 1, active: true))
+      @pagy, @guides = pagy(Account.where(id: account_ids, customer_type: 1, active: true, approved: true))
     else
       @pagy, @guides = pagy(Account.where(customer_type: 1))
     end

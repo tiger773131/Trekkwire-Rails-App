@@ -37,7 +37,6 @@ class ToursController < ApplicationController
 
   # POST /tours or /tours.json
   def create
-    byebug
     @tour = Tour.new(tour_params)
 
     # Uncomment to authorize with Pundit
