@@ -105,6 +105,10 @@ nl:
   dashboard:
     show:
       title: Dashboard
+      title_traveler: "Find An Adventure"
+      title_guide: "Manage Your Business"
+      not_approved: "Your account still needs approval. Please reach out to support to complete your onboarding."
+
   payments:
     success: Bedankt voor het abonneren!
     show:

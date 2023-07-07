@@ -26,12 +26,12 @@
                   <%= tag.span account.name, class: "text-gray-900 font-semibold text-sm no-underline hover:text-primary" %>
                   <%= badge "Personal", class: "bg-primary-500 text-xs inline-block text-white font-medium ml-3" if account.personal_account_for?(current_user) %>
                   <%= badge "Guide", class: "bg-orange-400 text-xs inline-block text-orange-800 font-bold leading-normal ml-3" if account.customer_type == "guide" %>
-                  <%= badge "Traveler", class: "bg-red-100 text-red-800 text-xs font-medium ml-3" if account.customer_type == "traveler" %>
+                  <%= badge "Traveler", class: "bg-grey-100 text-black-800 text-xs font-medium ml-3" if account.customer_type == "traveler" %>
                   <% unless account.active %>
-                    <%= badge "Traveler", class: "bg-red-100 text-red-800 text-xs font-medium ml-3" if account.customer_type == "traveler" %>
+                    <%= badge "Not Active", class: "bg-red-100 text-red-800 text-xs font-medium ml-3" if account.customer_type == "traveler" %>
                   <% end %>
                   <% unless account.approved %>
-                    <%= badge "Traveler", class: "bg-red-100 text-red-800 text-xs font-medium ml-3" if account.customer_type == "traveler" %>
+                    <%= badge "Not Approved", class: "bg-red-100 text-red-800 text-xs font-medium ml-3" if account.customer_type == "traveler" %>
                   <% end %>
               <% end %>
 
