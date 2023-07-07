@@ -55,7 +55,7 @@
             <%= link_to "Activate account", edit_account_path(current_account), class: "rounded bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"%>
           </div>
         <% end %>
-        <div class="my-2 mx-2"><%= "Current Account: " + current_account.name %></div>
+        <div class="my-2"><%= badge "Current Account: " + current_account.name %></div>
         <div class="my-10">
           <%= render partial: 'dashboard/guide_dashboard' %>
         </div>
