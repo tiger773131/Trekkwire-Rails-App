@@ -4,6 +4,8 @@
 #
 #  id                  :bigint           not null, primary key
 #  account_users_count :integer          default(0)
+#  active              :boolean
+#  approved            :boolean
 #  billing_email       :string
 #  customer_type       :integer          default("traveler")
 #  description         :text
