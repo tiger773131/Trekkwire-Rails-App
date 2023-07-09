@@ -57,6 +57,8 @@ export default class extends Controller {
       mapTypeControlOptions: {
         mapTypeIds: [false],
       },
+      streetViewControl: false,
+      fullscreenControl: false,
       gestureHandling: "greedy",
     });
 
