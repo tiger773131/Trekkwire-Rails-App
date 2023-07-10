@@ -8,7 +8,7 @@
         <div class="border-b border-gray-200 pb-5">
           <h3 class="text-base font-semibold leading-6 text-gray-900"><%= t(".title_traveler") %></h3>
         </div>
-        <div data-controller="user-map" data-action="google-maps-callback@window->user-map.initializeMap">
+        <div data-controller="user-map" data-action="google-maps-callback@window->user-map.initializeMap" class="-m-2 rounded-xl bg-opacity-50 bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
           <div class="flex flex-1 items-center justify-center py-2 lg:justify-start">
             <div class="w-full max-w-lg lg:max-w-xs">
               <label for="search" class="sr-only">Search</label>
@@ -22,20 +22,20 @@
               </div>
             </div>
           </div>
-          <div data-user-map-target="map" class="row-span-1 flex min-h-[40vh] min-w-fit"></div>
+          <div data-user-map-target="map" class="row-span-1 flex min-h-[40vh] min-w-fit qA rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 "></div>
           <table class="w-full">
-              <tbody>
-                <tr class="border-t border-gray-100 group">
-                  <td class="p-10">
-                    <%= turbo_frame_tag "guides", src: page_list_path , data: { turbo_action: :advance } do %>
-                      <div>
-                        Loading accounts ...
-                      </div>
-                    <% end %>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <tbody>
+              <tr class="border-t border-gray-100 group">
+                <td class="p-10">
+                  <%= turbo_frame_tag "guides", src: page_list_path , data: { turbo_action: :advance } do %>
+                    <div>
+                      Loading accounts ...
+                    </div>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <% if @pagy.pages > 1 %>
