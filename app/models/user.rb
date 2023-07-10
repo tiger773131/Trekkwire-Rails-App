@@ -5,6 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  accepted_privacy_at    :datetime
 #  accepted_terms_at      :datetime
+#  account_creator        :boolean
 #  admin                  :boolean
 #  announcements_read_at  :datetime
 #  confirmation_sent_at   :datetime
