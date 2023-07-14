@@ -101,6 +101,9 @@ class Account < ApplicationRecord
     operating_location&.longitude
   end
 
+  def avatar_url
+    self.avatar.attached? ?  Rails.application.routes.url_helpers.rails_blob_path(self.avatar.variant(resize_to_limit: [50, 50]), only_path: true) : nil
+  end
   # Transfers ownership of the account to a user
   # The new owner is automatically granted admin access to allow editing of the account
   # Previous owner roles are unchanged

@@ -96,11 +96,13 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         data.forEach(function(location) {
+          console.log(data)
           var coordinatesLat = parseFloat(location.operating_location.latitude);
           var coordinatesLong = parseFloat(location.operating_location.longitude);
           const marker = new google.maps.Marker({
             position: { lat: coordinatesLat, lng: coordinatesLong },
-            title: "test"
+            title: "test",
+            icon: location.avatar_url,
           });
           markers.push(marker)
         });

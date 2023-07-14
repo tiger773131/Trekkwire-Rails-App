@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
     else
       @pagy, @guides = pagy(Account.where(customer_type: 1))
     end
-    render json: @guides, include: [:operating_location]
+    render json: @guides, include: :operating_location, methods: :avatar_url
   end
 
   def page_list
