@@ -65,8 +65,6 @@ export default class extends Controller {
 
     // listens on drag end event
     map.addListener("drag", () => {
-      this.hideInfoWindows();
-      this.infoWindows = [];
     });
 
     map.addListener("click", () => {
@@ -80,8 +78,11 @@ export default class extends Controller {
     });
 
     map.addListener("idle", () => {
+      this.hideInfoWindows();
+      this.infoWindows = [];
       this.hideMarkers();
       this.markers = [];
+
       const bounds = map.getBounds();
 
 
@@ -161,7 +162,6 @@ export default class extends Controller {
 
   hideInfoWindows() {
     for (var i = 0; i < infowindows.length; i++) {
-      console.log(infowindows[i])
       infowindows[i].close();
     }
   }
