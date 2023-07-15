@@ -101,7 +101,7 @@ export default class extends Controller {
           var coordinatesLong = parseFloat(location.operating_location.longitude);
           const marker = new google.maps.Marker({
             position: { lat: coordinatesLat, lng: coordinatesLong },
-            title: "test",
+            title: location.name,
             icon: location.avatar_url,
           });
           markers.push(marker)
@@ -111,6 +111,7 @@ export default class extends Controller {
         window.dispatchEvent(event)
       });
   }
+
   setMapOnAll(theMap) {
     for (var i = 0; i < markers.length; i++) {
       markers[i].setMap(theMap);
