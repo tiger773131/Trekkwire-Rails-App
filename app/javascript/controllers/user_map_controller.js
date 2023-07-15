@@ -5,6 +5,7 @@ import { Turbo } from "@hotwired/turbo-rails"
 
 let map;
 let markers = [];
+let infowindows = [];
 let location;
 let guide_document;
 let guide_document_src;
@@ -64,12 +65,25 @@ export default class extends Controller {
 
     // listens on drag end event
     map.addListener("drag", () => {
-      this.hideMarkers();
-      this.markers = [];
+      this.hideInfoWindows();
+      this.infoWindows = [];
+    });
+
+    map.addListener("click", () => {
+        this.hideInfoWindows();
+        this.infoWindows = [];
+    });
+
+    map.addListener("projection_changed", () => {
+      this.hideInfoWindows();
+      this.infoWindows = [];
     });
 
     map.addListener("idle", () => {
+      this.hideMarkers();
+      this.markers = [];
       const bounds = map.getBounds();
+
 
       // Extract the necessary information from the bounds object
       const northEast = bounds.getNorthEast();
@@ -96,12 +110,35 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         data.forEach(function(location) {
+          console.log(data)
           var coordinatesLat = parseFloat(location.operating_location.latitude);
           var coordinatesLong = parseFloat(location.operating_location.longitude);
           const marker = new google.maps.Marker({
             position: { lat: coordinatesLat, lng: coordinatesLong },
-            title: "test"
+            title: location.name,
+            icon: location.avatar_url,
           });
+          const contentString = '<div class="card" style="width: 18rem;">' +
+              '<div class="grid grid-cols-3 gap-4">' +
+                '<img src="' + location.avatar_url + '" class="card-img-top" alt="...">' +
+                '<div class="card-body col-span-2">' +
+                  '<h5 class="card-title">' + location.name + '</h5>' +
+                  '<p class="card-text">' + location.description + '</p>' +
+                  '<a href="/accounts/' + location.id + '" class="mt-2 flex-none rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white btn btn-expanded">View</a>' +
+                '</div>' +
+                '</div>' +
+              '</div>';
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                disableAutoPan : true
+            });
+            infowindows.push(infowindow);
+            marker.addListener("click", () => {
+                infowindow.open({
+                    anchor: marker,
+                    map,
+                });
+            });
           markers.push(marker)
         });
         this.showMarkers();
@@ -109,6 +146,7 @@ export default class extends Controller {
         window.dispatchEvent(event)
       });
   }
+
   setMapOnAll(theMap) {
     for (var i = 0; i < markers.length; i++) {
       markers[i].setMap(theMap);
@@ -121,20 +159,17 @@ export default class extends Controller {
     this.setMapOnAll(null);
   }
 
+  hideInfoWindows() {
+    for (var i = 0; i < infowindows.length; i++) {
+      console.log(infowindows[i])
+      infowindows[i].close();
+    }
+  }
+
 // Shows any markers currently in the array.
   showMarkers() {
     this.setMapOnAll(map);
     guide_document.reload();
-  }
-
-  testOne() {
-    // console.log("test one")
-  }
-
-  reload() {
-    // console.log("reload")
-    // Turbo.visit("/page_list", { action: "reload", target: "guides",
-    // });
   }
 
   success(position) {
