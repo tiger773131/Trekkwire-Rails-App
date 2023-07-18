@@ -11,7 +11,7 @@
 
         <% if @accounts.exists? && (current_user.admin? || current_user.account_creator) %>
           <div>
-            <%= link_to t(".create"), new_account_path, class: "btn btn-primary" %>
+            <%= link_to t(".create"), new_account_path, class: "btn btn-primary bg-indigo-600 hover:bg-indigo-500" %>
           </div>
         <% end %>
       </div>
