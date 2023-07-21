@@ -70,7 +70,7 @@
   <% end %>
 
   <div class="flex justify-between form-group">
-    <%= form.button class: "btn btn-primary bg-indigo-600 hover:bg-indigo-500" %>
+    <%= form.button class: "btn btn-primary" %>
 
     <% if account.persisted? && !account.personal? %>
       <%= link_to t("delete"), account, class: "btn btn-danger btn-outline", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>

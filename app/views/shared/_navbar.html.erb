@@ -58,9 +58,9 @@
                 <%= link_to t(".profile"), edit_user_registration_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' %>
                 <%= link_to t(".password"), account_password_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' %>
                 <%= link_to t(".connected_accounts"), user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' if Devise.omniauth_configs.any? %>
-                <%#= link_to t(".billing"), subscriptions_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' if Jumpstart.config.payments_enabled? %>
+                <%= link_to t(".billing"), subscriptions_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' if Jumpstart.config.payments_enabled? %>
                 <%= link_to t(".accounts"), accounts_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' %>
-                <%#= link_to t(".api_tokens"), api_tokens_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' if Jumpstart.config.payments_enabled? %>
+                <%= link_to t(".api_tokens"), api_tokens_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' if Jumpstart.config.payments_enabled? %>
                 <!--
                 <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white dark:text-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">Accounts</div>
                 -->
@@ -88,7 +88,7 @@
         </div>
       <% else %>
         <%= link_to t(".log_in"), new_user_session_path, class: 'nav-link' %>
-        <%= link_to t(".sign_up"), new_user_registration_path, class: 'btn btn-primary bg-indigo-600 hover:bg-indigo-500' %>
+        <%= link_to t(".sign_up"), sign_up_entry_path, class: 'btn btn-primary bg-indigo-600 hover:bg-indigo-500' %>
       <% end %>
     </div>
   </div>

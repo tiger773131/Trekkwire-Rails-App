@@ -140,8 +140,6 @@ Rails.application.routes.draw do
     get :privacy
     get :pricing
     get :sign_up_entry
-    get :guide_onboarding
-    get :become_a_guide
     post "add_email_contact", to: "add_email_contact"
     post "add_email_guide", to: "add_email_guide"
   end
