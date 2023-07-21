@@ -1,4 +1,4 @@
-module User::Accounts
+module UserAccounts
   extend ActiveSupport::Concern
 
   included do

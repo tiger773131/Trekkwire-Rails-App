@@ -22,7 +22,6 @@ module Jumpstart
     initializer "turbo.native.navigation.helper" do
       ActiveSupport.on_load(:action_controller_base) do
         helper Turbo::Native::Navigation
-        helper Rails.application.helpers
       end
     end
 

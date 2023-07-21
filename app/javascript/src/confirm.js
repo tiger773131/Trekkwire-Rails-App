@@ -21,10 +21,10 @@ function insertConfirmModal(message, element, button) {
   }
 
   let content = `
-    <div id="confirm-modal" class="z-50 bg-black/80 animated fadeIn fixed top-0 left-0 w-full h-full table backdrop-blur-sm">
+    <div id="confirm-modal" class="z-50 animated fadeIn fixed top-0 left-0 w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);">
       <div class="table-cell align-middle">
 
-        <div class="bg-white mx-auto rounded shadow p-8 max-w-sm dark:bg-gray-800">
+        <div class="bg-white mx-auto rounded shadow p-8 max-w-sm">
           <h4>${message}</h4>
           ${description}
 

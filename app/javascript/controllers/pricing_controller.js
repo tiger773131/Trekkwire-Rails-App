@@ -5,11 +5,18 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["toggle", "frequency", "plans"]
+  static targets = [ "toggle", "frequency", "plans" ]
   static values = { frequency: String }
-  static classes = ["activeFrequency", "inactiveFrequency", "activePlans", "inactivePlans"]
 
   connect() {
+    // Classes toggle on the plan switcher items
+    this.activeFrequencyClass   = (this.data.get("active-frequency-class") || "bg-white shadow-sm text-black hover:text-black").split(" ")
+    this.inactiveFrequencyClass = (this.data.get("inactive-frequency-class") || "hover:text-gray-900").split(" ")
+
+    // Classes toggle on the plans
+    this.activePlansClass   = (this.data.get("activePlansClass") || "flex").split(" ")
+    this.inactivePlansClass = (this.data.get("inactivePlansClass") || "hidden").split(" ")
+
     if (!this.hasFrequencyValue) {
       this.frequencyValue = this.frequencyTargets[0].dataset.frequency
     }
@@ -62,22 +69,22 @@ export default class extends Controller {
   }
 
   showFrequency(element) {
-    element.classList.add(...this.activeFrequencyClasses)
-    element.classList.remove(...this.inactiveFrequencyClasses)
+    element.classList.add(...this.activeFrequencyClass)
+    element.classList.remove(...this.inactiveFrequencyClass)
   }
 
   hideFrequency(element) {
-    element.classList.remove(...this.activeFrequencyClasses)
-    element.classList.add(...this.inactiveFrequencyClasses)
+    element.classList.remove(...this.activeFrequencyClass)
+    element.classList.add(...this.inactiveFrequencyClass)
   }
 
   showPlans(element) {
-    element.classList.add(...this.activePlansClasses)
-    element.classList.remove(...this.inactivePlansClasses)
+    element.classList.add(...this.activePlansClass)
+    element.classList.remove(...this.inactivePlansClass)
   }
 
   hidePlans(element) {
-    element.classList.remove(...this.activePlansClasses)
-    element.classList.add(...this.inactivePlansClasses)
+    element.classList.remove(...this.activePlansClass)
+    element.classList.add(...this.inactivePlansClass)
   }
 }

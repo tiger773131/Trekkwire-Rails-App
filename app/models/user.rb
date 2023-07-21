@@ -26,7 +26,6 @@
 #  otp_backup_codes       :text
 #  otp_required_for_login :boolean
 #  otp_secret             :string
-#  preferences            :jsonb
 #  preferred_language     :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -50,9 +49,8 @@
 class User < ApplicationRecord
   include ActionText::Attachable
   include TwoFactorAuthentication
-  include User::Accounts
-  include User::Agreements
-  include User::Theme
+  include UserAccounts
+  include UserAgreements
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, andle :trackable

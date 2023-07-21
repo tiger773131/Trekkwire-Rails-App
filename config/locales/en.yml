@@ -481,11 +481,6 @@ en:
           enable: "Enable two-factor authentication"
           disable: "Disable two-factor authentication"
 
-  themes:
-    system: "Sync with system"
-    light: "Light"
-    dark: "Dark"
-
   users:
     agreements:
       show:
@@ -565,8 +560,6 @@ en:
         created_at: "Created"
       account:
         name_on_card: "Name on Card"
-      user:
-        theme: "Color theme"
 
     errors:
       models:

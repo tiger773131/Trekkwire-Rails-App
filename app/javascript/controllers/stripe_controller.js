@@ -10,10 +10,9 @@ export default class extends Controller {
 
   connect() {
     this.stripe = Stripe(this.stripeKey)
-    let theme = document.documentElement.classList.contains("dark") ? "night" : "light";
     this.elements = this.stripe.elements({
       appearance: {
-        theme: theme,
+        theme: "stripe",
         variables: {
           fontSizeBase: "14px"
         }
