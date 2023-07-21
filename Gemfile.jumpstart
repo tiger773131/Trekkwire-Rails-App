@@ -72,4 +72,3 @@ gem "solargraph-rails" if Jumpstart.config.solargraph?
 # Notifications
 gem "apnotic" if Jumpstart.config.apns?
 gem "googleauth" if Jumpstart.config.fcm?
-gem "omniauth-google-oauth2"
