@@ -11,7 +11,7 @@
 
         <% if @accounts.exists? && (current_user.admin? || current_user.account_creator) %>
           <div>
-            <%= link_to t(".create"), new_account_path, class: "btn btn-primary" %>
+            <%= link_to t(".create"), new_account_path, class: "btn btn-primary bg-indigo-600 hover:bg-indigo-500" %>
           </div>
         <% end %>
       </div>
@@ -43,10 +43,6 @@
                 <% else %>
                   <span class="font-medium text-gray-600"><%= t(".current") %></span>
                 <% end %>
-              </td>
-
-              <td class="hidden sm:table-cell">
-                <%= link_to "View", account, class: "btn btn-link" %>
               </td>
             </tr>
           <% end %>

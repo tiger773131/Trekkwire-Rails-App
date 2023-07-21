@@ -13,6 +13,12 @@ class StaticController < ApplicationController
   def guides
   end
 
+  def become_a_guide
+  end
+
+  def guide_onboarding
+  end
+
   def pricing
     redirect_to root_path, alert: t(".no_plans_html", link: helpers.link_to_if(current_user&.admin?, "Add a plan in the admin", admin_plans_path)) unless Plan.without_free.exists?
 
