@@ -26,6 +26,7 @@
 @import "components/typography";
 @import "components/util";
 @import "components/marketing";
+@import "components/braintree";
 
 @import "tailwindcss/utilities";
 
