@@ -316,8 +316,6 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.3-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     noticed (1.6.3)
@@ -577,7 +575,7 @@ DEPENDENCIES
   nokogiri (>= 1.12.5)
   noticed (~> 1.5)
   oj (~> 3.8, >= 3.8.1)
-  omniauth
+  omniauth (~> 2.1)
   omniauth-facebook!
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
