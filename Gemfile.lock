@@ -316,8 +316,6 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.3-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     noticed (1.6.3)
@@ -335,10 +333,6 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    omniauth-google-oauth2 (0.8.0)
-      jwt (>= 2.0)
-      omniauth (>= 1.1.1)
-      omniauth-oauth2 (>= 1.6)
     omniauth-oauth2 (1.7.3)
       oauth2 (>= 1.4, < 3)
       omniauth (>= 1.9, < 3)
@@ -579,7 +573,6 @@ DEPENDENCIES
   oj (~> 3.8, >= 3.8.1)
   omniauth
   omniauth-facebook!
-  omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
   overcommit
   pagy (~> 6.0)
