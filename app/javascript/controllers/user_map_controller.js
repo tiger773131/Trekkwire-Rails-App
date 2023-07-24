@@ -26,6 +26,11 @@ export default class extends Controller {
         this.initPlaces()
       })
     }
+    document.addEventListener("turbo:frame-missing", (event) => {
+      const { detail: { response, visit } } = event;
+      event.preventDefault();
+      visit(response.url);
+    });
   }
 
   geolocate() {
@@ -111,7 +116,6 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         data.forEach(function(location) {
-          console.log(data)
           var coordinatesLat = parseFloat(location.operating_location.latitude);
           var coordinatesLong = parseFloat(location.operating_location.longitude);
           const marker = new google.maps.Marker({
@@ -199,3 +203,4 @@ export default class extends Controller {
     map.panTo({lat: place.geometry.location.lat(), lng: place.geometry.location.lng()})
   }
 }
+
