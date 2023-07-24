@@ -26,10 +26,10 @@ class DashboardController < ApplicationController
 end
 
 private
-  def clean_bounds(string)
-    if params[:bounds].present? && params[:bounds].include?('?')
-      params[:bounds].slice(0..(params[:bounds].index('?')-1))
-    else
-      params[:bounds]
-    end
+def clean_bounds(string)
+  if params[:bounds].present? && params[:bounds].include?('?')
+    params[:bounds].slice(0..(params[:bounds].index('?')-1))
+  else
+    params[:bounds]
   end
+end
