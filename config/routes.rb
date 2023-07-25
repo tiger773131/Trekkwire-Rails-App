@@ -164,6 +164,7 @@ Rails.application.routes.draw do
     get "/success", to: "scheduled_tours#stripe_success"
     get "/cancel", to: "scheduled_tours#stripe_cancel"
     get "/scheduled_tour_payment", to: "scheduled_tours#scheduled_tour_payment"
+    get "account/public_profile/:account_id", to: "accounts#public_profile"
   end
 
   # Public marketing homepage
