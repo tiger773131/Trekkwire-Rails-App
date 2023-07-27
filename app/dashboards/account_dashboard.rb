@@ -34,7 +34,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :owner,
     :name,
     :personal,
-    :account_users,
+    :account_users
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
