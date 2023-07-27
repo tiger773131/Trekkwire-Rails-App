@@ -30,17 +30,25 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label "Bio" %>
-    <%= form.text_area :description, placeholder: "Tell everybody a bit about who you are!", class: "form-control" %>
-  </div>
-
-
   <% if @account.customer_type == "guide" %>
+
+    <div class="relative">
+      <div class="absolute inset-0 flex items-center" aria-hidden="true">
+        <div class="w-full border-t border-gray-300"></div>
+      </div>
+      <div class="relative flex justify-center">
+        <span class="bg-white py-10 px-3 text-base font-semibold leading-6 text-gray-900">Guide Public Profile Details</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "Tagline" %>
+      <%= form.text_area :description, placeholder: "Tell everybody a bit about who you are!", class: "form-control" %>
+    </div>
     <%= form.fields_for :operating_location, @account.operating_location do |f| %>
       <div data-controller="places-autocomplete">
         <div class="form-group">
-          <%= f.label :address %>
+          <%= f.label "Operating Location" %>
           <%= f.search_field :address, placeholder: "Enter your address", class: "form-control", data: { target: "places-autocomplete.field" } %>
         </div>
         <div class="form-group">
