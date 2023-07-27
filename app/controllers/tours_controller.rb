@@ -19,6 +19,9 @@ class ToursController < ApplicationController
     # authorize @tours
   end
 
+  def guide_tours
+    @pagy, @tours = pagy(Tour.where(account_id: params[:guide_id]).sort_by_params(params[:sort], sort_direction))
+  end
   # GET /tours/1 or /tours/1.json
   def show
   end
