@@ -26,6 +26,11 @@ export default class extends Controller {
         this.initPlaces()
       })
     }
+    document.addEventListener("turbo:frame-missing", (event) => {
+      const { detail: { response, visit } } = event;
+      event.preventDefault();
+      visit(response.url);
+    });
   }
 
   geolocate() {
@@ -111,7 +116,6 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         data.forEach(function(location) {
-          console.log(data)
           var coordinatesLat = parseFloat(location.operating_location.latitude);
           var coordinatesLong = parseFloat(location.operating_location.longitude);
           const marker = new google.maps.Marker({
@@ -125,7 +129,7 @@ export default class extends Controller {
                 '<div class="card-body col-span-2">' +
                   '<h5 class="card-title">' + location.name + '</h5>' +
                   '<p class="card-text">' + location.description + '</p>' +
-                  '<a href="/accounts/' + location.id + '" class="mt-2 flex-none rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white btn btn-expanded">View</a>' +
+                  '<a href="/public_profile/' + location.id + '" class="mt-2 flex-none rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white btn btn-expanded">View</a>' +
                 '</div>' +
                 '</div>' +
               '</div>';
@@ -199,3 +203,4 @@ export default class extends Controller {
     map.panTo({lat: place.geometry.location.lat(), lng: place.geometry.location.lng()})
   }
 }
+

@@ -161,9 +161,11 @@ Rails.application.routes.draw do
     resources :tours
     resources :schedules
     resources :scheduled_tours
+    get "/guide_tours/:account_id", to: "tours#guide_tours", as: "guide_tours"
     get "/success", to: "scheduled_tours#stripe_success"
     get "/cancel", to: "scheduled_tours#stripe_cancel"
     get "/scheduled_tour_payment", to: "scheduled_tours#scheduled_tour_payment"
+    get "public_profile/:account_id", to: "accounts#public_profile", as: "public_profile"
   end
 
   # Public marketing homepage

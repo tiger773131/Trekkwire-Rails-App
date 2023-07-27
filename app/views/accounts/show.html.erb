@@ -20,13 +20,30 @@
 
       </div>
 
-      <div>
-        <div class="w-full lg:w-3/4 lg:p-4">
-          <h3 class="text-base font-semibold leading-7 text-gray-900">Account Bio</h3>
-          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.description %></p>
+      <% if @account.customer_type == "guide" %>
+        <div>
+          <div class="w-full lg:w-3/4 lg:p-4">
+            <h3 class="text-base font-semibold leading-7 text-gray-900">Tagline</h3>
+            <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.tagline %></p>
+          </div>
         </div>
-      </div>
 
+        <div>
+          <div class="w-full lg:w-3/4 lg:p-4">
+            <h3 class="text-base font-semibold leading-7 text-gray-900">Account Bio</h3>
+            <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.description %></p>
+          </div>
+        </div>
+
+        <div>
+          <div class="w-full lg:w-3/4 lg:p-4">
+            <h3 class="text-base font-semibold leading-7 text-gray-900">Operating Location</h3>
+            <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.operating_location.present? ? @account.operating_location.address : "none set" %></p>
+          </div>
+        </div>
+
+
+    <% end %>
 
       <% if @account.personal? %>
         <div class="flex items-center text-sm bg-blue-50 text-blue-800 px-4 py-2 rounded">
