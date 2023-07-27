@@ -7,8 +7,8 @@
         <p class="mt-2 max-w-4xl text-xs text-gray-500"><%= @account.operating_location.address %></p>
       </div>
       <div class="mt-3 flex sm:ml-4 sm:mt-0">
-        <button type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Book Now</button>
-        <button type="button" class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Contact Me</button>
+        <%= link_to "Book Now", guide_tours_path(@account.id), class:"inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
+<!--        <button type="button" class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Contact Me</button>-->
       </div>
     </div>
   </div>
@@ -54,9 +54,7 @@
         <div>
           <h4 class="py-2">About Me</h4>
           <p class="pb-8">
-            Hi, my name is Marisa. I am a passionate adventurer with an insatiable curiosity for different cultures, histories, and landscapes. Guiding others through immersive experiences is not just a profession for me; it's an expression of my genuine love for travel and discovery. I find great joy in connecting people to the hidden gems, captivating stories, and vibrant atmospheres of each place we visit.
-
-            Every journey is unique, and I make it my mission to tailor each tour to meet the interests, preferences, and needs of the travelers in my care. Whether you are seeking an adrenaline-filled adventure or a leisurely cultural immersion, I am here to create a memorable and personalized experience for you.
+            <%= @account.description %>
           </p>
         </div>
         <div>

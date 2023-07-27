@@ -30,7 +30,7 @@
       </div>
     <% elsif @tours.empty? %>
       No Tours Currently Available. Please check back later.
-      <%= link_to "Back", page_list_path, class: "btn btn-primary" %>
+      <%= link_to "Back", :back, class: "btn btn-primary bg-indigo-600 hover:bg-indigo-500" %>
 <% end %>
   <% end %>
   <% if @pagy.pages > 1 %>

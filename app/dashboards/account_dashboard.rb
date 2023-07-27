@@ -18,6 +18,7 @@ class AccountDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     personal: Field::Boolean,
+    approved: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     extra_billing_info: Field::Text
@@ -33,7 +34,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :owner,
     :name,
     :personal,
-    :account_users
+    :account_users,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -61,7 +62,8 @@ class AccountDashboard < Administrate::BaseDashboard
     :owner,
     :name,
     :personal,
-    :extra_billing_info
+    :extra_billing_info,
+    :approved
   ].freeze
 
   # Overwrite this method to customize how accounts are displayed
