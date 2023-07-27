@@ -97,7 +97,7 @@ class AccountsController < Accounts::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def account_params
-    attributes = [:name, :customer_type, :description, :avatar, :active, :operating_location_attributes => [:id, :address, :latitude, :longitude]]
+    attributes = [:name, :customer_type, :description, :tagline, :avatar, :active, :operating_location_attributes => [:id, :address, :latitude, :longitude]]
     attributes << :domain if Jumpstart::Multitenancy.domain?
     attributes << :subdomain if Jumpstart::Multitenancy.subdomain?
     params.require(:account).permit(*attributes)

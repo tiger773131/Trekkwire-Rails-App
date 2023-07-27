@@ -14,6 +14,7 @@
 #  name                :string           not null
 #  personal            :boolean          default(FALSE)
 #  subdomain           :string
+#  tagline             :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  owner_id            :bigint
