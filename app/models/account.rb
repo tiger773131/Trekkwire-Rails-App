@@ -58,7 +58,7 @@ class Account < ApplicationRecord
 
   validates :avatar, resizable_image: true
   validates :name, presence: true
-  validates_with TravelerAccountCountValidator, on: :create
+  # validates_with TravelerAccountCountValidator, on: :create
 
   # To require a domain or subdomain, add the presence validation
   validates :domain, exclusion: {in: RESERVED_DOMAINS, message: :reserved}, uniqueness: {allow_blank: true}
