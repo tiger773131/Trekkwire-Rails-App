@@ -21,6 +21,7 @@
 class Tour < ApplicationRecord
   belongs_to :account
   has_many :scheduled_tours, dependent: :destroy
+  has_many_attached :photos
   # Broadcast changes in realtime with Hotwire
   after_create_commit -> { broadcast_prepend_later_to :tours, partial: "tours/index", locals: {tour: self} }
   after_update_commit -> { broadcast_replace_later_to self }

@@ -1,64 +1,73 @@
-<turbo-frame id="guides", data-turbo-action="advance">
-  <%= content_for :title, "Tours ##{@tour.id}" %>
-  <%= turbo_stream_from @tour %>
-  <div class="container px-4 mx-auto my-8">
-    <div class="flex items-center justify-between mb-4">
-      <h1 class="h3">
-        <%= link_to "Tours", tours_path, class: "text-black" %>
-        <span class="text-gray-400 font-light mx-2">\</span>
-        Tour #<%= @tour.id %>
-      </h1>
-      <div>
-        <%= link_to t("edit"), edit_tour_path(@tour), class: "btn btn-white" %>
-        <%= link_to "Cancel", tours_path, class: "btn btn-white" %>
-      </div>
+<%= content_for :title, "Tours ##{@tour.id}" %>
+<%= turbo_stream_from @tour %>
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Tours", tours_path, class: "text-black" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      Tour #<%= @tour.id %>
+    </h1>
+    <div>
+      <%= link_to t("edit"), edit_tour_path(@tour), class: "btn btn-white" %>
+      <%= link_to "Cancel", tours_path, class: "btn btn-white" %>
+    </div>
+  </div>
+
+  <div class="p-8 bg-white rounded shadow">
+    <%= render @tour %>
+    <div>
+      <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 list-none">
+        <% @tour.photos.each do |photo| %>
+          <li>
+            <%= image_tag photo, width: 200, alt:"", class:"aspect-[3/2] w-full rounded-2xl object-cover"%>
+          </li>
+        <% end %>
+      </ul>
     </div>
 
-    <div class="p-8 bg-white rounded shadow">
-      <%= render @tour %>
-    </div>
 
-    <div class="p-8 bg-white rounded shadow">
-        <div class="px-4 sm:px-6 lg:px-8">
-          <div class="sm:flex sm:items-center">
-            <div class="sm:flex-auto">
-              <h1 class="text-base font-semibold leading-6 text-gray-900">Scheduled Tours</h1>
-              <p class="mt-2 text-sm text-gray-700">A list of signups for the scheduled tours.</p>
-            </div>
+  </div>
+
+  <div class="p-8 bg-white rounded shadow">
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
+          <div class="sm:flex-auto">
+            <h1 class="text-base font-semibold leading-6 text-gray-900">Scheduled Tours</h1>
+            <p class="mt-2 text-sm text-gray-700">A list of signups for the scheduled tours.</p>
           </div>
-          <div class="mt-8 flow-root">
-            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <table class="min-w-full divide-y divide-gray-300">
-                  <thead>
+        </div>
+        <div class="mt-8 flow-root">
+          <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+              <table class="min-w-full divide-y divide-gray-300">
+                <thead>
+                <tr>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Scheduled Date</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Scheduled Time</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Location</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Tour Contact</th>
+                  <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                    <span class="sr-only">Edit</span>
+                  </th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                <% @tour.scheduled_tours.each do |scheduled_tour| %>
                   <tr>
-                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Scheduled Date</th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Scheduled Time</th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Location</th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Tour Contact</th>
-                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                      <span class="sr-only">Edit</span>
-                    </th>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= scheduled_tour.scheduled_date %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.scheduled_time %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.location %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.account_user.blank? ? "Unknown user" : link_to(scheduled_tour.account_user.user.name, account_path(scheduled_tour.account_user.account)) %></td>
+                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                      <%= link_to "show", scheduled_tour_path(scheduled_tour) %>
+                    </td>
                   </tr>
-                  </thead>
-                  <tbody class="divide-y divide-gray-200">
-                  <% @tour.scheduled_tours.each do |scheduled_tour| %>
-                    <tr>
-                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= scheduled_tour.scheduled_date %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.scheduled_time %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.location %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= scheduled_tour.account_user.blank? ? "Unknown user" : link_to(scheduled_tour.account_user.user.name, account_path(scheduled_tour.account_user.account)) %></td>
-                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                        <%= link_to "show", scheduled_tour_path(scheduled_tour) %>
-                      </td>
-                    </tr>
-                  <% end %>
-                  </tbody>
-                </table>
-              </div>
+                <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-    </div>
+      </div>
   </div>
-</turbo-frame>
+</div>

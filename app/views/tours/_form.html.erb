@@ -16,6 +16,11 @@
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
+  <div class="photos">
+    <%= form.label :photos %>
+    <%= form.file_field :photos, :multiple => true %>
+  </div>
+
   <div>
     <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
 
