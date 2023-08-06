@@ -4,6 +4,6 @@
   <% if current_account.customer_type == "traveler" %>
     <%= link_to "Book A Tour", new_scheduled_tour_path(tour_id: tour.id), class: "btn btn-white" %>
   <% end %>
-  <%= link_to "Cancel", page_list_path, class: "btn btn-white" %>
+  <%= link_to "Cancel", :back, class: "btn btn-white" %>
 </div>
 
