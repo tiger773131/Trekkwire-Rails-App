@@ -2,27 +2,37 @@
   <%= render "shared/error_messages", resource: form.object %>
 
   <div class="form-group">
-    <%= form.label :title %>
+    <%= form.label "What is the title of the tour?" %>
     <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :price %>
+    <%= form.label "Write a good tagline for the tour" %>
+    <%= form.text_field :tagline, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "How long will the tour last (in hours)?" %>
+    <%= form.text_field :duration, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "How much will the tour cost?" %>
     <%= form.text_field :price, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :description %>
+    <%= form.label "Give a description of the tour (1-2 paragraphs)" %>
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="photos">
-    <%= form.label :photos %>
-    <%= form.file_field :photos, :multiple => true %>
+  <div class="form-group">
+    <%= form.label "Add Photos" %>
+    <%= form.file_field :photos, :multiple => true, accept: 'image/png,image/jpg,image/jpeg', class:"py-2 rounded bg-white px-2 py-1 text-xs font-semibold text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-300 hover:bg-gray-50" %>
   </div>
 
   <div>
-    <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
+    <%= form.button button_text(form.send(:submit_default_value)), class: "btn bg-indigo-600 btn-primary" %>
 
     <% if form.object.new_record? %>
       <%= link_to t("cancel"), tours_path, class: "btn btn-white" %>

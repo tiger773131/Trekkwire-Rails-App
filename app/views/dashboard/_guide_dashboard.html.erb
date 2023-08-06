@@ -14,10 +14,12 @@
         <table class="min-w-full divide-y divide-gray-300">
           <thead>
           <tr>
-            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Title</th>
-            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Price</th>
-            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
-            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Scheduled Tours</th>
+            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"><%= sortable @tours, :title, "Title", class: "text-gray-700 mr-1" %></th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Scheduled</th>
+            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"><%= sortable @tours, :price, "Price", class: "text-gray-700 mr-1" %></th>
+            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Duration</th>
+            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Tagline</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">Description</th>
             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Tags</th>
             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
               <span class="sr-only">Edit</span>
@@ -27,10 +29,12 @@
           <tbody class="divide-y divide-gray-200">
           <% current_account.tours.each do |tour| %>
             <tr>
-              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= link_to tour.title, tour_path(tour) %></td>
-              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.price %></td>
-              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.description %></td>
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= link_to tour.title.truncate(20), tour_path(tour) %></td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.scheduled_tours.count %></td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.price %></td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.duration %></td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.tagline.truncate(30) %></td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.description.truncate(40) %></td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.title %></td>
             </tr>
           <% end %>
