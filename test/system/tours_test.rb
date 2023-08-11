@@ -16,8 +16,9 @@ class ToursTest < ApplicationSystemTestCase
     visit tours_url
     click_on "New Tour"
 
-    fill_in "Description", with: @tour.description
-    fill_in "Title", with: @tour.title
+    fill_in "tour_description", with: @tour.description
+    fill_in "tour_title", with: @tour.title
+    fill_in "tour_price", with: @tour.price
     click_on "Create Tour"
 
     # assert_text "Tour was successfully created"
@@ -28,8 +29,9 @@ class ToursTest < ApplicationSystemTestCase
     visit tour_url(@tour)
     click_on "Edit", match: :first
 
-    fill_in "Description", with: @tour.description
-    fill_in "Title", with: @tour.title
+    fill_in "tour_description", with: @tour.description
+    fill_in "tour_title", with: @tour.title
+    fill_in "tour_price", with: @tour.price
     click_on "Update Tour"
 
     # assert_text "Tour was successfully updated"
