@@ -34,7 +34,7 @@ gem "redis", "~> 5.0"
 gem "tzinfo-data"
 
 # Use Active Storage validations for images
-gem 'active_storage_validations'
+gem "active_storage_validations"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
