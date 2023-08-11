@@ -29,5 +29,5 @@ class Tour < ApplicationRecord
   after_update_commit -> { broadcast_replace_later_to self }
   after_destroy_commit -> { broadcast_remove_to :tours, target: dom_id(self, :index) }
   validates :price, :title, :description, :presence => true
-  validates :photos, attached: true, content_type: [:png, :jpg, :jpeg], size: {less_than: 4.megabytes, message: "must be less than 4MB in size"}
+  validates :photos, content_type: [:png, :jpg, :jpeg], size: {less_than: 4.megabytes, message: "must be less than 4MB in size"}
 end
