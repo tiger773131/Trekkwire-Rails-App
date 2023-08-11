@@ -37,6 +37,9 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
+  # Don't replace existing photos when adding more.
+  config.active_storage.replace_on_assign_to_many = false
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :google
 

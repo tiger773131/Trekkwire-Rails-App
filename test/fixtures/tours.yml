@@ -4,7 +4,9 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text
+#  duration    :integer
 #  price       :decimal(8, 2)
+#  tagline     :string
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

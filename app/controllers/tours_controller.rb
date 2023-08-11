@@ -93,7 +93,7 @@ class ToursController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def tour_params
-    params.require(:tour).permit(:title, :description, :price).merge(account_id: current_account.id)
+    params.require(:tour).permit(:title, :tagline, :description, :duration, :price, photos: []).merge(account_id: current_account.id)
 
     # Uncomment to use Pundit permitted attributes
     # params.require(:tour).permit(policy(@tour).permitted_attributes)
