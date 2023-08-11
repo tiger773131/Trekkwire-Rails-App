@@ -87,7 +87,7 @@
     <ul role="list" class="list-none pb-4 mx-auto mt-6 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4 lg:gap-8">
       <% @account.tours.each do |t| %>
         <li class="rounded-2xl bg-gray-800 px-8 py-10">
-          <div class="mx-auto rounded-full md:h-56 md:w-56">
+          <div class="mx-auto rounded-full">
             <%= render partial: 'carousel', locals: {photos: t.photos} %>
           </div>
           <h3 class="mt-6 text-base font-semibold leading-7 tracking-tight text-white"><%= t.title %></h3>
