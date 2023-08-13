@@ -33,6 +33,20 @@ module.exports = {
         danger: colors.red,
         "code-400": "#fefcf9",
         "code-600": "#3c455b",
+        'haiti': {
+          '50': '#f0ebf5',
+          '100': '#e2d8eb',
+          '200': '#b6a3cc',
+          '300': '#8a74ab',
+          '400': '#41306e',
+          '500': '#0e092d',
+          '600': '#0c0729',
+          '700': '#080521',
+          '800': '#06031c',
+          '900': '#040214',
+          '950': '#02010d'
+        },
+        "black-violet": "#0E092D",
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
