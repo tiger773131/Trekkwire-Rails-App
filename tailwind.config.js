@@ -49,7 +49,7 @@ module.exports = {
         "black-violet": "#0E092D",
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.sans],
       },
     },
   },

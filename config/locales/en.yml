@@ -271,7 +271,7 @@ en:
       dashboard: "Dashboard"
       sign_out: "Sign Out"
       log_in: "Log In"
-      sign_up: "Sign Up"
+      sign_up: "Register"
     oauth:
       apple: "Sign in with Apple"
       developer: "Developer"
