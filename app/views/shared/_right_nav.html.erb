@@ -8,7 +8,10 @@
 <% if user_signed_in? %>
   <% if current_account.customer_type == "traveler" %>
     <%= nav_link_to t(".MyTrips"), scheduled_tours_path, class: "nav-link text-white" %>
+    <%= nav_link_to t("static.about.title"), become_a_guide_path, class: "nav-link text-white" %>
   <% end %>
 <% else %>
+  <%= nav_link_to "Find a guide", new_user_session_path, class: "nav-link text-white" %>
+  <%= nav_link_to "Become a guide", become_a_guide_path, class: "nav-link text-white" %>
   <%= nav_link_to t("static.about.title"), about_path, class: "nav-link text-white" %>
 <% end %>

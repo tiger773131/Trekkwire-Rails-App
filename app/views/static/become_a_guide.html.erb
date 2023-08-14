@@ -23,7 +23,11 @@
                 </svg>
                 Some follow up items.
               </dt>
+              <% if current_account %>
               <dd class="inline">You'll need to complete a few tasks after your initial account creation. First, you'll need to set a location for your account, so go ahead and <%= link_to "navigate to edit your account", edit_account_path(current_account), class: "rounded bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"%> for your guide account and set your operating location. This will make you available in that location. Additionally, you'll want to add some branding and details about what type of guide you are. Also, you'll want to create any tours you want to offer.</dd>
+              <% else %>
+              <dd class="inline">You'll need to complete a few tasks after your initial account creation. First, you'll need to set a location for your account, so go ahead and <%= link_to "navigate to edit your account", new_user_session_path, class: "rounded bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"%> for your guide account and set your operating location. This will make you available in that location. Additionally, you'll want to add some branding and details about what type of guide you are. Also, you'll want to create any tours you want to offer.</dd>
+              <% end %>
             </div>
             <div class="relative pl-9">
               <dt class="inline font-semibold text-gray-900">
