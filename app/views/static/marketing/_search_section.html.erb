@@ -1,0 +1,24 @@
+<div class="px-10 py-10">
+  <form>
+    <div class="flex justify-center items-center">
+      <label class="block text-lg pb-2 font-bold leading-6 text-black">Start your journey today.</label>
+    </div>
+    <div class="flex justify-center items-center">
+      <div class="md:w-2/5 sm:w-full relative">
+        <div class="space-x-4">
+          <div class="static flex rounded-lg overflow-hidden w-full">
+            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+            </div>
+            <input type="text" class="static inline-block border-0 py-1.5 pl-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-2/3 rounded-full rounded-r-none" placeholder="Search by city" />
+            <input type="text" class="static inline-block border-0 py-1.5 pl-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-2/3 rounded-full rounded-l-none rounded-r-none" placeholder="Travelers" />
+            <%= link_to "Search", new_user_session_path, class:"bg-indigo-600 text-white w-1/3 px-6 text-xs font-semibold py-4 rounded-r-full" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <%= image_tag "Frame 1561.png", class:"pt-8 mx-auto" %>
+</div>
