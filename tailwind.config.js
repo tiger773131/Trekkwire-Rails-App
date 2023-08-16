@@ -47,6 +47,9 @@ module.exports = {
           '950': '#02010d'
         },
         "black-violet": "#0E092D",
+        "marketing-gradient-start": "#faf6fd",
+        "marketing-gradient-end": "#f9e9e0",
+
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.sans],
