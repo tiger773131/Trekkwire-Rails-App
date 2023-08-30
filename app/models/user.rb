@@ -81,6 +81,16 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :avatar, resizable_image: true
 
+  cattr_accessor :form_steps do
+    %w[sign_up account_type user_name user_info]
+  end
+
+  # attr_accessor :form_step
+  #
+  # def form_step
+  #   @form_step || form_steps.first
+  # end
+
   # Replace with a search engine like Meilisearch, ElasticSearch, or pg_search to provide better results
   # Using arel matches allows for database agnostic like queries
   def self.search(query)
