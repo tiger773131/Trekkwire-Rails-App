@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "~> 3.2"
+# Bundler 2.4.19 introduced `file: ".ruby-version"` option, but Heroku does not support the latest Bundler yet.
+ruby File.read(".ruby-version").strip
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 7.0.0"
@@ -82,8 +83,8 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara", ">= 3.39.1"
-  gem "selenium-webdriver"
+  gem "capybara", ">= 3.39"
+  gem "selenium-webdriver", ">= 4.11.0"
   gem "webmock"
 end
 

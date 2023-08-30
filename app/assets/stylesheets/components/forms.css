@@ -128,15 +128,34 @@ form.inline {
   }
 }
 
-[type='checkbox'] {
-  @apply form-checkbox;
-  @apply rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+.switch, .toggle {
+  @apply relative;
 
-  &[disabled] {
-    @apply bg-gray-200;
+  input[type="checkbox"] {
+    @apply absolute top-2 left-0 opacity-0;
+
+    &:checked {
+      + label {
+        &:before {
+          @apply bg-blue-600;
+        }
+
+        &:after {
+          @apply translate-x-[26px];
+        }
+      }
+    }
   }
-}
 
-[type='radio'] {
-  @apply form-radio;
+  label {
+    @apply relative pl-16 pt-0.5 hover:cursor-pointer;
+
+    &:before {
+      @apply absolute bg-gray-200 top-0 left-0 rounded-3xl h-6 w-[50px] content-[""] transition-colors duration-200 ease-in;
+    }
+
+    &:after {
+      @apply absolute top-0.5 left-0.5 rounded-full w-5 h-5 bg-white content-[""] transition-transform duration-200 ease-in;
+    }
+  }
 }
