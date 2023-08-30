@@ -78,7 +78,7 @@ two:
 guide_user:
   email: guide@example.com
   first_name: User
-  last_name: One
+  last_name: Guide
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   accepted_terms_at: <%= Time.current %>
   accepted_privacy_at: <%= Time.current %>
