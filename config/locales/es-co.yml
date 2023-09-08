@@ -151,6 +151,7 @@ es-co:
       about: "Sobre nosotros"
       privacy: "Política de protección de datos personales"
       terms: "Términos y condiciones"
+      reserved: "All rights reserved."
     account_navbar:
       profile: "Perfil"
       password: "Contraseña"
