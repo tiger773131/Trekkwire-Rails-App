@@ -211,6 +211,7 @@ fr:
       about: "À propos"
       privacy: "Vie privée"
       terms: "Conditions d’utilisation"
+      reserved: "All rights reserved."
     account_navbar:
       profile: "Préférences"
       password: "Mot de passe"
