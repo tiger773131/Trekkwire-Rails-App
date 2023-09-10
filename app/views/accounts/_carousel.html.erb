@@ -1,13 +1,13 @@
 <div class="relative" data-controller="carousel">
   <div class="absolute left-0 bottom-0 top-0 flex items-center">
-    <button data-action="click->carousel#previous" type="button" class="rounded-full bg-gray-300 z-50">
+    <button data-action="click->carousel#previous" type="button" class="rounded-full bg-gray-300 bg-opacity-50 z-50">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
       </svg>
     </button>
   </div>
   <div class="absolute right-0 bottom-0 top-0 flex items-center">
-    <button data-action="click->carousel#next" type="button" class="rounded-full bg-gray-300 z-50">
+    <button data-action="click->carousel#next" type="button" class="rounded-full bg-gray-300 bg-opacity-50 z-50">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
       </svg>
@@ -21,7 +21,7 @@
                         src: photo.url,
                         loading: :lazy
       %>
-      <%= image_tag photo.variant(resize_to_limit: [200, 200]), alt:"", class:"w-full rounded-2xl object-cover z-20"%>
+      <%= image_tag photo.variant(resize_to_limit: [size_x, size_y]), alt:"", class:"w-full rounded-2xl object-cover z-20"%>
     </div>
   <% end %>
 </div>

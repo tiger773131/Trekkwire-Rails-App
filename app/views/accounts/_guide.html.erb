@@ -1,26 +1,37 @@
 <div>
-    <div class="w-full lg:w-3/4 lg:p-4">
-      <%= link_to "View Public Profile", public_profile_path(@account.id)%>
-    </div>
+  <div class="w-full lg:w-3/4 lg:p-2">
+    <%= link_to "View Public Profile", public_profile_path(@account.id)%>
+  </div>
+</div>
+
+<div class="max-w-sm max-h-auto px-2 lg:px-2">
+  <div class="mx-auto lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
+    <h3 class="text-base font-semibold leading-7 text-gray-900">Cover Images</h3>
+    <% if @account.photos.count > 0 %>
+      <div class="-mx-auto rounded-full">
+        <%= render partial: "carousel", locals: {photos: @account.photos, size_x: 400, size_y: 400} %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div>
-    <div class="w-full lg:w-3/4 lg:p-4">
+  <div class="w-full lg:w-3/4 lg:p-4">
     <h3 class="text-base font-semibold leading-7 text-gray-900">Tagline</h3>
     <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.tagline %></p>
-    </div>
+  </div>
 </div>
 
 <div>
-    <div class="w-full lg:w-3/4 lg:p-4">
+  <div class="w-full lg:w-3/4 lg:p-4">
     <h3 class="text-base font-semibold leading-7 text-gray-900">Account Bio</h3>
     <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.description %></p>
-    </div>
+  </div>
 </div>
 
 <div>
-    <div class="w-full lg:w-3/4 lg:p-4">
+  <div class="w-full lg:w-3/4 lg:p-4">
     <h3 class="text-base font-semibold leading-7 text-gray-900">Operating Location</h3>
     <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.operating_location.present? ? @account.operating_location.address : "none set" %></p>
-    </div>
+  </div>
 </div>
