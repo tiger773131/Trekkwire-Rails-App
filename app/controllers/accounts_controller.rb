@@ -51,7 +51,8 @@ class AccountsController < Accounts::BaseController
 
   # PATCH/PUT /accounts/1
   def update
-    if @account.update(account_params)
+    attach_languages
+    if @account.update(account_params)      
       redirect_to @account, notice: t(".updated")
     else
       render :edit, status: :unprocessable_entity
@@ -95,9 +96,13 @@ class AccountsController < Accounts::BaseController
     @account = current_user.accounts.find(params[:id])
   end
 
+  def attach_languages
+    byebug
+  end
+
   # Only allow a trusted parameter "white list" through.
   def account_params
-    attributes = [:name, :customer_type, :description, :tagline, :avatar, :active, photos: [], :operating_location_attributes => [:id, :address, :latitude, :longitude]]
+    attributes = [:name, :customer_type, :description, :tagline, :avatar, :active, photos: [], language_ids: [], :operating_location_attributes => [:id, :address, :latitude, :longitude]]
     attributes << :domain if Jumpstart::Multitenancy.domain?
     attributes << :subdomain if Jumpstart::Multitenancy.subdomain?
     params.require(:account).permit(*attributes)
