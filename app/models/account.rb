@@ -46,6 +46,8 @@ class Account < ApplicationRecord
   has_one :operating_location, dependent: :destroy
   has_one :account_rating_detail, dependent: :destroy
   has_one :schedule, dependent: :destroy
+  has_many :account_language_taggings, class_name: "AccountLanguageTagging", dependent: :destroy
+  has_many :languages, class_name: "LanguageTag", through: :account_language_taggings, source: :language_tag
 
   scope :personal, -> { where(personal: true) }
   scope :impersonal, -> { where(personal: false) }
