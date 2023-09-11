@@ -53,6 +53,8 @@ class Account < ApplicationRecord
 
   has_noticed_notifications
   has_one_attached :avatar
+  has_many_attached :photos
+
   pay_customer stripe_attributes: :stripe_attributes
   pay_customer default_payment_processor: :stripe
 
@@ -64,6 +66,8 @@ class Account < ApplicationRecord
   validates :domain, exclusion: {in: RESERVED_DOMAINS, message: :reserved}, uniqueness: {allow_blank: true}
   validates :subdomain, exclusion: {in: RESERVED_SUBDOMAINS, message: :reserved}, format: {with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\-_]*[a-zA-Z0-9]+\Z/, message: :format, allow_blank: true}, uniqueness: {allow_blank: true}
   accepts_nested_attributes_for :operating_location, allow_destroy: true
+
+  validates :photos, content_type: [:png, :jpg, :jpeg], size: {less_than: 4.megabytes, message: "must be less than 4MB in size"}
 
   def find_or_build_billing_address
     billing_address || build_billing_address
