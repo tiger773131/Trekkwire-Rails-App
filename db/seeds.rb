@@ -46,6 +46,3 @@ LanguageTag.find_or_create_by(name: "Bulgarian")
 LanguageTag.find_or_create_by(name: "Slovak")
 LanguageTag.find_or_create_by(name: "Ukrainian")
 LanguageTag.find_or_create_by(name: "Croatian")
-
-
-

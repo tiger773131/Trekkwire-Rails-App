@@ -51,7 +51,7 @@ class AccountsController < Accounts::BaseController
 
   # PATCH/PUT /accounts/1
   def update
-    if @account.update(account_params)      
+    if @account.update(account_params)
       redirect_to @account, notice: t(".updated")
     else
       render :edit, status: :unprocessable_entity
