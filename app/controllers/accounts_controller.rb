@@ -51,7 +51,6 @@ class AccountsController < Accounts::BaseController
 
   # PATCH/PUT /accounts/1
   def update
-    attach_languages
     if @account.update(account_params)      
       redirect_to @account, notice: t(".updated")
     else
@@ -94,10 +93,6 @@ class AccountsController < Accounts::BaseController
   # Use callbacks to share common setup or constraints between actions.
   def set_account
     @account = current_user.accounts.find(params[:id])
-  end
-
-  def attach_languages
-    byebug
   end
 
   # Only allow a trusted parameter "white list" through.
