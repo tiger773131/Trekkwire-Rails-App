@@ -60,6 +60,11 @@
         <div>
           <h4 class="pt-6 pb-2">Languages</h4>
           <div class="pb-8">
+            <% @account.languages.each do |language| %>
+              <button type="button" class="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"><%= language.name %></button>
+            <% end %>
+          </div>
+          <div class="pb-8">
           </div>
         </div>
         <div>
