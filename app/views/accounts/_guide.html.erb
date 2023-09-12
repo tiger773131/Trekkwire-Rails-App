@@ -38,6 +38,15 @@
   </div>
 </div>
 
+<div>
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <h3 class="text-base font-semibold leading-7 text-gray-900">Activity Tags</h3>
+    <% @account.activities.each do |activity| %>
+      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= activity.name %></p>
+    <% end %>
+  </div>
+</div>
+
 
 <div>
   <div class="w-full lg:w-3/4 lg:p-4">

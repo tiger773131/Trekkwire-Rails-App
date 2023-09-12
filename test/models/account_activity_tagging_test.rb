@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: account_activity_taggings
+#
+#  id              :bigint           not null, primary key
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  account_id      :bigint           not null
+#  activity_tag_id :bigint           not null
+#
+# Indexes
+#
+#  index_account_activity_taggings_on_account_id       (account_id)
+#  index_account_activity_taggings_on_activity_tag_id  (activity_tag_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (account_id => accounts.id)
+#  fk_rails_...  (activity_tag_id => activity_tags.id)
+#
+require "test_helper"
+
+class AccountActivityTaggingTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end
