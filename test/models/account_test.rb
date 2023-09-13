@@ -6,6 +6,7 @@
 #  account_users_count :integer          default(0)
 #  active              :boolean
 #  approved            :boolean
+#  available_now       :boolean
 #  billing_email       :string
 #  customer_type       :integer          default("traveler")
 #  description         :text
