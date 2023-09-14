@@ -64,6 +64,7 @@ Rails.application.routes.draw do
   resources :accounts do
     member do
       patch :switch
+      delete :delete_photo_attachment
     end
 
     resource :transfer, module: :accounts
