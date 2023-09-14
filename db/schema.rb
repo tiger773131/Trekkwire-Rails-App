@@ -429,7 +429,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_003758) do
     t.string "otp_secret"
     t.integer "last_otp_timestep"
     t.text "otp_backup_codes"
-    t.boolean "account_creator"
     t.jsonb "preferences"
     t.virtual "name", type: :string, as: "(((first_name)::text || ' '::text) || (last_name)::text)", stored: true
     t.index ["email"], name: "index_users_on_email", unique: true
