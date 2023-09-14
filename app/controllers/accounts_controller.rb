@@ -1,6 +1,6 @@
 class AccountsController < Accounts::BaseController
   before_action :authenticate_user!
-  before_action :set_account, only: [:show, :edit, :update, :destroy, :switch]
+  before_action :set_account, only: [:show, :edit, :update, :destroy, :switch, :delete_photo_attachment]
   before_action :require_account_admin, only: [:edit, :update, :destroy]
   before_action :prevent_personal_account_deletion, only: [:destroy]
 
@@ -86,6 +86,13 @@ class AccountsController < Accounts::BaseController
       session[:account_id] = @account.id
       redirect_to root_path
     end
+  end
+
+  def delete_photo_attachment
+    params[:photos].each do |photo|
+      @account.photos.find(photo).purge
+    end
+    redirect_to edit_account_path(@account), notice: "Photo deleted"
   end
 
   private
