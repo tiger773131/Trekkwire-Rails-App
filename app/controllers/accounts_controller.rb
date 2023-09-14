@@ -92,7 +92,7 @@ class AccountsController < Accounts::BaseController
     params[:photos].each do |photo|
       @account.photos.find(photo).purge
     end
-    redirect_to edit_account_path(@account), notice: "Photo deleted"  
+    redirect_to edit_account_path(@account), notice: "Photo deleted"
   end
 
   private
