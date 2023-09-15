@@ -127,7 +127,7 @@ class ScheduledToursController < ApplicationController
   end
 
   def only_authorized
-    redirect_to root_path, notice: "Not Authorized to View Page" unless (current_account_user.id == @scheduled_tour.account_user_id || current_account == @scheduled_tour.tour.account)
+    redirect_to root_path, notice: "Not Authorized to View Page" unless current_account_user.id == @scheduled_tour.account_user_id || current_account == @scheduled_tour.tour.account
   end
 
   # Only allow a list of trusted parameters through.
