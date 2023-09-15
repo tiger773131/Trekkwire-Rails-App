@@ -79,6 +79,26 @@
       <%= form.text_area :description, placeholder: "Tell everybody a bit about who you are! Try and add at least 25 words.", class: "form-control" %>
     </div>
 
+    <div class="form-group">
+      <%= form.label "Facebook Link" %>
+      <%= form.text_field :facebook_social, placeholder: "https://www.facebook.com/YourProfile", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "X Link" %>
+      <%= form.text_field :x_social, placeholder: "https://twitter.com/YourProfile", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "Youtube Link" %>
+      <%= form.text_field :youtube_social, placeholder: "https://youtube.com/YourProfile", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "Instagram Link" %>
+      <%= form.text_field :instagram_social, placeholder: "https://www.instagram.com/YourProfile", class: "form-control" %>
+    </div>
+
     <%= form.fields_for :operating_location, @account.operating_location do |f| %>
       <div data-controller="places-autocomplete">
         <div class="form-group">

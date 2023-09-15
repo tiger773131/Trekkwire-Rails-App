@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_13_003758) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_15_005319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,6 +99,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_003758) do
     t.boolean "approved"
     t.string "tagline"
     t.boolean "available_now"
+    t.string "linkedin_social"
+    t.string "facebook_social"
+    t.string "x_social"
+    t.string "youtube_social"
+    t.string "instagram_social"
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
   end
 

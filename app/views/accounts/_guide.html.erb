@@ -31,6 +31,34 @@
 
 <div>
   <div class="w-full lg:w-3/4 lg:p-4">
+    <h3 class="text-base font-semibold leading-7 text-gray-900">Facebook Link</h3>
+    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.facebook_social %></p>
+  </div>
+</div>
+
+<div>
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <h3 class="text-base font-semibold leading-7 text-gray-900">X Link</h3>
+    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.x_social %></p>
+  </div>
+</div>
+
+<div>
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <h3 class="text-base font-semibold leading-7 text-gray-900">Youtube Link</h3>
+    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.youtube_social %></p>
+  </div>
+</div>
+
+<div>
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <h3 class="text-base font-semibold leading-7 text-gray-900">Instagram Link</h3>
+    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= @account.instagram_social %></p>
+  </div>
+</div>
+
+<div>
+  <div class="w-full lg:w-3/4 lg:p-4">
     <h3 class="text-base font-semibold leading-7 text-gray-900">Spoken Languages</h3>
     <% @account.languages.each do |language| %>
       <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= language.name %></p>

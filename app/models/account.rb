@@ -12,10 +12,15 @@
 #  description         :text
 #  domain              :string
 #  extra_billing_info  :text
+#  facebook_social     :string
+#  instagram_social    :string
+#  linkedin_social     :string
 #  name                :string           not null
 #  personal            :boolean          default(FALSE)
 #  subdomain           :string
 #  tagline             :string
+#  x_social            :string
+#  youtube_social      :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  owner_id            :bigint
