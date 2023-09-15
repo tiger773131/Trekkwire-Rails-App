@@ -1,15 +1,15 @@
 <%= form_with(model: scheduled_tour) do |form| %>
   <%= render "shared/error_messages", resource: form.object %>
   <%= turbo_stream_from @tour %>
-    <div class="container grid px-4 mx-auto my-8">
-      <div class="flex items-center justify-between mb-4">
-        <h1 class="h3">
-          <%= link_to "Back to Guide", public_profile_path(@tour.account_id), class: "text-black" %>
-          <span class="text-gray-400 font-light mx-2">\</span>
-          <%= @tour.title %>
-        </h1>
-      </div>
-      <div class="relative isolate overflow-hidden bg-white px-6 py-4 sm:py-4 lg:overflow-visible lg:px-0">
+  <div class="container grid px-4 mx-auto my-8">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="h3">
+        <%= link_to "Back to Guide", public_profile_path(@tour.account_id), class: "text-black" %>
+        <span class="text-gray-400 font-light mx-2">\</span>
+        <%= @tour.title %>
+      </h1>
+    </div>
+    <div class="relative isolate overflow-hidden bg-white px-6 py-4 sm:py-4 lg:overflow-visible lg:px-0">
       <div class="absolute inset-0 -z-10 overflow-hidden">
         <svg class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
           <defs>
@@ -29,70 +29,70 @@
             <div class="lg:max-w-lg">
               <p class="text-base font-semibold leading-7 text-indigo-600"><%= @tour.tagline %></p>
               <h1 class="mt-2 text-xl font-bold tracking-tight text-gray-900 sm:text-2xl"><%= @tour.title %></h1>
- <div class="form-group">
-    <%= form.label "Scheduled Date" %>
-    <%= form.date_field :scheduled_date, min: Date.today, max: Date.today + 6.months, required: true, class: "form-control" %>
-  </div>
 
-  <div class="form-group">
-    <%= form.label "Scheduled Time (Tours only available to begin between 9AM - 5PM)" %>
-    <%= form.time_field :scheduled_time, value: "%H:%M", min: '09:00', max: '17:00', required: true, class: "form-control"  %>
-  </div>
+            <div class="form-group">
+              <%= form.label "Scheduled Date" %>
+              <%= form.date_field :scheduled_date, min: Date.today, max: Date.today + 2.months, required: true, class: "form-control" %>
+            </div >
 
-  <div class="form-group" data-controller="places-autocomplete">
-    <%= form.label :location, "Where can you meet your guide?" %>
-    <%= form.search_field :location, class: "form-control", data: { target: "places-autocomplete.field" } %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label "Tour Price" %>
-    <%= format("$%.2f", @scheduled_tour.tour.price) %>
-  </div>
-
-  <%= hidden_field_tag :tour_id, params[:tour_id] %>
-  <%= hidden_field_tag :account_user_id, current_account_user.id %>
-
-  <div>
-    <%= form.button button_text("Checkout"), data: { turbo: false }, class: "btn btn-primary" %>
-
-    <% if form.object.new_record? %>
-      <%= link_to t("cancel"), :back, class: "btn btn-white" %>
-    <% else %>
-      <%= link_to t("cancel"), :back, class: "btn btn-white" %>
-    <% end %>
-  </div>            </div>
-          </div>
-        </div>
-        <div class="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-          <%= render partial: 'carousel' %>
-        </div>
-        <div class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2">
-          <div class="lg:pr-4">
-            <div class="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
-              <ul role="list" class="mt-8 space-y-8 text-gray-600">
-                <li class="flex gap-x-3">
-                  <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0118 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3l1.5 1.5 3-3.75" />
-                  </svg>
-                  <span><strong class="font-semibold text-gray-900">What we'll do! </strong><%= @tour.description %></span>
-                </li>
-                <li class="flex gap-x-3">
-                  <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span><strong class="font-semibold text-gray-900">How long will this take? </strong><%= @tour.duration %> hours</span>
-                </li>
-                <li class="flex gap-x-3">
-                  <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                  </svg>
-                  <span><strong class="font-semibold text-gray-900">How much will this cost? </strong><%= number_to_currency(@tour.price) %></span>
-                </li>
-              </ul>
+            <div class="form-group">
+              <%= form.label "Scheduled Time (Tours only available to begin between 9AM - 5PM)" %>
+              <%= form.time_field :scheduled_time, min: '09:00', max: '17:00', required: true, class: "form-control"  %>
             </div>
+
+            <div class="form-group" data-controller="places-autocomplete">
+              <%= form.label :location, "Where can you meet your guide?" %>
+              <%= form.search_field :location, class: "form-control", data: { target: "places-autocomplete.field" } %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label "Tour Price" %>
+              <%= format("$%.2f", @scheduled_tour.tour.price) %>
+            </div>
+
+            <%= hidden_field_tag :tour_id, params[:tour_id] %>
+            <%= hidden_field_tag :account_user_id, current_account_user.id %>
+
+            <div>
+              <% if form.object.new_record? %>
+                <%= form.button button_text("Checkout"), data: { turbo: false }, class: "btn btn-primary" %>
+              <% else %>
+                <%= form.button button_text("Update"), data: { turbo: false }, class: "btn btn-primary" %>
+              <% end %>
+              <%= link_to t("cancel"), :back, class: "btn btn-white" %>
+            </div>            
           </div>
         </div>
       </div>
+      <div class="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+        <%= render partial: 'carousel' %>
+      </div>
+      <div class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2">
+        <div class="lg:pr-4">
+          <div class="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
+            <ul role="list" class="mt-8 space-y-8 text-gray-600">
+              <li class="flex gap-x-3">
+                <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0118 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3l1.5 1.5 3-3.75" />
+                </svg>
+                <span><strong class="font-semibold text-gray-900">What we'll do! </strong><%= @tour.description %></span>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span><strong class="font-semibold text-gray-900">How long will this take? </strong><%= @tour.duration %> hours</span>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                </svg>
+                <span><strong class="font-semibold text-gray-900">How much will this cost? </strong><%= number_to_currency(@tour.price) %></span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 <% end %>

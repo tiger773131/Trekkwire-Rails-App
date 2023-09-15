@@ -1,5 +1,6 @@
 class ScheduledToursController < ApplicationController
   before_action :set_scheduled_tour, only: [:show, :edit, :update, :destroy]
+  before_action :only_authorized, only: [:show, :edit, :update, :destroy]
 
   # Uncomment to enforce Pundit authorization
   # after_action :verify_authorized
@@ -33,6 +34,7 @@ class ScheduledToursController < ApplicationController
 
   # GET /scheduled_tours/1/edit
   def edit
+    @tour = @scheduled_tour.tour
   end
 
   # POST /scheduled_tours or /scheduled_tours.json
@@ -124,10 +126,14 @@ class ScheduledToursController < ApplicationController
     redirect_to scheduled_tours_path
   end
 
+  def only_authorized
+    redirect_to root_path, notice: "Not Authorized to View Page" unless (current_account_user.id == @scheduled_tour.account_user_id || current_account == @scheduled_tour.tour.account)
+  end
+
   # Only allow a list of trusted parameters through.
   def scheduled_tour_params
     scheduled_tour = params.require(:scheduled_tour).permit(:scheduled_date, :scheduled_time, :location, :tour_id,
-      :account_user_id)
+      :account_user_id, :assigned_guide_id)
     unless params[:tour_id].blank?
       scheduled_tour[:tour_id] = params[:tour_id]
     end

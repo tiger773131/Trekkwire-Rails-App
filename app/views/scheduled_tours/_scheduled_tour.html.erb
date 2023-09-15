@@ -5,7 +5,7 @@
   </div>
   <div class="mb-4">
     <p class="text-sm font-medium text-gray-500">Scheduled time</p>
-    <%= scheduled_tour.scheduled_time %>
+    <%= scheduled_tour.scheduled_time.strftime("%I:%m %p")  %>
   </div>
   <div class="mb-4">
     <p class="text-sm font-medium text-gray-500">Location</p>
