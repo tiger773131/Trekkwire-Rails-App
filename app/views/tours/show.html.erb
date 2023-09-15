@@ -1,3 +1,4 @@
+<% if current_account == @tour.account%>
 <%= content_for :title, "Tour: #{@tour.title}" %>
 <%= turbo_stream_from @tour %>
 <div class="container grid px-4 mx-auto my-8">
@@ -111,3 +112,6 @@
       </div>
   </div>
 </div>
+<% else %>
+You are not authorized to view this page.
+<% end %>

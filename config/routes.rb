@@ -159,7 +159,11 @@ Rails.application.routes.draw do
     resources :account_ratings
     get "/map_pins", to: "dashboard#map_pins"
     get "/page_list", to: "dashboard#page_list"
-    resources :tours
+    resources :tours do
+      member do
+        delete :delete_photo_attachment
+      end
+    end
     resources :schedules
     resources :scheduled_tours
     get "/guide_tours/:account_id", to: "tours#guide_tours", as: "guide_tours"
