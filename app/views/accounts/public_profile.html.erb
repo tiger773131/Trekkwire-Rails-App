@@ -98,10 +98,10 @@
           </div>
           <h3 class="mt-6 text-base font-semibold leading-7 tracking-tight text-white"><%= t.title %></h3>
           <p class="text-sm leading-6 text-gray-400"><%= t.tagline %></p>
-          <p class="text-sm leading-6 text-gray-400">Cost: <%= t.price %></p>
+          <p class="text-sm leading-6 text-gray-400">Cost: <%= number_to_currency(t.price) %></p>
           <p class="text-sm leading-6 text-gray-400">Duration: <%= t.duration %> hours</p>
           <div class="flex items-center justify-center pt-4">
-            <%= link_to "Book A Tour", new_scheduled_tour_path(tour_id: t.id), class: "btn btn-gray bg-opacity-50" %>
+            <%= link_to "Book Now!", new_scheduled_tour_path(tour_id: t.id), class: "btn btn-gray bg-opacity-50" %>
           </div>
         </li>
       <% end %>

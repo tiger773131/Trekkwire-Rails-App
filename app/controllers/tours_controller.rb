@@ -1,5 +1,5 @@
 class ToursController < ApplicationController
-  before_action :set_tour, only: [:show, :edit, :update, :destroy]
+  before_action :set_tour, only: [:show, :edit, :update, :destroy, :delete_photo_attachment]
 
   # Uncomment to enforce Pundit authorization
   # after_action :verify_authorized
@@ -77,6 +77,13 @@ class ToursController < ApplicationController
       format.html { redirect_to tours_url, status: :see_other, notice: "Tour was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def delete_photo_attachment
+    params[:photos].each do |photo|
+      @tour.photos.find(photo).purge
+    end
+    redirect_to edit_tour_path(@tour), notice: "Photo deleted"
   end
 
   private
