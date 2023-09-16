@@ -175,7 +175,7 @@ en:
 
   dashboard:
     traveler_dashboard:
-      title_traveler: "Find An Adventure"
+      title_traveler: "Ready to Explore? Find a guide near you!"
     show:
       title_guide: "Manage Your Business"
       not_approved: "Your account still needs approval. Please reach out to support to complete your onboarding."
