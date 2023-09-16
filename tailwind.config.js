@@ -55,6 +55,10 @@ module.exports = {
       fontFamily: {
         sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.sans],
       },
+      screens: {
+        'xxs': '320px', // max-width
+        'xs': '460px', // min-width
+      },  
     },
   },
 
