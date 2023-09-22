@@ -27,6 +27,7 @@
 #  otp_backup_codes       :text
 #  otp_required_for_login :boolean
 #  otp_secret             :string
+#  phone                  :bigint
 #  preferences            :jsonb
 #  preferred_language     :string
 #  remember_created_at    :datetime
