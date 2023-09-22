@@ -82,9 +82,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :avatar, resizable_image: true
 
-  validates :phone,   :presence => {:message => 'Please make sure you enter a valid phone number with area and country code'},
-  :numericality => true,
-  :length => { :minimum => 10, :maximum => 15 }
+  validates :phone, :presence => {:message => "Please make sure you enter a valid phone number with area and country code"},
+    :numericality => true,
+    :length => {:minimum => 10, :maximum => 15}
 
   # Scopes
   cattr_accessor :form_steps do
@@ -109,7 +109,7 @@ class User < ApplicationRecord
   end
 
   def phone=(value)
-    value.gsub!(/\D/, '') if value.is_a?(String)
+    value.gsub!(/\D/, "") if value.is_a?(String)
     write_attribute(:phone, value.to_i)
   end
 end
