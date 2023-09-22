@@ -82,7 +82,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :avatar, resizable_image: true
 
-  validates :phone, 
+  validates :phone,
     :numericality => true,
     length: {minimum: 10, maximum: 15}, allow_blank: true
 
