@@ -23,7 +23,7 @@
 
             <div class="form-group">
               <%= form.label :phone %>
-              <%= form.telephone_field :phone, autocomplete: "phone_number", placeholder: "555-555-5555", value: number_to_phone(current_user.phone, area_code: true), class: "form-control" %>
+              <%= form.text_field :phone, autocomplete: "phone_number", placeholder: "555-555-5555", value: number_to_phone(current_user.phone, area_code: true), class: "form-control" %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
