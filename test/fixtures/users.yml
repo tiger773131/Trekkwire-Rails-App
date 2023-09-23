@@ -27,6 +27,7 @@
 #  otp_backup_codes       :text
 #  otp_required_for_login :boolean
 #  otp_secret             :string
+#  phone                  :bigint
 #  preferences            :jsonb
 #  preferred_language     :string
 #  remember_created_at    :datetime
@@ -56,6 +57,7 @@
 #
 one:
   email: one@example.com
+  phone: 5555555555
   first_name: User
   last_name: One
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
@@ -67,6 +69,7 @@ one:
 
 two:
   email: two@example.com
+  phone: 5555555555
   first_name: User
   last_name: Two
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
@@ -77,6 +80,7 @@ two:
 
 guide_user:
   email: guide@example.com
+  phone: 5555555555
   first_name: User
   last_name: Guide
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
@@ -87,6 +91,7 @@ guide_user:
 
 admin:
   email: admin@example.com
+  phone: 5555555555
   first_name: Admin
   last_name: User
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
@@ -98,6 +103,7 @@ admin:
 
 invited:
   email: invited@example.com
+  phone: 5555555555
   first_name: Invited
   last_name: User
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
@@ -108,6 +114,7 @@ invited:
 
 noaccount:
   email: noaccount@example.com
+  phone: 5555555555
   first_name: No Account
   last_name: User
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
@@ -118,6 +125,7 @@ noaccount:
 
 twofactor:
   email: twofactor@example.com
+  phone: 5555555555
   first_name: TwoFactor
   last_name: User
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
@@ -136,6 +144,7 @@ twofactor:
 
 user_without_billing_address:
   email: noaddress@example.com
+  phone: 5555555555
   first_name: User
   last_name: NoAddress
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
@@ -146,6 +155,7 @@ user_without_billing_address:
 
 fake_processor:
   email: fake@example.com
+  phone: 5555555555
   first_name: Fake
   last_name: Processor
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

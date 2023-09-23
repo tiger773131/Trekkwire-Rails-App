@@ -27,6 +27,7 @@
 #  otp_backup_codes       :text
 #  otp_required_for_login :boolean
 #  otp_secret             :string
+#  phone                  :bigint
 #  preferences            :jsonb
 #  preferred_language     :string
 #  remember_created_at    :datetime
@@ -81,6 +82,11 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :avatar, resizable_image: true
 
+  validates :phone,
+    :numericality => true,
+    length: {minimum: 10, maximum: 15}, allow_blank: true
+
+  # Scopes
   cattr_accessor :form_steps do
     %w[sign_up account_type user_name user_info]
   end
@@ -100,5 +106,12 @@ class User < ApplicationRecord
   # When ActionText rendering mentions in plain text
   def attachable_plain_text_representation(caption = nil)
     caption || name
+  end
+
+  def phone=(value)
+    unless value.blank?
+      value.gsub!(/\D/, "") if value.is_a?(String)
+      write_attribute(:phone, value.to_i)
+    end
   end
 end
