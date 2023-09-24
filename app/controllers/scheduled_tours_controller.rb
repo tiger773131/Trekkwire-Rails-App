@@ -46,8 +46,6 @@ class ScheduledToursController < ApplicationController
 
     respond_to do |format|
       if @scheduled_tour.save
-        ScheduledTourNotification.with(account: @scheduled_tour.tour.account, user: current_user,
-          scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
         format.html do
           logo_img = "https://www.trekkwire.com/assets/Trekkwire-c73296d968061a6af217e717fc97651eed296354a8deabd05599d9a6a8257c80.png"
           image_url = @scheduled_tour.tour.account.avatar.attached? ? @scheduled_tour.tour.account.avatar.url : logo_img
@@ -74,6 +72,7 @@ class ScheduledToursController < ApplicationController
         end
         format.json { render :show, status: :created, location: @scheduled_tour }
       else
+        @tour = Tour.find_by_id(params[:tour_id])
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @scheduled_tour.errors, status: :unprocessable_entity }
       end
@@ -82,6 +81,7 @@ class ScheduledToursController < ApplicationController
 
   # PATCH/PUT /scheduled_tours/1 or /scheduled_tours/1.json
   def update
+    @tour = @scheduled_tour.tour
     respond_to do |format|
       if @scheduled_tour.update(scheduled_tour_params)
         format.html { redirect_to @scheduled_tour, notice: "Scheduled tour was successfully updated." }
@@ -106,7 +106,9 @@ class ScheduledToursController < ApplicationController
 
   def stripe_success
     @scheduled_tour = ScheduledTour.find(params[:scheduled_tour_id])
-    @scheduled_tour.update(paid: true)
+    ScheduledTourNotification.with(account: @scheduled_tour.tour.account, user: current_user,
+    scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
+    @scheduled_tour.update(paid: true, assigned_guide_id: @scheduled_tour.tour.account.account_users.first.id)
   end
 
   def stripe_cancel
@@ -123,7 +125,7 @@ class ScheduledToursController < ApplicationController
     # Uncomment to authorize with Pundit
     # authorize @scheduled_tour
   rescue ActiveRecord::RecordNotFound
-    redirect_to scheduled_tours_path
+    redirect_to :back
   end
 
   def only_authorized
@@ -132,7 +134,7 @@ class ScheduledToursController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def scheduled_tour_params
-    scheduled_tour = params.require(:scheduled_tour).permit(:scheduled_date, :scheduled_time, :location, :tour_id,
+    scheduled_tour = params.require(:scheduled_tour).permit(:scheduled_date, :scheduled_time, :phone, :location, :tour_id,
       :account_user_id, :assigned_guide_id)
     unless params[:tour_id].blank?
       scheduled_tour[:tour_id] = params[:tour_id]

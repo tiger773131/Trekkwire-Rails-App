@@ -19,7 +19,7 @@
   <div class="lg:px-20">
     <div class="grid lg:grid-cols-6 bg-gray-100 rounded-lg">
       <div class="lg:col-span-3 px-4 py-5">
-        <%= render partial: "carousel", locals: {photos: @account.photos, size_x: 600, size_y: 600} %>
+        <%= render partial: "carousel", locals: {photos: @account.photos, size_x: 400, size_y: 300} %>
 
         <div class="mt-10 flex justify-center space-x-10">
           <% if @account.facebook_social.present? %>

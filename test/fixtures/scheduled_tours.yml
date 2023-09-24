@@ -5,6 +5,7 @@
 #  id                :bigint           not null, primary key
 #  location          :string
 #  paid              :boolean
+#  phone             :bigint
 #  scheduled_date    :date
 #  scheduled_time    :time
 #  created_at        :datetime         not null
@@ -29,6 +30,7 @@ one:
   scheduled_date: 2023-05-20
   scheduled_time: 2023-05-20 16:37:33
   location: MyString
+  phone: 5555555555
   tour: one
   account_user: two
 
@@ -36,5 +38,6 @@ two:
   scheduled_date: 2023-05-20
   scheduled_time: 2023-05-20 16:37:33
   location: MyString
+  phone: 5555555555
   tour: two
   account_user: two
