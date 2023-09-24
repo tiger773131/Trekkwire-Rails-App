@@ -128,7 +128,7 @@ export default class extends Controller {
                 '<img src="' + location.avatar_url + '" class="card-img-top" alt="...">' +
                 '<div class="card-body col-span-2">' +
                   '<h5 class="card-title">' + location.name + '</h5>' +
-                  '<p class="card-text">' + location.description + '</p>' +
+                  '<p class="card-text">' + location.tagline + '</p>' +
                   '<a href="/public_profile/' + location.id + '" class="mt-2 flex-none rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white btn btn-expanded">View</a>' +
                 '</div>' +
                 '</div>' +
