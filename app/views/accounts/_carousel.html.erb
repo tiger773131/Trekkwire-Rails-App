@@ -21,7 +21,7 @@
                         src: photo.url,
                         loading: :lazy
       %>
-      <%= image_tag photo.variant(resize_to_limit: [size_x, size_y]), alt:"", class:"w-full rounded-2xl object-cover z-20"%>
+      <%= image_tag photo.variant(resize_to_limit: [size_x, size_y], saver: {quality: 60}), alt:"", class:"w-full rounded-2xl object-cover z-20"%>
     </div>
   <% end %>
 </div>

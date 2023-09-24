@@ -5,6 +5,7 @@
 #  id                :bigint           not null, primary key
 #  location          :string
 #  paid              :boolean
+#  phone             :bigint
 #  scheduled_date    :date
 #  scheduled_time    :time
 #  created_at        :datetime         not null
@@ -28,8 +29,17 @@ class ScheduledTour < ApplicationRecord
   belongs_to :tour
   belongs_to :account_user
   validates :scheduled_date, :scheduled_time, :location, :presence => true
+  validates :phone, presence: true,
+    :numericality => true,
+    length: {minimum: 10, maximum: 15}
+
   # Broadcast changes in realtime with Hotwire
   after_create_commit -> { broadcast_prepend_later_to :scheduled_tours, partial: "scheduled_tours/index", locals: {scheduled_tour: self} }
   after_update_commit -> { broadcast_replace_later_to self }
   after_destroy_commit -> { broadcast_remove_to :scheduled_tours, target: dom_id(self, :index) }
+
+  def phone=(value)
+    value.gsub!(/\D/, "") if value.is_a?(String)
+    write_attribute(:phone, value.to_i)
+  end
 end
