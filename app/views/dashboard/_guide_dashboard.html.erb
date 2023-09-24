@@ -20,7 +20,6 @@
             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Duration</th>
             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Tagline</th>
             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">Description</th>
-            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Tags</th>
             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
               <span class="sr-only">Edit</span>
             </th>
@@ -35,7 +34,6 @@
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.duration %></td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.tagline.truncate(30) if tour.tagline %></td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.description.truncate(40) if tour.description %></td>
-              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tour.title %></td>
             </tr>
           <% end %>
           </tbody>

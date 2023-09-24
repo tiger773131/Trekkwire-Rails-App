@@ -1,4 +1,4 @@
-<% if @account && @account.customer_type == "guide" && !@account.operating_location.nil? %>
+<% if (@account && @account.customer_type == "guide" && !@account.operating_location.nil?) || current_account == @account %>
 <div class="overflow-hidden rounded-lg bg-white shadow pb-6">
   <div class="px-4 py-5 sm:px-6">
     <div class="pb-5 lg:py-5 lg:px-20 sm:flex sm:items-center sm:justify-between">
