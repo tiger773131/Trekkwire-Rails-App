@@ -178,8 +178,8 @@ en:
       title_traveler: "Ready to Explore? Find a guide near you!"
     show:
       title_guide: "Manage Your Business"
-      not_approved: "Your account still needs approval. Please reach out to support to complete your onboarding."
-      not_active: "Your account is not active."
+      not_approved: "Please email, text, or call to prove you are a real person to enable your account."
+      not_active: "Your account is not currently live."
 
   payments:
     success: "Thanks for subscribing!"
