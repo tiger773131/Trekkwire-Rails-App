@@ -30,8 +30,8 @@ class ScheduledTour < ApplicationRecord
   belongs_to :account_user
   validates :scheduled_date, :scheduled_time, :location, :presence => true
   validates :phone, presence: true,
-  :numericality => true,
-  length: {minimum: 10, maximum: 15}
+    :numericality => true,
+    length: {minimum: 10, maximum: 15}
 
   # Broadcast changes in realtime with Hotwire
   after_create_commit -> { broadcast_prepend_later_to :scheduled_tours, partial: "scheduled_tours/index", locals: {scheduled_tour: self} }

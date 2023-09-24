@@ -107,7 +107,7 @@ class ScheduledToursController < ApplicationController
   def stripe_success
     @scheduled_tour = ScheduledTour.find(params[:scheduled_tour_id])
     ScheduledTourNotification.with(account: @scheduled_tour.tour.account, user: current_user,
-    scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
+      scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
     @scheduled_tour.update(paid: true, assigned_guide_id: @scheduled_tour.tour.account.account_users.first.id)
   end
 

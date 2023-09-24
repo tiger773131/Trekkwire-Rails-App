@@ -42,7 +42,7 @@ class ScheduledToursControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update scheduled_tour" do
-    patch scheduled_tour_url(@scheduled_tour), params: {scheduled_tour: {account_user_id: @scheduled_tour.account_user_id, location: @scheduled_tour.location, scheduled_date: @scheduled_tour.scheduled_date, phone: @scheduled_tour.phone ,scheduled_time: @scheduled_tour.scheduled_time, tour_id: @scheduled_tour.tour_id}}
+    patch scheduled_tour_url(@scheduled_tour), params: {scheduled_tour: {account_user_id: @scheduled_tour.account_user_id, location: @scheduled_tour.location, scheduled_date: @scheduled_tour.scheduled_date, phone: @scheduled_tour.phone, scheduled_time: @scheduled_tour.scheduled_time, tour_id: @scheduled_tour.tour_id}}
     assert_redirected_to scheduled_tour_url(@scheduled_tour)
   end
 
