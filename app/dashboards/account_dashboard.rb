@@ -44,6 +44,8 @@ class AccountDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :owner,
+    :customer_type,
+    :approved,
     :pay_customers,
     :charges,
     :subscriptions,
