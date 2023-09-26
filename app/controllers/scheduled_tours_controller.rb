@@ -63,7 +63,7 @@ class ScheduledToursController < ApplicationController
               quantity: 1
             }],
             mode: "payment",
-            success_url: success_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
+            success_url: success_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s + "&session_id={CHECKOUT_SESSION_ID}",
             cancel_url: cancel_url + "?scheduled_tour_id=" + @scheduled_tour.id.to_s,
             automatic_tax: {enabled: true},
             customer_email: current_user.email
@@ -105,10 +105,11 @@ class ScheduledToursController < ApplicationController
   end
 
   def stripe_success
+    session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @scheduled_tour = ScheduledTour.find(params[:scheduled_tour_id])
     ScheduledTourNotification.with(account: @scheduled_tour.tour.account, user: current_user,
       scheduled_tour: @scheduled_tour).deliver_later(@scheduled_tour.tour.account.users.all)
-    @scheduled_tour.update(paid: true, assigned_guide_id: @scheduled_tour.tour.account.users.first.id)
+    @scheduled_tour.update(paid: true, assigned_guide_id: @scheduled_tour.tour.account.users.first.id, total_paid: session["amount_total"] / 100.0)
   end
 
   def stripe_cancel

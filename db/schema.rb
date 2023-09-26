@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_23_183104) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_26_023938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -380,6 +380,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_23_183104) do
     t.integer "assigned_guide_id"
     t.boolean "paid"
     t.bigint "phone"
+    t.decimal "total_paid", precision: 8, scale: 2
     t.index ["account_user_id"], name: "index_scheduled_tours_on_account_user_id"
     t.index ["tour_id"], name: "index_scheduled_tours_on_tour_id"
   end
