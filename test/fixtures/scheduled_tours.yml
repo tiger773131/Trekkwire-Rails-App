@@ -8,6 +8,7 @@
 #  phone             :bigint
 #  scheduled_date    :date
 #  scheduled_time    :time
+#  total_paid        :decimal(8, 2)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  account_user_id   :bigint
