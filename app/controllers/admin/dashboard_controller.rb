@@ -8,8 +8,8 @@ module Admin
       @last_month = last_month
       @this_month = this_month
       @users = ::User.all.count
-      @guide_accounts = ::Account.where(customer_type: 'guide').count
-      @traveler_accounts = ::Account.where(customer_type: 'traveler').count
+      @guide_accounts = ::Account.where(customer_type: "guide").count
+      @traveler_accounts = ::Account.where(customer_type: "traveler").count
       @scheduled_tours = ::ScheduledTour.where(paid: true).count
       @subscriptions = ::Pay::Subscription.active.count
     end
