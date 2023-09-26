@@ -105,7 +105,6 @@ class ScheduledToursController < ApplicationController
   end
 
   def stripe_success
-    byebug
     session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @scheduled_tour = ScheduledTour.find(params[:scheduled_tour_id])
     ScheduledTourNotification.with(account: @scheduled_tour.tour.account, user: current_user,
