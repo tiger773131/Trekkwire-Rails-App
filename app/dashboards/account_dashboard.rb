@@ -17,6 +17,7 @@ class AccountDashboard < Administrate::BaseDashboard
     avatar: Field::ActiveStorage,
     id: Field::Number,
     name: Field::String,
+    customer_type: Field::String,
     personal: Field::Boolean,
     approved: Field::Boolean,
     created_at: Field::DateTime,
@@ -33,7 +34,8 @@ class AccountDashboard < Administrate::BaseDashboard
     :id,
     :owner,
     :name,
-    :personal,
+    :customer_type,
+    :approved,
     :account_users
   ].freeze
 
