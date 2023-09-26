@@ -48,6 +48,7 @@ module Admin
     def users_last_12_mos
       users_for_range 12.months.ago..Time.current
     end
+
     def revenue_for_range(range)
       # revenue_in_cents = ::Pay::Charge.where(created_at: range).sum(:amount)
       # refunds_in_cents = ::Pay::Charge.where(created_at: range).sum(:amount_refunded)
