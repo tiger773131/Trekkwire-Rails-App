@@ -7,7 +7,7 @@ class SchedulesController < ApplicationController
 
   # GET /schedules
   def index
-    @pagy, @schedules = pagy(Schedule.sort_by_params(params[:sort], sort_direction))
+    @pagy, @schedules = pagy(Schedule.where(account_id: current_account.id).sort_by_params(params[:sort], sort_direction))
 
     # Uncomment to authorize with Pundit
     # authorize @schedules
@@ -32,7 +32,7 @@ class SchedulesController < ApplicationController
   # POST /schedules or /schedules.json
   def create
     @schedule = Schedule.new(schedule_params)
-
+    @schedule.account = current_account
     # Uncomment to authorize with Pundit
     # authorize @schedule
 
@@ -83,7 +83,7 @@ class SchedulesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def schedule_params
-    params.require(:schedule).permit(:account_id)
+    params.require(:schedule).permit(:name)
 
     # Uncomment to use Pundit permitted attributes
     # params.require(:schedule).permit(policy(@schedule).permitted_attributes)
