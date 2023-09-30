@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy, :add_availability]
 
   # Uncomment to enforce Pundit authorization
   # after_action :verify_authorized
@@ -69,6 +69,10 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def add_availability
+    byebug
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -83,7 +87,7 @@ class SchedulesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def schedule_params
-    params.require(:schedule).permit(:name)
+    params.require(:schedule).permit(:name, :active, :begin_date, :end_date, :mon_start, :mon_end, :tue_start, :tue_end, :wed_start, :wed_end, :thu_start, :thu_end, :fri_start, :fri_end, :sat_start, :sat_end, :sun_start, :sun_end)
 
     # Uncomment to use Pundit permitted attributes
     # params.require(:schedule).permit(policy(@schedule).permitted_attributes)

@@ -165,6 +165,7 @@ Rails.application.routes.draw do
       end
     end
     resources :schedules
+    post "/schedules/:id/add_availability", to: "schedules#add_availability", as: "add_availability"
     resources :scheduled_tours
     get "/guide_tours/:account_id", to: "tours#guide_tours", as: "guide_tours"
     get "/success", to: "scheduled_tours#stripe_success"
