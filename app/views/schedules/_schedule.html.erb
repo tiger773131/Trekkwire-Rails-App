@@ -12,35 +12,35 @@
         </div>
         <div class="bg-white px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
           <dt class="text-sm font-medium leading-6 text-gray-900">Schedule Dates</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.begin_date.strftime("%B %d, %Y")%> - <%=schedule.end_date.strftime("%B %d, %Y") %></dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.begin_date.try(:strftime, "%I:%m %p")%> - <%=schedule.end_date.try(:strftime, "%I:%m %p") %></dd>
         </div>
         <div class="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
           <dt class="text-sm font-medium leading-6 text-gray-900">Sunday Availability</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.sun_start.strftime("%I:%m %p")%> - <%= schedule.sun_end.strftime("%I:%m %p")%> </dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.sun_start.try(:strftime, "%I:%m %p")%> - <%= schedule.sun_end.try(:strftime, "%I:%m %p")%> </dd>
         </div>
         <div class="bg-white px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
           <dt class="text-sm font-medium leading-6 text-gray-900">Monday Availability</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.mon_start.strftime("%I:%m %p")%> - <%= schedule.mon_end.strftime("%I:%m %p")%> </dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.mon_start.try(:strftime, "%I:%m %p")%> - <%= schedule.mon_end.try(:strftime, "%I:%m %p")%> </dd>
         </div>
         <div class="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
           <dt class="text-sm font-medium leading-6 text-gray-900">Tuesday Availability</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.tue_start.strftime("%I:%m %p")%> - <%= schedule.tue_end.strftime("%I:%m %p")%> </dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.tue_start.try(:strftime, "%I:%m %p")%> - <%= schedule.tue_end.try(:strftime, "%I:%m %p")%> </dd>
         </div>
         <div class="bg-white px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
           <dt class="text-sm font-medium leading-6 text-gray-900">Wednesday Availability</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.wed_start.strftime("%I:%m %p")%> - <%= schedule.wed_end.strftime("%I:%m %p")%> </dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.wed_start.try(:strftime, "%I:%m %p")%> - <%= schedule.wed_end.try(:strftime, "%I:%m %p")%> </dd>
         </div>
         <div class="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
           <dt class="text-sm font-medium leading-6 text-gray-900">Thursday Availability</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.thu_start.strftime("%I:%m %p")%> - <%= schedule.thu_end.strftime("%I:%m %p")%> </dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.thu_start.try(:strftime, "%I:%m %p")%> - <%= schedule.thu_end.try(:strftime, "%I:%m %p")%> </dd>
         </div>
         <div class="bg-white px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
           <dt class="text-sm font-medium leading-6 text-gray-900">Friday Availability</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.fri_start.strftime("%I:%m %p")%> - <%= schedule.fri_end.strftime("%I:%m %p")%> </dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.fri_start.try(:strftime, "%I:%m %p")%> - <%= schedule.fri_end.try(:strftime, "%I:%m %p")%> </dd>
         </div>
         <div class="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
           <dt class="text-sm font-medium leading-6 text-gray-900">Saturday Availability</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.sat_start.strftime("%I:%m %p")%> - <%= schedule.sat_end.strftime("%I:%m %p")%> </dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= schedule.sat_start.try(:strftime, "%I:%m %p")%> - <%= schedule.sat_end.try(:strftime, "%I:%m %p")%> </dd>
         </div>
       </dl>
     </div>
