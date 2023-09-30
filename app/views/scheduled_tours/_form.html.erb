@@ -30,19 +30,21 @@
               <p class="text-base font-semibold leading-7 text-indigo-600"><%= @tour.tagline %></p>
               <h1 class="mt-2 text-xl font-bold tracking-tight text-gray-900 sm:text-2xl"><%= @tour.title %></h1>
 
-            <div class="form-group">
-              <%= form.label "Scheduled Date" %>
-              <%= form.date_field :scheduled_date, min: Date.today, max: Date.today + 2.months, required: true, class: "form-control" %>
-            </div >
+            <div data-controller="availability">
+              <div class="form-group">
+                <%= form.label "Scheduled Date" %>
+                <%= form.date_field :scheduled_date, min: Date.today, max: Date.today + 2.months, required: true, class: "form-control", data: { action: "change->availability#change"}%>
+              </div >
+
+              <div class="form-group">
+                <%= form.label "Scheduled Time" %>
+                <%= form.time_field :scheduled_time, min: '09:00', max: '17:00', required: true, class: "form-control"  %>
+              </div>
+            </div>
 
             <div class="form-group">
               <%= form.label :phone %>
               <%= form.text_field :phone, autocomplete: "phone_number", placeholder: "555-555-5555", value: number_to_phone(scheduled_tour.phone, area_code: true), class: "form-control" %>
-            </div>
-
-            <div class="form-group">
-              <%= form.label "Scheduled Time (Tours only available to begin between 9AM - 5PM)" %>
-              <%= form.time_field :scheduled_time, min: '09:00', max: '17:00', required: true, class: "form-control"  %>
             </div>
 
             <div class="form-group" data-controller="places-autocomplete">

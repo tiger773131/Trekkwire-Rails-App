@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_26_023938) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_022205) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -389,6 +389,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_023938) do
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.boolean "active", default: false
+    t.date "begin_date"
+    t.date "end_date"
+    t.time "mon_start"
+    t.time "mon_end"
+    t.time "tue_start"
+    t.time "tue_end"
+    t.time "wed_start"
+    t.time "wed_end"
+    t.time "thu_start"
+    t.time "thu_end"
+    t.time "fri_start"
+    t.time "fri_end"
+    t.time "sat_start"
+    t.time "sat_end"
+    t.time "sun_start"
+    t.time "sun_end"
     t.index ["account_id"], name: "index_schedules_on_account_id"
   end
 

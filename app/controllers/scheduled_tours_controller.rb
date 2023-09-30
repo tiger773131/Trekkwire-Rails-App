@@ -56,8 +56,17 @@ class ScheduledToursController < ApplicationController
                 currency: "usd",
                 product_data: {
                   name: @scheduled_tour.tour.title,
-                  images: [image_url]
+                  images: [image_url],
+                  metadata: {
+                    tour_id: @scheduled_tour.tour.id,
+                    scheduled_tour_id: @scheduled_tour.id,
+                    vendor_id: @scheduled_tour.tour.account.id,
+                    vendor_name: @scheduled_tour.tour.account.name,
+                    vendor_email: @scheduled_tour.tour.account.owner.email,
+                    vendor_phone: @scheduled_tour.tour.account.owner.phone
+                  }
                 },
+                tax_behavior: "inclusive",
                 unit_amount: (@scheduled_tour.tour.price * 100).to_i
               },
               quantity: 1

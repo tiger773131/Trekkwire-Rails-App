@@ -16,7 +16,7 @@ class SchedulesTest < ApplicationSystemTestCase
     visit schedules_url
     click_on "New Schedule"
 
-    fill_in "Account", with: @schedule.account_id
+    fill_in "Name", with: @schedule.name
     click_on "Create Schedule"
 
     # assert_text "Schedule was successfully created"
@@ -27,7 +27,7 @@ class SchedulesTest < ApplicationSystemTestCase
     visit schedule_url(@schedule)
     click_on "Edit", match: :first
 
-    fill_in "Account", with: @schedule.account_id
+    fill_in "Name", with: @schedule.name
     click_on "Update Schedule"
 
     # assert_text "Schedule was successfully updated"
