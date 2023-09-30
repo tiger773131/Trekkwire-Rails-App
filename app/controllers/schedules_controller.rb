@@ -69,10 +69,6 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def add_availability
-    byebug
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

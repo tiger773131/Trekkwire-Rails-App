@@ -63,8 +63,8 @@ class ScheduledToursController < ApplicationController
                     vendor_id: @scheduled_tour.tour.account.id,
                     vendor_name: @scheduled_tour.tour.account.name,
                     vendor_email: @scheduled_tour.tour.account.owner.email,
-                    vendor_phone: @scheduled_tour.tour.account.owner.phone,
-                    },
+                    vendor_phone: @scheduled_tour.tour.account.owner.phone
+                  }
                 },
                 tax_behavior: "inclusive",
                 unit_amount: (@scheduled_tour.tour.price * 100).to_i
