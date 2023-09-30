@@ -35,7 +35,8 @@
 #
 
 one:
+  name: one
   account: one
-
 two:
+  name: two
   account: two
