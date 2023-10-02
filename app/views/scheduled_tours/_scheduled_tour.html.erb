@@ -60,7 +60,7 @@
 
           <div class="border-t border-gray-200 px-4 py-6 sm:px-6 lg:p-8">
             <h4 class="sr-only">Status</h4>
-            <p class="text-sm font-medium text-gray-900">Sheduled for <%= scheduled_tour.scheduled_date.strftime("%A %B %d, %Y") %> at <%= scheduled_tour.scheduled_time.strftime("%I:%m %p") %></p>
+            <p class="text-sm font-medium text-gray-900">Sheduled for <%= scheduled_tour.scheduled_date.strftime("%A %B %d, %Y") %> at <%= scheduled_tour.scheduled_time.strftime("%H:%M %p") %></p>
             <div class="mt-6" aria-hidden="true">
               <div class="overflow-hidden rounded-full bg-gray-200">
                 <% if scheduled_tour.paid == true %>
