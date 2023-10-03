@@ -33,7 +33,7 @@
             <div data-controller="availability">
               <div class="form-group">
                 <%= form.label "Scheduled Date" %>
-                <%= form.date_field :scheduled_date, min: Date.today, max: Date.today + 2.months, required: true, class: "form-control", data: { action: "change->availability#change"}%>
+                <%= form.date_field :scheduled_date, min: Date.today, max: Date.today + 6.months, required: true, class: "form-control", data: { action: "change->availability#change"}%>
               </div >
 
               <%= hidden_field_tag :tour_id, params[:tour_id], data: {availability_target: "tour_id"} %>
@@ -41,7 +41,7 @@
               
               <div class="form-group">
                 <%= form.label "Scheduled Time" %>
-                <%= form.select :scheduled_time, [], {}, required: true, class: "form-control", data: {availability_target: "availability_select"}  %>
+                <%= form.select :scheduled_time, [], {:include_blank => 'None Specified'}, required: true, class: "form-control", data: {availability_target: "availability_select"}  %>
               </div>
             </div>
 

@@ -3,7 +3,7 @@ module ScheduledToursHelper
     bookings = tour.account.scheduled_tours.where(scheduled_date: date).map {|booking|  {date: booking.scheduled_time, duration: booking.tour.duration}}
     schedule = tour.account.schedules.where(active: true).first
     if (schedule && (schedule.begin_date..schedule.end_date).cover?(date))
-      remaining_availability(date, bookings, schedule)
+      remaining_availability(date, bookings, schedule, tour.duration)
     else
       "There is no Scheduled Availability for guide for this date"
     end
@@ -35,8 +35,16 @@ module ScheduledToursHelper
     end
   end
 
-  def remaining_availability(date, bookings, schedule)
-    available_schedule_hours(date, schedule) - booking_hours(bookings)
+  def remaining_availability(date, bookings, schedule, duration)
+    final_avail = []
+    hrs_slice = (available_schedule_hours(date, schedule) - booking_hours(bookings)).slice_when { |prev, curr| curr != prev.next }.to_a
+    hrs_slice.each do |slice|
+      if slice.length >= duration && duration > 0
+        slice.pop(duration-1)
+        final_avail.concat(slice)
+      end
+    end
+    final_avail.each_with_index.map { |x,y| final_avail[y] = [ "Sat, 01 Jan 2000 #{x}:00:00.000000000 UTC +00:00".to_datetime.strftime("%I:%M %p"), "Sat, 01 Jan 2000 #{x}:00:00.000000000 UTC +00:00".to_datetime ] }
   end
 
   def available_schedule_hours(date, schedule)
@@ -56,5 +64,9 @@ module ScheduledToursHelper
       hours.concat(arr)
      end
      hours.uniq
+  end
+
+  def convert_to_time(hours)
+    
   end
 end
