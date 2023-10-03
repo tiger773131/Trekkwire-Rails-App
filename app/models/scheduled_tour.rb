@@ -29,6 +29,9 @@
 class ScheduledTour < ApplicationRecord
   belongs_to :tour
   belongs_to :account_user
+  belongs_to :assigned_guide, class_name: "AccountUser", optional: true
+  belongs_to :tour_owner, class_name: "Account", optional: true
+  
   validates :scheduled_date, :scheduled_time, :location, :presence => true
   validates :phone, presence: true,
     :numericality => true,
