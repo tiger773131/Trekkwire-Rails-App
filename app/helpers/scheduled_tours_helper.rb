@@ -2,7 +2,11 @@ module ScheduledToursHelper
   def scheduled_tour_availability(date, tour)
     bookings = tour.account.scheduled_tours.where(scheduled_date: date).map {|booking|  {date: booking.scheduled_time, duration: booking.tour.duration}}
     schedule = tour.account.schedules.where(active: true).first
-    remaining_availability(date, bookings, schedule)
+    if (schedule && (schedule.begin_date..schedule.end_date).cover?(date))
+      remaining_availability(date, bookings, schedule)
+    else
+      "There is no Scheduled Availability for guide for this date"
+    end
   end
 
   def availability_for_day(date, schedule)

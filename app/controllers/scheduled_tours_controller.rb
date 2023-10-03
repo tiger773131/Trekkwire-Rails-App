@@ -126,6 +126,15 @@ class ScheduledToursController < ApplicationController
     @scheduled_tour.update(paid: false)
   end
 
+  def availability
+    @target = params[:target]
+    @tour = Tour.find(params[:tour_id])
+    @availability = ApplicationController.helpers.scheduled_tour_availability(params[:date].to_date, @tour)
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
