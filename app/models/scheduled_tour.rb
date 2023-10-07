@@ -46,9 +46,4 @@ class ScheduledTour < ApplicationRecord
     value.gsub!(/\D/, "") if value.is_a?(String)
     write_attribute(:phone, value.to_i)
   end
-
-  def available_times_for_date(date)
-    bookings = tour.scheduled_tours.where(scheduled_date: date)
-    schedule = Schedule.where(account_id: tour.account_id, active: true).first
-  end
 end

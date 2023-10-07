@@ -61,7 +61,7 @@ class Tour < ApplicationRecord
   end
 
   def bookings_for_day(date)
-    bookings = account.scheduled_tours.where(scheduled_date: date).map { |booking| {date: booking.scheduled_time, duration: booking.tour.duration} }
+    account.scheduled_tours.where(scheduled_date: date).map { |booking| {date: booking.scheduled_time, duration: booking.tour.duration} }
   end
 
   def formatted_hours_array(dates)
