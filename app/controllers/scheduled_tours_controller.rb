@@ -39,7 +39,6 @@ class ScheduledToursController < ApplicationController
 
   # POST /scheduled_tours or /scheduled_tours.json
   def create
-    byebug
     @scheduled_tour = ScheduledTour.new(scheduled_tour_params)
     # Uncomment to authorize with Pundit
     # authorize @scheduled_tour
