@@ -16,6 +16,7 @@ export default class extends Controller {
     get(`/scheduled_tours/availability?date=${date}&target=${target}&tour_id=${tour_id}`, {
       responseKind: 'turbo-stream'
     }).then(response => {
+      console.log("Response:")
       console.log(response)
     })
 
