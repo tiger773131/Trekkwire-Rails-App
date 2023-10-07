@@ -165,7 +165,11 @@ Rails.application.routes.draw do
       end
     end
     resources :schedules
-    resources :scheduled_tours
+    resources :scheduled_tours do
+      collection do
+        get :availability
+      end
+    end
     get "/guide_tours/:account_id", to: "tours#guide_tours", as: "guide_tours"
     get "/success", to: "scheduled_tours#stripe_success"
     get "/cancel", to: "scheduled_tours#stripe_cancel"

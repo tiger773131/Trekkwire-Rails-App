@@ -40,7 +40,6 @@ class ScheduledToursController < ApplicationController
   # POST /scheduled_tours or /scheduled_tours.json
   def create
     @scheduled_tour = ScheduledTour.new(scheduled_tour_params)
-
     # Uncomment to authorize with Pundit
     # authorize @scheduled_tour
 
@@ -126,6 +125,15 @@ class ScheduledToursController < ApplicationController
     @scheduled_tour.update(paid: false)
   end
 
+  def availability
+    @target = params[:target]
+    @tour = Tour.find(params[:tour_id])
+    @availability = @tour.get_availability_for_date(params[:date].to_date)
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -135,7 +143,7 @@ class ScheduledToursController < ApplicationController
     # Uncomment to authorize with Pundit
     # authorize @scheduled_tour
   rescue ActiveRecord::RecordNotFound
-    redirect_to :back
+    redirect_to scheduled_tours_url
   end
 
   def only_authorized

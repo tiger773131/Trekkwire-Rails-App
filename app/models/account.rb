@@ -51,11 +51,12 @@ class Account < ApplicationRecord
   has_one :shipping_address, -> { where(address_type: :shipping) }, class_name: "Address", as: :addressable
   has_one :operating_location, dependent: :destroy
   has_one :account_rating_detail, dependent: :destroy
-  has_one :schedule, dependent: :destroy
+  has_many :schedules, dependent: :destroy
   has_many :account_language_taggings, class_name: "AccountLanguageTagging", dependent: :destroy
   has_many :languages, class_name: "LanguageTag", through: :account_language_taggings, source: :language_tag
   has_many :account_activity_taggings, class_name: "AccountActivityTagging", dependent: :destroy
   has_many :activities, class_name: "ActivityTag", through: :account_activity_taggings, source: :activity_tag
+  has_many :scheduled_tours, through: :tours
 
   scope :personal, -> { where(personal: true) }
   scope :impersonal, -> { where(personal: false) }

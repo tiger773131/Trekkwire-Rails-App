@@ -33,12 +33,15 @@
             <div data-controller="availability">
               <div class="form-group">
                 <%= form.label "Scheduled Date" %>
-                <%= form.date_field :scheduled_date, min: Date.today, max: Date.today + 2.months, required: true, class: "form-control", data: { action: "change->availability#change"}%>
+                <%= form.date_field :scheduled_date, min: Date.today, max: Date.today + 6.months, required: true, class: "form-control", data: { action: "change->availability#change"}%>
               </div >
 
+              <%= hidden_field_tag :tour_id, params[:tour_id], data: {availability_target: "tour_id"} %>
+              <%= hidden_field_tag :account_user_id, current_account_user.id %>
+              
               <div class="form-group">
                 <%= form.label "Scheduled Time" %>
-                <%= form.time_field :scheduled_time, min: '09:00', max: '17:00', required: true, class: "form-control"  %>
+                <%= form.select :scheduled_time, [], {:include_blank => 'None Specified'}, required: true, class: "form-control", data: {availability_target: "availability_select"}  %>
               </div>
             </div>
 
@@ -56,9 +59,6 @@
               <%= form.label "Tour Price" %>
               <%= format("$%.2f", @scheduled_tour.tour.price) %>
             </div>
-
-            <%= hidden_field_tag :tour_id, params[:tour_id] %>
-            <%= hidden_field_tag :account_user_id, current_account_user.id %>
 
             <div>
               <% if form.object.new_record? %>
