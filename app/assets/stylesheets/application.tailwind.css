@@ -21,6 +21,7 @@
 @import "components/iframe";
 @import "components/nav";
 @import "components/pagination";
+@import "components/stripe";
 @import "components/tabs";
 @import "components/trix";
 @import "components/typography";

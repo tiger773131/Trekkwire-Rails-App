@@ -60,3 +60,5 @@ Rails.configuration.to_prepare do
     normal: Rails.root.join("app/assets/fonts/Inter-Regular.ttf")
   }
 end
+
+Stripe.client_id = Rails.application.credentials.dig(:stripe, :connect_client_id)

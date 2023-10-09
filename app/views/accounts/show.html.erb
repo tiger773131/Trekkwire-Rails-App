@@ -15,8 +15,8 @@
         <div class="flex-shrink-0 mt-3 sm:mt-0 sm:text-right">
           <%= switch_account_button @account, label: t(".switch"), class: "btn btn-light-gray", form_class: "inline-block" unless current_account == @account %>
           <%= link_to t(".edit_account"), edit_account_path(@account), class: "btn btn-light-gray" if !@account.personal? && account_admin?(@account, current_user) %>
+          <a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_OhoC87Hq1vQMDqGpzUkvJqjtpn1rIPXN&scope=read_write" class="stripe-connect"><span>Connect with</span></a>
         </div>
-
 
       </div>
 
