@@ -160,12 +160,12 @@ class Account < ApplicationRecord
   # Used for stripe account creation for guides
   def create_stripe_account
     return unless guide?
-      
-      account = Stripe::Account.create(
-        type: "standard",
-      )
-  
-      update!(stripe_account_id: account.id)
+
+    account = Stripe::Account.create(
+      type: "standard"
+    )
+
+    update!(stripe_account_id: account.id)
   end
 
   def stripe_setup_link(base_url)
@@ -173,7 +173,7 @@ class Account < ApplicationRecord
       if stripe_account_id.nil?
         create_stripe_account
       end
-      Stripe::AccountLink.create({ account: stripe_account_id, refresh_url: base_url, return_url: base_url, type: 'account_onboarding' }).url
+      Stripe::AccountLink.create({account: stripe_account_id, refresh_url: base_url, return_url: base_url, type: "account_onboarding"}).url
     end
   end
 
