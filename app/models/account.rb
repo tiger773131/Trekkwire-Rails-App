@@ -168,6 +168,15 @@ class Account < ApplicationRecord
       update!(stripe_account_id: account.id)
   end
 
+  def stripe_setup_link(base_url)
+    unless stripe_onboarded
+      if stripe_account_id.nil?
+        create_stripe_account
+      end
+      Stripe::AccountLink.create({ account: stripe_account_id, refresh_url: base_url, return_url: base_url, type: 'account_onboarding' }).url
+    end
+  end
+
   private
 
   # Attributes to sync to the Stripe Customer

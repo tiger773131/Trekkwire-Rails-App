@@ -11,6 +11,7 @@ class AccountsController < Accounts::BaseController
 
   # GET /accounts/1
   def show
+    @stripe_setup_link = @account.stripe_setup_link(request.base_url)
   end
 
   # GET /accounts/new
