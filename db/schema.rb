@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_29_022205) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_19_194505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,6 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_022205) do
     t.string "x_social"
     t.string "youtube_social"
     t.string "instagram_social"
+    t.string "stripe_account_id"
+    t.boolean "stripe_onboarded"
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
   end
 
