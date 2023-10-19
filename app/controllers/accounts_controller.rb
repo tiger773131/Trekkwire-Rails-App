@@ -11,6 +11,9 @@ class AccountsController < Accounts::BaseController
 
   # GET /accounts/1
   def show
+    unless Rails.env.test?
+      @stripe_setup_link = @account.stripe_setup_link(request.base_url)
+    end
   end
 
   # GET /accounts/new

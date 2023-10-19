@@ -60,3 +60,9 @@ Rails.configuration.to_prepare do
     normal: Rails.root.join("app/assets/fonts/Inter-Regular.ttf")
   }
 end
+
+Stripe.client_id = Rails.application.credentials.dig(:stripe, :connect_client_id)
+
+ActiveSupport.on_load(:pay) do
+  Pay::Webhooks.delegator.subscribe "stripe.account.updated", StripeAccountUpdatedProcessor.new
+end

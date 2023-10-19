@@ -17,6 +17,7 @@
 #  linkedin_social     :string
 #  name                :string           not null
 #  personal            :boolean          default(FALSE)
+#  stripe_onboarded    :boolean
 #  subdomain           :string
 #  tagline             :string
 #  x_social            :string
@@ -24,6 +25,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  owner_id            :bigint
+#  stripe_account_id   :string
 #
 # Indexes
 #
@@ -79,6 +81,13 @@ class Account < ApplicationRecord
   accepts_nested_attributes_for :operating_location, allow_destroy: true
 
   validates :photos, content_type: [:png, :jpg, :jpeg], size: {less_than: 4.megabytes, message: "must be less than 4MB in size"}
+
+  after_create do
+    # Create a default schedule
+    schedules.create!(name: "Default Schedule", active: true)
+    # Create stripe account for guides
+    create_stripe_account
+  end
 
   def find_or_build_billing_address
     billing_address || build_billing_address
@@ -146,6 +155,26 @@ class Account < ApplicationRecord
   # Returns the quantity that should be on the subscription
   def per_unit_quantity
     account_users_count
+  end
+
+  # Used for stripe account creation for guides
+  def create_stripe_account
+    return unless guide?
+
+    account = Stripe::Account.create(
+      type: "standard"
+    )
+
+    update!(stripe_account_id: account.id)
+  end
+
+  def stripe_setup_link(base_url)
+    unless stripe_onboarded
+      if stripe_account_id.nil?
+        create_stripe_account
+      end
+      Stripe::AccountLink.create({account: stripe_account_id, refresh_url: base_url, return_url: base_url, type: "account_onboarding"}).url
+    end
   end
 
   private
