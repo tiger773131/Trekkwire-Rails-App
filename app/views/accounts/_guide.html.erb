@@ -4,6 +4,11 @@
   </div>
 </div>
 
+<% if (current_account_user.admin? && !@account.stripe_onboarded) %>
+  <a href=<%= @stripe_setup_link %> class="stripe-connect"><span>Connect with</span></a>
+<% end %>
+
+
 <div class="max-w-sm max-h-auto px-2 lg:px-2">
   <div class="mx-auto lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
     <h3 class="text-base font-semibold leading-7 text-gray-900">Cover Images</h3>

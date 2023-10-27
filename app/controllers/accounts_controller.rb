@@ -11,7 +11,7 @@ class AccountsController < Accounts::BaseController
 
   # GET /accounts/1
   def show
-    unless Rails.env.test?
+    unless Rails.env.test? || @account.customer_type == "traveler"
       @stripe_setup_link = @account.stripe_setup_link(request.base_url)
     end
   end
