@@ -1,5 +1,5 @@
 require "active_support/all"
-class SchedulingDateRange < Range
+class Scheduling::SchedulingDateRange < Range
   # step is similar to DateTime#advance argument
   def every(step, &block)
     c_time = self.begin.to_datetime
@@ -18,5 +18,5 @@ end
 
 # Convenience method: Call with SchedulingDateRange(date1..date2).every(hours: 1)
 def SchedulingDateRange(range)
-  SchedulingDateRange.new(range.begin, range.end, range.exclude_end?)
+  Scheduling::SchedulingDateRange.new(range.begin, range.end, range.exclude_end?)
 end
