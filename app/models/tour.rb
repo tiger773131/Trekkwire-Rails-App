@@ -47,8 +47,8 @@ class Tour < ApplicationRecord
   def booking_availability_for_date(date, schedule)
     bookings = bookings_for_day(date)
     sfd = schedule_for_day(date, schedule)
-    sched_hours = SchedulingDateRange(sfd["begin"]..sfd["end"]).every(hours: 1)
-    final_hours = SchedulingDateRange(sfd["begin"]..sfd["end"]).every(hours: 1)
+    sched_hours = Scheduling::SchedulingDateRange(sfd["begin"]..sfd["end"]).every(hours: 1)
+    final_hours = Scheduling::SchedulingDateRange(sfd["begin"]..sfd["end"]).every(hours: 1)
     sched_hours.each do |s|
       bookings.each do |b|
         if (b[:date]..(b[:date] + b[:duration].hours) - 1).cover?(s)

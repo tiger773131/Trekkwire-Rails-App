@@ -17,6 +17,6 @@ class Scheduling::SchedulingDateRange < Range
 end
 
 # Convenience method: Call with SchedulingDateRange(date1..date2).every(hours: 1)
-def SchedulingDateRange(range)
+def Scheduling::SchedulingDateRange(range)
   Scheduling::SchedulingDateRange.new(range.begin, range.end, range.exclude_end?)
 end
