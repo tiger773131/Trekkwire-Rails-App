@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_10_19_194505) do
+=======
+ActiveRecord::Schema[7.1].define(version: 2023_10_10_151212) do
+>>>>>>> jumpstart/main
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -142,7 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_194505) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
+    t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
@@ -458,8 +462,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_194505) do
     t.text "otp_backup_codes"
     t.boolean "account_creator"
     t.jsonb "preferences"
-    t.virtual "name", type: :string, as: "(((first_name)::text || ' '::text) || (last_name)::text)", stored: true
     t.bigint "phone"
+    t.jsonb "preferences"
+    t.virtual "name", type: :string, as: "(((first_name)::text || ' '::text) || (last_name)::text)", stored: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

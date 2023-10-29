@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby File.read(".ruby-version").strip
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 7.0.0"
+gem "rails", "~> 7.1.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails", ">= 3.4.1"
@@ -32,7 +32,7 @@ gem "redis", "~> 5.0"
 # gem "kredis"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data"
+gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Use Active Storage validations for images
 gem "active_storage_validations"
@@ -53,6 +53,9 @@ gem "wicked", "~> 2.0"
 gem "sendgrid-ruby", "~> 6.6"
 
 group :development, :test do
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[mri windows]
+
   # Optional debugging tools
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   # gem "pry-rails"
@@ -79,6 +82,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 
 group :test do

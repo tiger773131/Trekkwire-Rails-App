@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   draw :turbo
 
   # Jumpstart views
-  if Rails.env.development? || Rails.env.test?
+  if Rails.env.local?
     mount Jumpstart::Engine, at: "/jumpstart"
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
@@ -176,6 +176,10 @@ Rails.application.routes.draw do
     get "/scheduled_tour_payment", to: "scheduled_tours#scheduled_tour_payment"
     get "public_profile/:account_id", to: "accounts#public_profile", as: "public_profile"
   end
+
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  get "up" => "rails/health#show", as: :rails_health_check
 
   # Public marketing homepage
   root to: "static#index"
