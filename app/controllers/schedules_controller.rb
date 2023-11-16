@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   # Uncomment to enforce Pundit authorization

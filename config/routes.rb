@@ -164,7 +164,6 @@ Rails.application.routes.draw do
         delete :delete_photo_attachment
       end
     end
-    resources :schedules
     resources :scheduled_tours do
       collection do
         get :availability
@@ -176,6 +175,8 @@ Rails.application.routes.draw do
     get "/scheduled_tour_payment", to: "scheduled_tours#scheduled_tour_payment"
     get "public_profile/:account_id", to: "accounts#public_profile", as: "public_profile"
   end
+
+  resources :schedules
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
