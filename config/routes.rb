@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       sessions: "users/sessions"
     }.compact
   devise_scope :user do
+    get "/users/sign_out" => "devise/sessions#destroy"
     get "session/otp", to: "sessions#otp"
   end
   resources :after_signup
